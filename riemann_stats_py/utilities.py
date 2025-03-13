@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+
+
 def euclidean_norm(X, Y):
     """
     Calculates the Euclidean norm between two vectors.
@@ -13,6 +15,7 @@ def euclidean_norm(X, Y):
     """
     difference = np.array(X) - np.array(Y)
     return np.linalg.norm(difference)
+
 def covariance_matrix(data):
     """
     Calculate the covariance matrix for a given dataset.
@@ -37,6 +40,7 @@ def covariance_matrix(data):
     cov_matrix = np.dot(centered_data.T, centered_data) / data.shape[0]
 
     return cov_matrix
+
 def correlation_matrix(cov_matrix):
     """
     Calculate the correlation matrix from a given covariance matrix.
@@ -60,6 +64,7 @@ def correlation_matrix(cov_matrix):
             corr_matrix[i, j] = cov_matrix[i, j] / np.sqrt(cov_matrix[i, i] * cov_matrix[j, j])
 
     return corr_matrix
+
 def components_from_data_and_correlation(data, correlation_matrix):
     """
     Performs Principal Component Analysis (PCA) using a data table
@@ -99,6 +104,7 @@ def components_from_data_and_correlation(data, correlation_matrix):
     principal_components = np.dot(standardized_data, eigenvectors)
 
     return principal_components
+
 def correlation_variables_components(data, components):
     """
       Parameters:
@@ -134,6 +140,7 @@ def correlation_variables_components(data, components):
             cov_matrix[i, i] * cov_matrix[-1, -1])
 
     return correlations
+
 def pca_inertia_by_components(data, correlation_matrix, component1, component2):
     """
     Calculates the inertia explained by two specific principal components in a PCA.
@@ -168,3 +175,14 @@ def pca_inertia_by_components(data, correlation_matrix, component1, component2):
     explained_inertia = selected_inertia / total_inertia
 
     return explained_inertia
+
+def principal_components(data, corr_matrix):
+    """
+    Calcula los componentes principales a partir de la matriz de correlación (método clásico).
+    """
+    mean_centered_data = data - np.mean(data, axis=0)
+    std_population = np.sqrt(np.sum(mean_centered_data ** 2, axis=0) / data.shape[0])
+    standardized_data = mean_centered_data / std_population
+    eigenvalues, eigenvectors = np.linalg.eig(corr_matrix)
+    sorted_indices = np.argsort(eigenvalues)[::-1]
+    return np.dot(standardized_data, eigenvectors[:, sorted_indices])
