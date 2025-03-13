@@ -4,7 +4,6 @@ class DataProcessing:
     """
     Class to handle data loading and preparation.
     """
-
     @staticmethod
     def load_data(filepath, separator=";", decimal="."):
         """
