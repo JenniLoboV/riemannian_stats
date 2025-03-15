@@ -27,7 +27,7 @@ riemann_corr = analysis.riemannian_correlation_matrix()
 riemann_components = analysis.riemannian_components(riemann_corr)
 
 # Calcular la inercia explicada por los dos primeros componentes (usando la función funcional)
-inertia = pca_inertia_by_components(data_iris, riemann_corr, 0, 1) * 100
+inertia = pca_inertia_by_components(riemann_corr, 0, 1) * 100
 
 # Visualizar el plano principal
 Visualization.plot_principal_plane(data_iris, riemann_components, inertia, title="Plano Principal Riemanniano")
@@ -62,7 +62,7 @@ riem_comp_est = analysis_est.riemannian_components(riem_cor_est)
 
 # Calcular la inercia explicada por los dos primeros componentes (por ejemplo, usando comp1=0 y comp2=1)
 comp1, comp2 = 0, 1
-inercia_est = pca_inertia_by_components(data_estudiantes, riem_cor_est, comp1, comp2) * 100
+inercia_est = pca_inertia_by_components(riem_cor_est, comp1, comp2) * 100
 
 # Visualizar el plano principal, usando clusters si se definieron
 if cl_estudiantes is not None:

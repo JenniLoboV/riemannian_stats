@@ -433,12 +433,11 @@ def riemannian_correlation_variables_components(data, components, rho, umap_dist
 # endregion
 
 # region Funtions Principal plane and Correlation Graphic
-def pca_inertia_by_components(data, correlation_matrix, component1, component2):
+def pca_inertia_by_components(correlation_matrix, component1, component2):
     """
     Calculates the inertia explained by two specific principal components in a PCA.
 
     Args:
-        data (numpy.ndarray): Original data table (each row is an observation, each column is a variable).
         correlation_matrix (numpy.ndarray): Correlation matrix of the variables.
         component1 (int): Index of the first principal component (based on descending order of explained variance).
         component2 (int): Index of the second principal component (based on descending order of explained variance).
@@ -642,7 +641,7 @@ riem_cov_est = riemannian_covariance_matrix(data_estudiantes, p_rho_est, umap_di
 riem_cor_est = riemannian_correlation_matrix(riem_cov_est)
 riem_comp_est = riemannian_components_from_data_and_correlation(data_estudiantes, riem_cor_est, p_rho_est, umap_dist_est)
 comp1, comp2 = 0, 1
-inercia_est = pca_inertia_by_components(data_estudiantes, riem_cor_est, comp1, comp2)
+inercia_est = pca_inertia_by_components(riem_cor_est, comp1, comp2)
 
 if cl_estudiantes is not None:
     plot_principal_plane_with_clusters(data_estudiantes, riem_comp_est, cl_estudiantes, inercia_est * 100)
@@ -665,7 +664,7 @@ else:
 cov_clientes = covariance_matrix(data_clientes)
 cor_clientes = correlation_matrix(cov_clientes)
 comp_clientes = components_from_data_and_correlation(data_clientes, cor_clientes)
-inercia_clientes = pca_inertia_by_components(data_clientes, cor_clientes, 0, 1)
+inercia_clientes = pca_inertia_by_components(cor_clientes, 0, 1)
 if cl_clientes is not None:
     plot_principal_plane_with_clusters(data_clientes, comp_clientes, cl_clientes, inercia_clientes * 100)
 else:
