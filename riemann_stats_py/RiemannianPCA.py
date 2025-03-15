@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class UMAPAnalysis:
+class UMAPRiemannianAnalysis:
     """
     Clase para realizar análisis basado en UMAP, incluyendo cálculos de similitud,
     matrices de covarianza y correlación, y visualización de resultados.
@@ -92,8 +92,24 @@ class UMAPAnalysis:
                         self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
+    def _riemannian_covariance_matrix_general(self, combined_data):
+        """
+        Método auxiliar para calcular la matriz de covarianza Riemanniana para un conjunto de datos genérico.
 
-    # NUEVOS MÉTODOS ADAPTADOS PARA ANÁLISIS RIEMANNIANO
+        Parameters:
+            combined_data (DataFrame): Datos combinados (por ejemplo, datos originales y componentes).
+
+        Returns:
+            cov_matrix (numpy array): Matriz de covarianza Riemanniana.
+        """
+        riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
+        n_samples, n_features = combined_data.shape
+        cov_matrix = np.zeros((n_features, n_features))
+        for i in range(n_samples):
+            diff_vector = self.rho[i, riemannian_mean_index] * (
+                        combined_data.iloc[i] - combined_data.iloc[riemannian_mean_index])
+            cov_matrix += np.outer(diff_vector, diff_vector)
+        return cov_matrix / n_samples
 
     def riemannian_correlation_matrix(self):
         """
@@ -110,6 +126,51 @@ class UMAPAnalysis:
                 corr_matrix_riemannian[i, j] = cov_matrix_riemannian[i, j] / np.sqrt(
                     cov_matrix_riemannian[i, i] * cov_matrix_riemannian[j, j])
         return corr_matrix_riemannian
+
+    def riemannian_components_from_data_and_correlation(self, corr_matrix):
+        """
+        Realiza un análisis de componentes principales (PCA) Riemanniano usando la tabla de datos
+        y la matriz de correlación proporcionada.
+
+        Args:
+            corr_matrix (numpy array): Matriz de correlación de las variables.
+
+        Returns:
+            numpy array: Matriz de componentes principales.
+        """
+        # Verificar que la matriz de correlación sea cuadrada
+        if corr_matrix.shape[0] != corr_matrix.shape[1]:
+            raise ValueError("The correlation matrix must be square.")
+
+        # Verificar que el número de variables coincida con el tamaño de la matriz de correlación
+        if self.data.shape[1] != corr_matrix.shape[0]:
+            raise ValueError("The number of columns in the data must match the size of the correlation matrix.")
+
+        # Calcular la media Riemanniana y centrar los datos
+        riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
+        riemannian_mean_centered_data = np.zeros_like(self.data)
+        for i in range(self.data.shape[0]):
+            riemannian_mean_centered_data[i] = self.rho[i, riemannian_mean_index] * (
+                    self.data.iloc[i] - self.data.iloc[riemannian_mean_index]
+            )
+
+        # Calcular la desviación estándar Riemanniana
+        riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data ** 2, axis=0) / self.data.shape[0])
+
+        # Estandarizar los datos
+        standardized_data = riemannian_mean_centered_data / riemannian_std_population
+
+        # Calcular eigenvalores y eigenvectores
+        eigenvalues, eigenvectors = np.linalg.eig(corr_matrix)
+
+        # Ordenar eigenvalores en orden descendente
+        sorted_indices = np.argsort(eigenvalues)[::-1]
+        eigenvectors = eigenvectors[:, sorted_indices]
+
+        # Calcular los componentes principales
+        principal_components = np.dot(standardized_data, eigenvectors)
+
+        return principal_components
 
     def riemannian_components(self, corr_matrix):
         """
@@ -145,25 +206,6 @@ class UMAPAnalysis:
         principal_components = np.dot(standardized_data, eigenvectors)
         return principal_components
 
-    def _riemannian_covariance_matrix_general(self, combined_data):
-        """
-        Método auxiliar para calcular la matriz de covarianza Riemanniana para un conjunto de datos genérico.
-
-        Parameters:
-            combined_data (DataFrame): Datos combinados (por ejemplo, datos originales y componentes).
-
-        Returns:
-            cov_matrix (numpy array): Matriz de covarianza Riemanniana.
-        """
-        riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
-        n_samples, n_features = combined_data.shape
-        cov_matrix = np.zeros((n_features, n_features))
-        for i in range(n_samples):
-            diff_vector = self.rho[i, riemannian_mean_index] * (
-                        combined_data.iloc[i] - combined_data.iloc[riemannian_mean_index])
-            cov_matrix += np.outer(diff_vector, diff_vector)
-        return cov_matrix / n_samples
-
     def riemannian_correlation_variables_components(self, components):
         """
         Calcula la correlación (Riemanniana) entre las variables originales y las dos primeras componentes.
@@ -197,3 +239,28 @@ class UMAPAnalysis:
             correlations.loc[f'feature_{i + 1}', 'Component_2'] = riemannian_cov_matrix[i, -1] / np.sqrt(
                 riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-1, -1])
         return correlations
+
+# Nota sobre métodos adicionales:
+# Se incluyen dos métodos extra que sirven para distintos propósitos dentro del análisis Riemanniano:
+#
+# 1. riemannian_components:
+#    - Este método realiza el análisis de componentes principales (PCA) Riemanniano usando la matriz de correlación
+#      suministrada. Se encarga de centrar y estandarizar los datos de acuerdo con la métrica Riemanniana y, a partir
+#      de ello, extraer los componentes principales mediante eigenanálisis.
+#    - Su uso es opcional, ya que en algunos casos se puede preferir obtener los componentes principales
+#      directamente mediante otros métodos o flujos de trabajo. Se deja disponible para quienes deseen
+#      una forma directa de obtener la descomposición en componentes Riemannianos.
+#
+# 2. _riemannian_covariance_matrix_general:
+#    - Es un método auxiliar necesario y más general, diseñado para calcular la matriz de covarianza Riemanniana
+#      para cualquier conjunto de datos que se le pase (por ejemplo, datos originales combinados con componentes).
+#    - Su generalidad permite reutilizar la misma lógica para el cálculo de la covarianza en distintos contextos,
+#      evitando duplicación de código. Este método se utiliza internamente en otros métodos (como en
+#      riemannian_correlation_variables_components) para obtener la covarianza de conjuntos de datos combinados.
+#
+# Ambos métodos son necesarios para proporcionar flexibilidad en el análisis:
+# - _riemannian_covariance_matrix_general ofrece una función central y reutilizable para calcular covarianzas,
+#   lo cual es fundamental en el proceso de estimar correlaciones y posteriormente extraer componentes.
+# - riemannian_components encapsula la lógica del PCA Riemanniano, facilitando el acceso directo a los componentes
+#   principales sin necesidad de invocar manualmente los pasos intermedios de centramiento, estandarización y
+#   descomposición en eigenvalores/eigenvectores.

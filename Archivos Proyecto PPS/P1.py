@@ -737,7 +737,7 @@ plt.show()
 
 # ---------------------------
 # Ejemplo 6: UMAP Components y Círculo de Correlación
-# ---------------------------
+# ---------------------------8
 def calculate_umap_components(data, n_neighbors, min_dist=0.1, metric='euclidean', n_components=2):
     reducer = umap.UMAP(n_neighbors=n_neighbors, min_dist=min_dist, metric=metric, n_components=n_components)
     components = reducer.fit_transform(data)

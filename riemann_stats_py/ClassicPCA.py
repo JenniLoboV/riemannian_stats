@@ -141,12 +141,11 @@ def correlation_variables_components(data, components):
 
     return correlations
 
-def pca_inertia_by_components(data, correlation_matrix, component1, component2):
+def pca_inertia_by_components(correlation_matrix, component1, component2):
     """
     Calculates the inertia explained by two specific principal components in a PCA.
 
     Args:
-        data (numpy.ndarray): Original data table (each row is an observation, each column is a variable).
         correlation_matrix (numpy.ndarray): Correlation matrix of the variables.
         component1 (int): Index of the first principal component (based on descending order of explained variance).
         component2 (int): Index of the second principal component (based on descending order of explained variance).

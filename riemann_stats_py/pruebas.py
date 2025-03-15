@@ -1,7 +1,7 @@
 import pandas as pd
-from main import UMAPAnalysis
+from RiemannianPCA import UMAPRiemannianAnalysis
 from visualization import Visualization
-from utilities import pca_inertia_by_components  # Si lo tienes en estilo funcional
+from ClassicPCA import pca_inertia_by_components  # Si lo tienes en estilo funcional
 
 # ---------------------------
 # Ejemplo 1: Datos Iris
@@ -12,7 +12,7 @@ data = pd.read_csv("iris.csv", sep=";", decimal=".")
 data_iris = data.iloc[:, :-1]
 
 # Crear una instancia de UMAPAnalysis con un número de vecinos adecuado (por ejemplo, 50)
-analysis = UMAPAnalysis(data_iris, n_neighbors=50, min_dist=0.1, metric='euclidean')
+analysis = UMAPRiemannianAnalysis(data_iris, n_neighbors=50, min_dist=0.1, metric='euclidean')
 
 # Calcular el grafo de UMAP y la matriz rho
 umap_similarities = analysis.calculate_umap_graph_similarities()
@@ -46,7 +46,7 @@ else:
     cl_estudiantes = None  # O asignar otro identificador
 
 # Crear una instancia de UMAPAnalysis usando los parámetros definidos
-analysis_est = UMAPAnalysis(data_estudiantes, n_neighbors=cantidad_vecinos_estudiantes, min_dist=0.1, metric='euclidean')
+analysis_est = UMAPRiemannianAnalysis(data_estudiantes, n_neighbors=cantidad_vecinos_estudiantes, min_dist=0.1, metric='euclidean')
 
 # Calcular el grafo de UMAP y la matriz Rho
 umap_simil_est = analysis_est.calculate_umap_graph_similarities()
