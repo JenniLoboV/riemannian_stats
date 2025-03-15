@@ -737,7 +737,7 @@ cl = data_plot['cluster']
 cl
 
 # Cargar los datos desde el archivo CSV
-data = pd.read_csv("Data10D.csv")
+data = pd.read_csv("Data10D_250.csv")
 data
 data_plot = data
 data = data.iloc[:, :-1]
@@ -816,7 +816,9 @@ plot_principal_plane_with_clusters(data,principal_components,cl,explained_inerti
 correlations = correlation_variables_components(data, principal_components)
 plot_correlation_circle(data,correlations,explained_inertia*100)
 
-
+# ****************************
+# ****************************
+# ****************************
 
 np.set_printoptions(threshold=np.inf)
 
@@ -840,7 +842,9 @@ plot_principal_plane_with_clusters(data,riemannian_principal_components,cl,expla
 correlations = riemannian_correlation_variables_components(data, riemannian_principal_components, p_rho, umap_distance_matrix)
 plot_correlation_circle(data,correlations,explained_inertia*100)
 
-
+# ****************************
+# ****************************
+# ****************************
 
 def contar_entradas_matriz(matriz):
     """
@@ -993,11 +997,6 @@ classic_correlations = correlation_clasica_umap_columns(data, umap_components)
 # Muestra las correlaciones resultantes
 print("Classic Correlation Matrix (first and second UMAP components):")
 print(classic_correlations)
-
-# UMAP Plano y Círculo de Correlación
-plot_plano_principal2(data,umap_components,cl)
-plot_circulo(data,classic_correlations)
-plot_circulo(data,riemannian_correlations)
 # endregion
 
 

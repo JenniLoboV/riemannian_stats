@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import numpy as np
 class Visualization:
     """
     Clase para la visualización de gráficos relacionados con UMAP y PCA.

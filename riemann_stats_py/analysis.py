@@ -92,7 +92,8 @@ class UMAPRiemannianAnalysis:
                         self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
-    def _riemannian_covariance_matrix_general(self, combined_data):
+
+    def riemannian_covariance_matrix_general(self, combined_data):
         """
         Método auxiliar para calcular la matriz de covarianza Riemanniana para un conjunto de datos genérico.
 
@@ -223,7 +224,7 @@ class UMAPRiemannianAnalysis:
             columns=[f'feature_{i + 1}' for i in range(self.data.shape[1])] + ['Component_1', 'Component_2']
         )
         # Calcular la matriz de covarianza Riemanniana para los datos combinados
-        riemannian_cov_matrix = self._riemannian_covariance_matrix_general(combined_data)
+        riemannian_cov_matrix = self.riemannian_covariance_matrix_general(combined_data)
 
         # Inicializar DataFrame para las correlaciones
         correlations = pd.DataFrame(

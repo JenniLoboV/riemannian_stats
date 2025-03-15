@@ -642,7 +642,7 @@ np.set_printoptions(threshold=4)
 
 
 # Cargar los datos desde el archivo CSV
-data = pd.read_csv("/iris.csv",sep = ";", decimal = ".")
+data = pd.read_csv("iris.csv",sep = ";", decimal = ".")
 data
 data_plot = data
 data = data.iloc[:, :-1]
@@ -677,7 +677,7 @@ plt.show()
 # Es decir, la cantidad de vecinos K será igual al promedio de individuos que tiene cada cluster
 
 
-data = pd.read_csv("/EjemploEstudiantes.csv", sep = ";", decimal = ",", index_col = 0)
+data = pd.read_csv("EjemploEstudiantes.csv", sep = ";", decimal = ",", index_col = 0)
 data
 cantidad_vecinos = 3
 mean_centered_data = data - np.mean(data, axis=0)
@@ -723,7 +723,7 @@ data.iloc[0] - data.iloc[riemannian_mean_index]
 
 
 
-data = pd.read_csv("/EjemploClientes.csv", sep = ";", decimal = ".", index_col = 0)
+data = pd.read_csv("EjemploClientes.csv", sep = ";", decimal = ".", index_col = 0)
 data
 cantidad_vecinos = 13 # 37/3 = 12.333
 
@@ -738,7 +738,7 @@ cl = data_plot['cluster']
 cl
 
 # Cargar los datos desde el archivo CSV
-data = pd.read_csv("/Data10D.csv")
+data = pd.read_csv("Data10D.csv")
 data
 data_plot = data
 data = data.iloc[:, :-1]
@@ -817,7 +817,11 @@ plot_principal_plane_with_clusters(data,principal_components,cl,explained_inerti
 correlations = correlation_variables_components(data, principal_components)
 plot_correlation_circle(data,correlations,explained_inertia*100)
 
-
+# ****************************************
+# ****************************************
+# ****************************************
+# ****************************************
+# ****************************************
 
 np.set_printoptions(threshold=np.inf)
 
@@ -841,6 +845,10 @@ plot_principal_plane_with_clusters(data,riemannian_principal_components,cl,expla
 correlations = riemannian_correlation_variables_components(data, riemannian_principal_components, p_rho, umap_distance_matrix)
 plot_correlation_circle(data,correlations,explained_inertia*100)
 
+# ****************************************
+# ****************************************
+# ****************************************
+# ****************************************
 
 
 
