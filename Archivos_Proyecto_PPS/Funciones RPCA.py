@@ -328,7 +328,9 @@ def plot_principal_plane(data, components, explained_inertia, title="Principal P
     plt.ylabel(y_label)
     plt.show()
 
-def plot_principal_plane_with_clusters(data, components, clusters, explained_inertia, title="Principal Plane Whit Clusters"):
+
+def plot_principal_plane_with_clusters(data, components, clusters, explained_inertia,
+                                       title="Principal Plane Whit Clusters"):
     """
     Plots the data projected onto the plane of the first two principal components,
     coloring each point based on the cluster it belongs to, and displays the explained inertia.
@@ -369,6 +371,8 @@ def plot_principal_plane_with_clusters(data, components, clusters, explained_ine
     plt.tight_layout()
     plt.show()
 
+# *********************************************************
+# Funciones añadidas con base en intrucciones del docuemnto R-PCA:V1(2)
 def plot_correlation_circle(data, correlations, explained_inertia, title="Correlation Circle", scale=1,
                             draw_circle=True):
     """
@@ -411,6 +415,55 @@ def plot_correlation_circle(data, correlations, explained_inertia, title="Correl
     # Show the plot
     plt.show()
 
+    def plot_3d_scatter_with_clusters(data, x_col, y_col, z_col, cluster_col, title="3D Scatter Plot of Clusters",
+                                      figsize=(12, 8), cmap='viridis', s=50, alpha=0.7):
+        """
+        Crea un gráfico 3D de dispersión coloreado según la columna de clusters.
+
+        Parámetros:
+          - data: DataFrame que contiene los datos.
+          - x_col, y_col, z_col: Nombres de las columnas que contienen las coordenadas X, Y y Z.
+          - cluster_col: Nombre de la columna que contiene los clusters.
+          - title: Título del gráfico (por defecto "3D Scatter Plot of Clusters").
+          - figsize: Tamaño de la figura (por defecto (12,8)).
+          - cmap: Colormap a utilizar (por defecto 'viridis').
+          - s: Tamaño de los puntos (por defecto 50).
+          - alpha: Transparencia de los puntos (por defecto 0.7).
+
+        La función crea la leyenda asociada a cada cluster basado en los colores asignados.
+        """
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from mpl_toolkits.mplot3d import Axes3D  # Aunque no es estrictamente necesario en versiones modernas
+
+        # Obtener clusters únicos
+        unique_clusters = np.unique(data[cluster_col])
+
+        # Crear figura y eje 3D
+        fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111, projection='3d')
+
+        # Graficar los puntos, asignando colores según la columna de clusters
+        scatter = ax.scatter(data[x_col], data[y_col], data[z_col],
+                             c=data[cluster_col], cmap=cmap, s=s, alpha=alpha)
+
+        # Crear leyenda: para cada cluster, se crea un "dummy" scatter con el color correspondiente
+        for cluster in unique_clusters:
+            # Obtener el color para este cluster a partir del colormap
+            color = plt.cm.get_cmap(cmap)(scatter.norm(cluster))
+            ax.scatter([], [], [], color=color, label=f'Cluster {cluster}')
+
+        # Configurar títulos y etiquetas de ejes
+        ax.set_title(title)
+        ax.set_xlabel(x_col)
+        ax.set_ylabel(y_col)
+        ax.set_zlabel(z_col)
+
+        ax.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1, 0.8))
+        plt.tight_layout()
+        plt.show()
+
+s
 # ---------------------------
 # endregion FUNCIONES
 # =============================================================================

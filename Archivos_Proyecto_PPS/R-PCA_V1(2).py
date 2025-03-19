@@ -666,6 +666,7 @@ for cluster in data_plot['tipo'].unique():
         edgecolor='k'
     )
 
+# **************PRIMER GRAFICO****************
 plt.title("Sampled 250 Rows Colored by Cluster")
 plt.xlabel("Column 1")
 plt.ylabel("Column 2")
@@ -759,6 +760,7 @@ for cluster in data_plot['cluster'].unique():
         edgecolor='k'
     )
 
+# **************TERCER GRAFICO****************
 plt.title("Sampled 250 Rows Colored by Cluster")
 plt.xlabel("Column 1")
 plt.ylabel("Column 2")
@@ -782,7 +784,7 @@ scatter_3d = ax.scatter(data_plot['x'], data_plot['y'], data_plot['var1'], c=dat
 for cluster in unique_clusters:
     color = plt.cm.viridis(scatter_3d.norm(cluster))
     ax.scatter([], [], [], c=[color], label=f'Cluster {cluster}')
-
+# **************PRIMER GRAFICO****************
 # Configurar etiquetas de ejes y título
 ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('x')
