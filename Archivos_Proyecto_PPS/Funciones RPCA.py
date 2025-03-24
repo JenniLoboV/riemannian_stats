@@ -463,7 +463,7 @@ def plot_correlation_circle(data, correlations, explained_inertia, title="Correl
         plt.tight_layout()
         plt.show()
 
-s
+
 # ---------------------------
 # endregion FUNCIONES
 # =============================================================================

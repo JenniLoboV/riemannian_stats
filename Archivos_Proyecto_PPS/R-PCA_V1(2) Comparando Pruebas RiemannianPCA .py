@@ -735,7 +735,7 @@ cl = data_plot['cluster']
 cl
 
 # Cargar los datos desde el archivo CSV
-data = pd.read_csv("Data10D.csv")
+data = pd.read_csv("Data10D_250.csv")
 data
 data_plot = data
 data = data.iloc[:, :-1]

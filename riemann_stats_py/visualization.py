@@ -5,15 +5,20 @@ class Visualization:
     Clase para la visualización de gráficos relacionados con UMAP y PCA.
     """
     @staticmethod
-    def plot_principal_plane(data, components, explained_inertia, title="Principal Plane"):
+    def plot_principal_plane(data, components, explained_inertia, title=""):
         """
         Genera un gráfico del plano principal con los componentes principales.
         """
+        default_title = "Principal Plane"
+        if title:
+            title = f"{title}\n{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+        else:
+            title = f"{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
         x, y = components[:, 0], components[:, 1]
         plt.scatter(x, y, color='gray')
         for i, label in enumerate(data.index):
             plt.text(x[i], y[i], label, fontsize=9, ha='right')
-        plt.title(f"{title} (Explained Inertia: {explained_inertia:.2f}%)")
+        plt.title(title)
         plt.axhline(y=0, color='dimgrey', linestyle='--')
         plt.axvline(x=0, color='dimgrey', linestyle='--')
         plt.xlabel('Component 1')
@@ -22,10 +27,16 @@ class Visualization:
 
     @staticmethod
     def plot_principal_plane_with_clusters(data, components, clusters, explained_inertia,
-                                           title="Principal Plane With Clusters"):
+                                           title=""):
         """
         Genera un gráfico del plano principal coloreando los puntos según los clústeres.
         """
+        default_title = "Principal Plane With Clusters"
+        if title:
+            title = f"{title}\n{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+        else:
+            title = f"{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+
         x, y = components[:, 0], components[:, 1]
         plt.figure(figsize=(10, 8))
         unique_clusters = np.unique(clusters)
@@ -34,7 +45,7 @@ class Visualization:
             plt.scatter(x[cluster_points], y[cluster_points], label=f'Cluster {cluster}', alpha=0.7)
         for i, label in enumerate(data.index):
             plt.text(x[i], y[i], label, fontsize=8, ha='right')
-        plt.title(f"{title} (Explained Inertia: {explained_inertia:.2f}%)")
+        plt.title(title)
         plt.axhline(y=0, color='dimgrey', linestyle='--')
         plt.axvline(x=0, color='dimgrey', linestyle='--')
         plt.xlabel('Component 1')
@@ -43,11 +54,17 @@ class Visualization:
         plt.show()
 
     @staticmethod
-    def plot_correlation_circle(data, correlations, explained_inertia, title="Correlation Circle", scale=1,
+    def plot_correlation_circle(data, correlations, explained_inertia, title="", scale=1,
                                 draw_circle=True):
         """
         Genera un círculo de correlación para los componentes principales.
         """
+        default_title = "Correlation Circle"
+        if title:
+            title = f"{title}\n{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+        else:
+            title = f"{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+
         if draw_circle:
             circle = plt.Circle((0, 0), radius=1.05, color='steelblue', fill=False)
             plt.gca().add_patch(circle)
@@ -59,11 +76,47 @@ class Visualization:
                       alpha=0.5, head_width=0.05, head_length=0.05)
             plt.text(correlations.iloc[i, 0] * scale, correlations.iloc[i, 1] * scale, data.columns[i], fontsize=9,
                      ha='right')
-        plt.title(f"{title} (Explained Inertia: {explained_inertia:.2f}%)")
+        plt.title(title)
         plt.show()
 
     @staticmethod
-    def plot_3d_scatter_with_clusters(data, x_col, y_col, z_col, cluster_col, title="3D Scatter Plot of Clusters",
+    def plot_2d_scatter_with_clusters(data, explained_inertia, x_col, y_col, cluster_col, title="",
+                                      figsize=(10, 8)):
+        """
+        Genera un gráfico 2D de dispersión coloreado según la columna de clusters.
+
+        Parámetros:
+          - data: DataFrame que contiene los datos.
+          - x_col, y_col: Nombres de las columnas que contienen las coordenadas X e Y.
+          - cluster_col: Nombre de la columna que contiene los clusters.
+          - title: Título del gráfico (por defecto "2D Scatter Plot with Clusters").
+          - figsize: Tamaño de la figura (por defecto (10,8)).
+
+        La función configura la figura, itera sobre los clusters únicos y grafica cada subconjunto,
+        añadiendo leyenda y etiquetas de ejes.
+        """
+        default_title = "2D Cluster Projection – Visualization of Groupings"
+        if title:
+            title = f"{title}\n{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+        else:
+            title = f"{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+
+        plt.figure(figsize=figsize)
+        unique_clusters = np.unique(data[cluster_col])
+        for cluster in unique_clusters:
+            subset = data[data[cluster_col] == cluster]
+            plt.scatter(subset[x_col], subset[y_col], label=f"Cluster {cluster}", s=20, edgecolor='k')
+        plt.title(title)
+        plt.xlabel(x_col)
+        plt.ylabel(y_col)
+        plt.axis("equal")
+        plt.legend(title="Clusters", loc="best", bbox_to_anchor=(1.05, 1))
+        plt.title(title)
+        plt.tight_layout()
+        plt.show()
+
+    @staticmethod
+    def plot_3d_scatter_with_clusters(data, explained_inertia, x_col, y_col, z_col, cluster_col, title="",
                                       figsize=(12, 8), cmap='viridis', s=50, alpha=0.7):
         """
         Crea un gráfico 3D de dispersión coloreado según la columna de clusters.
@@ -80,9 +133,11 @@ class Visualization:
 
         La función crea la leyenda asociada a cada cluster basado en los colores asignados.
         """
-        import numpy as np
-        import matplotlib.pyplot as plt
-        from mpl_toolkits.mplot3d import Axes3D  # Aunque no es estrictamente necesario en versiones modernas
+        default_title = "3D Scatter Plot – Cluster Distribution"
+        if title:
+            title = f"{title}\n{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
+        else:
+            title = f"{default_title} (Explained Inertia: {explained_inertia:.2f}%)"
 
         # Obtener clusters únicos
         unique_clusters = np.unique(data[cluster_col])
@@ -108,5 +163,7 @@ class Visualization:
         ax.set_zlabel(z_col)
 
         ax.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1, 0.8))
+        plt.title(title)
         plt.tight_layout()
         plt.show()
+
