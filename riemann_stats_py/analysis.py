@@ -1,40 +1,44 @@
+from typing import Union
 import matplotlib
 
-matplotlib.use('TkAgg')  # O puedes probar con 'Agg', 'Qt5Agg', 'GTK3Agg', etc.
+matplotlib.use("TkAgg")  # Alternatively, you can try 'Agg', 'Qt5Agg', 'GTK3Agg', etc.
 import umap
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 class UMAPRiemannianAnalysis:
     """
-    Clase para realizar análisis basado en UMAP, incluyendo cálculos de similitud,
-    matrices de covarianza y correlación, y visualización de resultados.
+    Class for performing UMAP-based analysis, including similarity calculations,
+    covariance and correlation matrices, and visualization of results.
     """
 
-    def __init__(self, data, n_neighbors=3, min_dist=0.1, metric='euclidean'):
+    def __init__(self, data: Union[np.ndarray, pd.DataFrame], n_neighbors: int = 3,
+                 min_dist: float = 0.1, metric: str = "euclidean") -> None:
         """
-        Inicializa la clase con los parámetros de UMAP y los datos.
+        Initializes the UMAPRiemannianAnalysis class with UMAP parameters and input data.
 
         Parameters:
-        data (numpy array o DataFrame): Datos de entrada.
-        n_neighbors (int): Número de vecinos para UMAP.
-        min_dist (float): Distancia mínima en el espacio reducido.
-        metric (str): Métrica de distancia utilizada en UMAP.
+            data (numpy.ndarray or pandas.DataFrame): Input data.
+            n_neighbors (int): Number of neighbors for UMAP. Defaults to 3.
+            min_dist (float): Minimum distance in the reduced space. Defaults to 0.1.
+            metric (str): Distance metric used in UMAP. Defaults to "euclidean".
         """
         self.data = data
         self.n_neighbors = n_neighbors
         self.min_dist = min_dist
         self.metric = metric
-        self.umap_similarities = None
-        self.rho = None
-        self.riemannian_diff = None
-        self.umap_distance_matrix = None
+        self.umap_similarities: Union[np.ndarray, None] = None
+        self.rho: Union[np.ndarray, None] = None
+        self.riemannian_diff: Union[np.ndarray, None] = None
+        self.umap_distance_matrix: Union[np.ndarray, None] = None
 
-    def calculate_umap_graph_similarities(self):
+    def calculate_umap_graph_similarities(self) -> np.ndarray:
         """
-        Calcula las distancias UMAP basadas en la gráfica de conexión KNN.
+        Calculates UMAP similarities based on the KNN connectivity graph.
+
+        Returns:
+            numpy.ndarray: UMAP similarity matrix derived from the KNN graph.
         """
         reducer = umap.UMAP(n_neighbors=self.n_neighbors, min_dist=self.min_dist, metric=self.metric)
         reducer.fit(self.data)
@@ -42,21 +46,33 @@ class UMAPRiemannianAnalysis:
         self.umap_similarities = np.array(umap_graph.todense())
         return self.umap_similarities
 
-    def calculate_rho_matrix(self):
+    def calculate_rho_matrix(self) -> np.ndarray:
         """
-        Calcula la matriz Rho como 1 menos las similitudes UMAP.
+        Calculates the Rho matrix as 1 minus the UMAP similarity matrix.
+
+        Returns:
+            numpy.ndarray: Rho matrix.
+
+        Raises:
+            ValueError: If UMAP similarities have not been calculated.
         """
         if self.umap_similarities is None:
-            raise ValueError("Debe calcular las similitudes de UMAP antes de obtener la matriz Rho.")
+            raise ValueError("UMAP similarities must be calculated before obtaining the Rho matrix.")
         self.rho = 1 - self.umap_similarities
         return self.rho
 
-    def riemannian_vector_difference(self):
+    def riemannian_vector_difference(self) -> np.ndarray:
         """
-        Calcula la diferencia Riemanniana entre cada par de vectores fila en la matriz de datos.
+        Calculates the Riemannian difference between each pair of row vectors in the data matrix.
+
+        Returns:
+            numpy.ndarray: 3D array containing the Riemannian differences for each pair of rows.
+
+        Raises:
+            ValueError: If the Rho matrix has not been calculated.
         """
         if self.rho is None:
-            raise ValueError("Debe calcular la matriz Rho antes de calcular diferencias Riemannianas.")
+            raise ValueError("Rho matrix must be calculated before computing Riemannian differences.")
         n_rows = self.data.shape[0]
         self.riemannian_diff = np.zeros((n_rows, n_rows, self.data.shape[1]))
         for i in range(n_rows):
@@ -64,12 +80,18 @@ class UMAPRiemannianAnalysis:
                 self.riemannian_diff[i, j] = self.rho[i, j] * (self.data.iloc[i] - self.data.iloc[j])
         return self.riemannian_diff
 
-    def calculate_umap_distance_matrix(self):
+    def calculate_umap_distance_matrix(self) -> np.ndarray:
         """
-        Calcula la matriz de distancias UMAP utilizando diferencias Riemannianas ponderadas.
+        Calculates the UMAP distance matrix using weighted Riemannian differences.
+
+        Returns:
+            numpy.ndarray: UMAP distance matrix.
+
+        Raises:
+            ValueError: If the Riemannian differences have not been calculated.
         """
         if self.riemannian_diff is None:
-            raise ValueError("Debe calcular la diferencia Riemanniana antes de obtener la matriz de distancias UMAP.")
+            raise ValueError("Riemannian differences must be calculated before obtaining the UMAP distance matrix.")
         n_rows = self.riemannian_diff.shape[0]
         self.umap_distance_matrix = np.zeros((n_rows, n_rows))
         for i in range(n_rows):
@@ -77,13 +99,19 @@ class UMAPRiemannianAnalysis:
                 self.umap_distance_matrix[i, j] = np.linalg.norm(self.riemannian_diff[i, j])
         return self.umap_distance_matrix
 
-    def riemannian_covariance_matrix(self):
+    def riemannian_covariance_matrix(self) -> np.ndarray:
         """
-        Calcula la matriz de covarianza utilizando diferencias Riemannianas.
+        Calculates the covariance matrix using Riemannian differences.
+
+        Returns:
+            numpy.ndarray: Riemannian covariance matrix.
+
+        Raises:
+            ValueError: If the UMAP distance matrix has not been calculated.
         """
         if self.umap_distance_matrix is None:
             raise ValueError(
-                "Debe calcular la matriz de distancias UMAP antes de obtener la matriz de covarianza Riemanniana.")
+                "UMAP distance matrix must be calculated before obtaining the Riemannian covariance matrix.")
         riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
         n_samples, n_features = self.data.shape
         cov_matrix = np.zeros((n_features, n_features))
@@ -93,31 +121,31 @@ class UMAPRiemannianAnalysis:
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
 
-    def riemannian_covariance_matrix_general(self, combined_data):
+    def riemannian_covariance_matrix_general(self, combined_data: pd.DataFrame) -> np.ndarray:
         """
-        Método auxiliar para calcular la matriz de covarianza Riemanniana para un conjunto de datos genérico.
+        Helper method to calculate the Riemannian covariance matrix for a generic dataset.
 
         Parameters:
-            combined_data (DataFrame): Datos combinados (por ejemplo, datos originales y componentes).
+            combined_data (pandas.DataFrame): Combined data (e.g., original data and components).
 
         Returns:
-            cov_matrix (numpy array): Matriz de covarianza Riemanniana.
+            numpy.ndarray: Riemannian covariance matrix.
         """
         riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
         n_samples, n_features = combined_data.shape
         cov_matrix = np.zeros((n_features, n_features))
         for i in range(n_samples):
             diff_vector = self.rho[i, riemannian_mean_index] * (
-                        combined_data.iloc[i] - combined_data.iloc[riemannian_mean_index])
+                    combined_data.iloc[i] - combined_data.iloc[riemannian_mean_index])
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
 
-    def riemannian_correlation_matrix(self):
+    def riemannian_correlation_matrix(self) -> np.ndarray:
         """
-        Calcula la matriz de correlación Riemanniana a partir de la matriz de covarianza Riemanniana.
+        Calculates the Riemannian correlation matrix from the Riemannian covariance matrix.
 
         Returns:
-            corr_matrix_riemannian (numpy array): La matriz de correlación Riemanniana.
+            numpy.ndarray: Riemannian correlation matrix.
         """
         cov_matrix_riemannian = self.riemannian_covariance_matrix()
         n = cov_matrix_riemannian.shape[0]
@@ -128,140 +156,93 @@ class UMAPRiemannianAnalysis:
                     cov_matrix_riemannian[i, i] * cov_matrix_riemannian[j, j])
         return corr_matrix_riemannian
 
-    def riemannian_components_from_data_and_correlation(self, corr_matrix):
+    def riemannian_components_from_data_and_correlation(self, corr_matrix: np.ndarray) -> np.ndarray:
         """
-        Realiza un análisis de componentes principales (PCA) Riemanniano usando la tabla de datos
-        y la matriz de correlación proporcionada.
+        Performs Riemannian principal component analysis (PCA) using the data and the provided correlation matrix.
 
-        Args:
-            corr_matrix (numpy array): Matriz de correlación de las variables.
+        Parameters:
+            corr_matrix (numpy.ndarray): Correlation matrix of the variables.
 
         Returns:
-            numpy array: Matriz de componentes principales.
+            numpy.ndarray: Matrix of principal components.
+
+        Raises:
+            ValueError: If the correlation matrix is not square or if its size does not match the number of data columns.
         """
-        # Verificar que la matriz de correlación sea cuadrada
         if corr_matrix.shape[0] != corr_matrix.shape[1]:
             raise ValueError("The correlation matrix must be square.")
-
-        # Verificar que el número de variables coincida con el tamaño de la matriz de correlación
         if self.data.shape[1] != corr_matrix.shape[0]:
             raise ValueError("The number of columns in the data must match the size of the correlation matrix.")
 
-        # Calcular la media Riemanniana y centrar los datos
-        riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
-        riemannian_mean_centered_data = np.zeros_like(self.data)
-        for i in range(self.data.shape[0]):
-            riemannian_mean_centered_data[i] = self.rho[i, riemannian_mean_index] * (
-                    self.data.iloc[i] - self.data.iloc[riemannian_mean_index]
-            )
-
-        # Calcular la desviación estándar Riemanniana
-        riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data ** 2, axis=0) / self.data.shape[0])
-
-        # Estandarizar los datos
-        standardized_data = riemannian_mean_centered_data / riemannian_std_population
-
-        # Calcular eigenvalores y eigenvectores
-        eigenvalues, eigenvectors = np.linalg.eig(corr_matrix)
-
-        # Ordenar eigenvalores en orden descendente
-        sorted_indices = np.argsort(eigenvalues)[::-1]
-        eigenvectors = eigenvectors[:, sorted_indices]
-
-        # Calcular los componentes principales
-        principal_components = np.dot(standardized_data, eigenvectors)
-
-        return principal_components
-
-    def riemannian_components(self, corr_matrix):
-        """
-        Realiza un análisis de componentes principales (PCA) Riemanniano usando la matriz de correlación suministrada.
-
-        Parameters:
-            corr_matrix (numpy array): Matriz de correlación Riemanniana.
-
-        Returns:
-            principal_components (numpy array): Matriz de componentes principales.
-        """
-        # Verificar que la matriz de correlación sea cuadrada
-        if corr_matrix.shape[0] != corr_matrix.shape[1]:
-            raise ValueError("La matriz de correlación debe ser cuadrada.")
-        if self.data.shape[1] != corr_matrix.shape[0]:
-            raise ValueError(
-                "El número de columnas en los datos debe coincidir con el tamaño de la matriz de correlación.")
-
-        # Calcular la media Riemanniana y centrar los datos
         riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
         riemannian_mean_centered_data = np.zeros_like(self.data)
         for i in range(self.data.shape[0]):
             riemannian_mean_centered_data[i] = self.rho[i, riemannian_mean_index] * (
                     self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
-        # Calcular la desviación estándar Riemanniana
         riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data ** 2, axis=0) / self.data.shape[0])
-        # Estandarizar los datos
         standardized_data = riemannian_mean_centered_data / riemannian_std_population
-        # Calcular eigenvalores y eigenvectores
+
         eigenvalues, eigenvectors = np.linalg.eig(corr_matrix)
         sorted_indices = np.argsort(eigenvalues)[::-1]
         eigenvectors = eigenvectors[:, sorted_indices]
         principal_components = np.dot(standardized_data, eigenvectors)
         return principal_components
 
-    def riemannian_correlation_variables_components(self, components):
+    def riemannian_components(self, corr_matrix: np.ndarray) -> np.ndarray:
         """
-        Calcula la correlación (Riemanniana) entre las variables originales y las dos primeras componentes.
+        Performs Riemannian principal component analysis (PCA) using the supplied correlation matrix.
 
         Parameters:
-            components (numpy array): Matriz de componentes (se esperan al menos dos columnas).
+            corr_matrix (numpy.ndarray): Riemannian correlation matrix.
 
         Returns:
-            correlations (pandas DataFrame): DataFrame con la correlación de cada variable original con la
-                                              primera y segunda componente.
+            numpy.ndarray: Matrix of principal components.
+
+        Raises:
+            ValueError: If the correlation matrix is not square or if its size does not match the number of data columns.
         """
-        # Combinar los datos originales y las dos primeras componentes en un DataFrame
+        if corr_matrix.shape[0] != corr_matrix.shape[1]:
+            raise ValueError("The correlation matrix must be square.")
+        if self.data.shape[1] != corr_matrix.shape[0]:
+            raise ValueError("The number of columns in the data must match the size of the correlation matrix.")
+
+        riemannian_mean_index = np.argmin(np.sum(self.umap_distance_matrix, axis=1))
+        riemannian_mean_centered_data = np.zeros_like(self.data)
+        for i in range(self.data.shape[0]):
+            riemannian_mean_centered_data[i] = self.rho[i, riemannian_mean_index] * (
+                    self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
+        riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data ** 2, axis=0) / self.data.shape[0])
+        standardized_data = riemannian_mean_centered_data / riemannian_std_population
+
+        eigenvalues, eigenvectors = np.linalg.eig(corr_matrix)
+        sorted_indices = np.argsort(eigenvalues)[::-1]
+        eigenvectors = eigenvectors[:, sorted_indices]
+        principal_components = np.dot(standardized_data, eigenvectors)
+        return principal_components
+
+    def riemannian_correlation_variables_components(self, components: np.ndarray) -> pd.DataFrame:
+        """
+        Calculates the Riemannian correlation between the original variables and the first two components.
+
+        Parameters:
+            components (numpy.ndarray): Matrix of components (at least two columns are expected).
+
+        Returns:
+            pandas.DataFrame: DataFrame with the correlation of each original variable with the first and second components.
+        """
         combined_data = pd.DataFrame(
             np.hstack((self.data, components[:, 0:2])),
-            columns=[f'feature_{i + 1}' for i in range(self.data.shape[1])] + ['Component_1', 'Component_2']
+            columns=[f"feature_{i + 1}" for i in range(self.data.shape[1])] + ["Component_1", "Component_2"]
         )
-        # Calcular la matriz de covarianza Riemanniana para los datos combinados
         riemannian_cov_matrix = self.riemannian_covariance_matrix_general(combined_data)
-
-        # Inicializar DataFrame para las correlaciones
         correlations = pd.DataFrame(
-            index=[f'feature_{i + 1}' for i in range(self.data.shape[1])],
-            columns=['Component_1', 'Component_2']
+            index=[f"feature_{i + 1}" for i in range(self.data.shape[1])],
+            columns=["Component_1", "Component_2"]
         )
-        # Calcular correlaciones para la primera componente
         for i in range(self.data.shape[1]):
-            correlations.loc[f'feature_{i + 1}', 'Component_1'] = riemannian_cov_matrix[i, -2] / np.sqrt(
+            correlations.loc[f"feature_{i + 1}", "Component_1"] = riemannian_cov_matrix[i, -2] / np.sqrt(
                 riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-2, -2])
-        # Calcular correlaciones para la segunda componente
         for i in range(self.data.shape[1]):
-            correlations.loc[f'feature_{i + 1}', 'Component_2'] = riemannian_cov_matrix[i, -1] / np.sqrt(
+            correlations.loc[f"feature_{i + 1}", "Component_2"] = riemannian_cov_matrix[i, -1] / np.sqrt(
                 riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-1, -1])
         return correlations
-
-# Nota sobre métodos adicionales:
-# Se incluyen dos métodos extra que sirven para distintos propósitos dentro del análisis Riemanniano:
-#
-# 1. riemannian_components:
-#    - Este método realiza el análisis de componentes principales (PCA) Riemanniano usando la matriz de correlación
-#      suministrada. Se encarga de centrar y estandarizar los datos de acuerdo con la métrica Riemanniana y, a partir
-#      de ello, extraer los componentes principales mediante eigenanálisis.
-#    - Su uso es opcional, ya que en algunos casos se puede preferir obtener los componentes principales
-#      directamente mediante otros métodos o flujos de trabajo. Se deja disponible para quienes deseen
-#      una forma directa de obtener la descomposición en componentes Riemannianos.
-#
-# 2. _riemannian_covariance_matrix_general:
-#    - Es un método auxiliar necesario y más general, diseñado para calcular la matriz de covarianza Riemanniana
-#      para cualquier conjunto de datos que se le pase (por ejemplo, datos originales combinados con componentes).
-#    - Su generalidad permite reutilizar la misma lógica para el cálculo de la covarianza en distintos contextos,
-#      evitando duplicación de código. Este método se utiliza internamente en otros métodos (como en
-#      riemannian_correlation_variables_components) para obtener la covarianza de conjuntos de datos combinados.
-#
-# Ambos métodos son necesarios para proporcionar flexibilidad en el análisis:
-# - _riemannian_covariance_matrix_general ofrece una función central y reutilizable para calcular covarianzas,
-#   lo cual es fundamental en el proceso de estimar correlaciones y posteriormente extraer componentes.
-# - riemannian_components encapsula la lógica del PCA Riemanniano, facilitando el acceso directo a los componentes
-#   principales sin necesidad de invocar manualmente los pasos intermedios de centramiento, estandarización y
-#   descomposición en eigenvalores/eigenvectores.

@@ -13,10 +13,13 @@ n_neighbors_10d250 = 580
 # Si existe la columna 'cluster', la usamos para identificar los grupos
 if 'cluster' in data_10d250.columns:
     clusters_10d250 = data_10d250['cluster']
-    clusters_10d250_3D = data_10d250
+    # Conservamos una copia del DataFrame original con la columna 'cluster' para visualizaciones 3D y 2D
+    clusters_10d250_3D = data_10d250.copy()
+    # Removemos la columna 'cluster' para el análisis (si es necesario)
     data_10d250 = data_10d250.iloc[:, :-1]
 else:
     clusters_10d250 = None
+    clusters_10d250_3D = data_10d250
 
 # Crear una instancia de UMAPRiemannianAnalysis para Data10D_250
 analysis_10d250 = UMAPRiemannianAnalysis(data_10d250, n_neighbors=n_neighbors_10d250)
@@ -41,49 +44,29 @@ inertia_10d250 = pca_inertia_by_components(riem_corr_10d250, comp1, comp2) * 100
 # Calcular las correlaciones entre las variables originales y los dos primeros componentes
 correlations_10d250 = analysis_10d250.riemannian_correlation_variables_components(riemann_components_10d250)
 
-# Visualizar el gráfico 2D de dispersión, usando el DataFrame original
-Visualization.plot_2d_scatter_with_clusters(
-    data=clusters_10d250_3D,
-    explained_inertia=inertia_10d250,
-    x_col='x',
-    y_col='y',
-    cluster_col='cluster',
-    title="Data10D_250.csv"
-)
+# Crear una instancia de Visualization. Si se cuenta con clusters, se pasan; de lo contrario, se omiten.
+if clusters_10d250 is not None:
+    viz = Visualization(data=clusters_10d250_3D,
+                        components=riemann_components_10d250,
+                        explained_inertia=inertia_10d250,
+                        clusters=clusters_10d250)
+else:
+    viz = Visualization(data=data_10d250,
+                        components=riemann_components_10d250,
+                        explained_inertia=inertia_10d250)
 
-# Visualizar el gráfico 3D de dispersión, usando el DataFrame original
-Visualization.plot_3d_scatter_with_clusters(
-    clusters_10d250_3D,  # Este DataFrame conserva la columna 'cluster'
-    explained_inertia=inertia_10d250,
-    x_col='x',
-    y_col='y',
-    z_col='var1',
-    cluster_col='cluster',
-    title="Data10D_250.csv",
-    figsize=(12, 8),
-)
+# Visualizar el gráfico 2D de dispersión (se usa la columna 'cluster' del DataFrame)
+viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv")
+
+# Visualizar el gráfico 3D de dispersión (se usa la columna 'cluster' del DataFrame)
+viz.plot_3d_scatter_with_clusters(x_col="x", y_col="y", z_col="var1", cluster_col="cluster",
+                                  title="Data10D_250.csv", figsize=(12, 8))
 
 # Visualizar el plano principal para Data10D_250, usando clusters si están definidos
 if clusters_10d250 is not None:
-    Visualization.plot_principal_plane_with_clusters(
-        data_10d250,
-        riemann_components_10d250,
-        clusters_10d250,
-        inertia_10d250,
-        title="Data10D_250.csv"
-    )
+    viz.plot_principal_plane_with_clusters(title="Data10D_250.csv")
 else:
-    Visualization.plot_principal_plane(
-        data_10d250,
-        riemann_components_10d250,
-        inertia_10d250,
-        title="Data10D_250.csv"
-    )
+    viz.plot_principal_plane(title="Data10D_250.csv")
 
 # Visualizar el círculo de correlación para Data10D_250
-Visualization.plot_correlation_circle(
-    data_10d250,
-    correlations_10d250,
-    inertia_10d250,
-    title="Data10D_250.csv"
-)
+viz.plot_correlation_circle(correlations=correlations_10d250, title="Data10D_250.csv")
