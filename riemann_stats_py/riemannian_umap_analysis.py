@@ -7,16 +7,25 @@ import pandas as pd
 import numpy as np
 
 
-class UMAPRiemannianAnalysis:
+class RiemannianUMAPAnalysis:
     """
-    Class for performing UMAP-based analysis, including similarity calculations,
-    covariance and correlation matrices, and visualization of results.
+    Class for performing UMAP-based analysis combined with Riemannian geometry.
+
+    Attributes:
+        data (numpy.ndarray or pandas.DataFrame): Input data to be analyzed.
+        n_neighbors (int): Number of neighbors used for constructing the UMAP KNN graph.
+        min_dist (float): Minimum distance parameter for UMAP, controlling the tightness of clusters.
+        metric (str): Distance metric used in UMAP.
+        umap_similarities (numpy.ndarray, optional): Matrix of similarity values derived from the UMAP KNN graph.
+        rho (numpy.ndarray, optional): Matrix computed as 1 minus the UMAP similarity matrix, used for weighting differences.
+        riemannian_diff (numpy.ndarray, optional): 3D array containing the weighted Riemannian differences between each pair of data points.
+        umap_distance_matrix (numpy.ndarray, optional): Matrix of distances calculated from the Riemannian differences.
     """
 
     def __init__(self, data: Union[np.ndarray, pd.DataFrame], n_neighbors: int = 3,
                  min_dist: float = 0.1, metric: str = "euclidean") -> None:
         """
-        Initializes the UMAPRiemannianAnalysis class with UMAP parameters and input data.
+        Initializes the RiemannianUMAPAnalysis class with UMAP parameters and input data.
 
         Parameters:
             data (numpy.ndarray or pandas.DataFrame): Input data.

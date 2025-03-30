@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 ''' NOTA:
-Estos metodos van en el archivo analysis.py pero en otra clase de PCA clasico.'''
+Estos metodos van en el archivo riemannian_umap_analysis.py pero en otra clase de PCA clasico.'''
 def euclidean_norm(X, Y):
     """
     Calculates the Euclidean norm between two vectors.

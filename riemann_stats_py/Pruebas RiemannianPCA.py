@@ -1,5 +1,5 @@
 import pandas as pd
-from analysis import UMAPRiemannianAnalysis
+from riemannian_umap_analysis import RiemannianUMAPAnalysis
 from visualization import Visualization
 from utilities import pca_inertia_by_components  # Función en estilo funcional
 
@@ -22,7 +22,7 @@ else:
     clusters_10d250_3D = data_10d250
 
 # Crear una instancia de UMAPRiemannianAnalysis para Data10D_250
-analysis_10d250 = UMAPRiemannianAnalysis(data_10d250, n_neighbors=n_neighbors_10d250)
+analysis_10d250 = RiemannianUMAPAnalysis(data_10d250, n_neighbors=n_neighbors_10d250)
 
 # Calcular el grafo de UMAP y la matriz rho para Data10D_250
 umap_similarities_10d250 = analysis_10d250.calculate_umap_graph_similarities()
