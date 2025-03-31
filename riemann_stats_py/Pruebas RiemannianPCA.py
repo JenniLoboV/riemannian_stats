@@ -1,14 +1,13 @@
 import pandas as pd
-from riemannian_umap_analysis import RiemannianUMAPAnalysis
-from visualization import Visualization
-from utilities import pca_inertia_by_components  # Función en estilo funcional
+from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, pca_inertia_by_components
+
 
 # ---------------------------
 # Ejemplo 1: Datos Data10D_250
 # ---------------------------
 # Cargar el dataset Data10D_250
 data_10d250 = pd.read_csv("../Archivos_Proyecto_PPS/Data10D_250.csv", sep=",", decimal=".")
-n_neighbors_10d250 = 580
+n_neighbors_10d250 = int(len(data_10d250)/5)
 
 # Si existe la columna 'cluster', la usamos para identificar los grupos
 if 'cluster' in data_10d250.columns:

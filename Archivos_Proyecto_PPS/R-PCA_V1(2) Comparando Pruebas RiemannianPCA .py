@@ -740,7 +740,7 @@ data
 data_plot = data
 data = data.iloc[:, :-1]
 data
-cantidad_vecinos = 580
+cantidad_vecinos = int(len(data_10d250)/5)
 cl = data_plot['cluster']
 cl
 data.shape

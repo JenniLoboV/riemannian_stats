@@ -1,6 +1,5 @@
 from typing import Union
 import matplotlib
-
 matplotlib.use("TkAgg")  # Alternatively, you can try 'Agg', 'Qt5Agg', 'GTK3Agg', etc.
 import umap
 import pandas as pd
