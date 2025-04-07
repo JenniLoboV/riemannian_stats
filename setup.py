@@ -17,8 +17,8 @@ configuration = {
     "description": "Principal component analysis on Riemannian data.",
     "long_description": readme(),
     "long_description_content_type": "text/x-rst",
-    "author": "Oldemar Rodríguez Rojas",
-    "author_email": "<oldemar.rodriguez@ucr.ac.cr>",
+    "author": "Oldemar Rodríguez Rojas, Jennifer Lobo Vásquez",
+    "author_email": "<oldemar.rodriguez@ucr.ac.cr, jennifer.lobo.vasquez@est.una.ac.cr>",
     "url": "http://github.com/tu_usuario/riemann_stats_py",  # Actualiza con la URL de tu repositorio
     "packages": find_packages(),
     "install_requires": [

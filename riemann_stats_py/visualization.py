@@ -171,14 +171,17 @@ class Visualization:
             full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
         else:
             full_title = f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
-        unique_clusters = np.unique(self.data[cluster_col])
+
+        cluster_codes, unique_clusters = pd.factorize(self.data[cluster_col])
+
         fig = plt.figure(figsize=figsize)
         ax = fig.add_subplot(111, projection="3d")
         scatter = ax.scatter(self.data[x_col], self.data[y_col], self.data[z_col],
-                             c=self.data[cluster_col], cmap=cmap, s=s, alpha=alpha)
-        for cluster in unique_clusters:
-            color = plt.cm.get_cmap(cmap)(scatter.norm(cluster))
-            ax.scatter([], [], [], color=color, label=f"Cluster {cluster}")
+                             c=cluster_codes, cmap=cmap, s=s, alpha=alpha)
+
+        for i, cluster_name in enumerate(unique_clusters):
+            color = plt.cm.get_cmap(cmap)(scatter.norm(i))
+            ax.scatter([], [], [], color=color, label=f"Cluster {cluster_name}")
         ax.set_title(full_title)
         ax.set_xlabel(x_col)
         ax.set_ylabel(y_col)
