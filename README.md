@@ -9,35 +9,38 @@
 
 ## 📦 Estructura del Paquete
 
-La organización del proyecto es la siguiente:
+The project structure is organized as follows:
 
 ```
 riemann_stats_py/
 │
 ├── riemann_stats_py/
-│   ├── __init__.py             # Hace importables los módulos del paquete
-│   ├── data_processing.py      # Clases para la carga y manipulación de datos
-│   ├── riemannian_umap_analysis.py  # Métodos estadísticos Riemannianos utilizando UMAP
-│   ├── visualization.py        # Funciones y clases para la visualización de resultados
-│   └── utilities.py            # Funciones de utilidad generales
+│   ├── __init__.py                      # Makes package modules importable
+│   ├── data_processing.py               # Classes for data loading and manipulation
+│   ├── riemannian_umap_analysis.py      # Riemannian statistical methods using UMAP
+│   ├── visualization.py                 # Functions and classes for result visualization
+│   └── utilities.py                     # General utility functions
 │
-├── tests/                      # Pruebas unitarias para cada módulo
+├── tests/                               # Unit tests for each module
 │   ├── __init__.py
-│   ├── test_data_processing.py
 │   ├── test_riemannian_umap_analysis.py
 │   ├── test_visualization.py
 │   └── test_utilities.py
 │
-├── docs/                       # Documentación del proyecto
+├── docs/                                # Project documentation
 │   └── ...
 │
-├── examples/                   # Ejemplos de uso del paquete
+├── examples/                            # Examples demonstrating package usage
+│   ├── data/
+│       └── Data10D_250.cvs
+│       └── iris.cvs
 │   ├── example1.py
 │   └── example2.py
 │
-├── setup.py                    # Script de instalación del paquete citeturn0file0
-├── README.md                   # Este archivo. Información general y uso del paquete
-└── LICENSE                     # Licencia BSD-3-Clause citeturn0file3
+├── setup.py                             # Package installation script
+├── README.md                            # This file. General information and usage of the package
+└── LICENSE                              # BSD-3-Clause License
+
 ```
 
 ---
@@ -166,8 +169,6 @@ This ensures that all functions and modules perform as expected throughout devel
 - **Oldemar Rodríguez Rojas** – Developed the mathematical functions and conducted the research.
 - **Jennifer Lobo Vásquez** – Led the overall development and integration of the package.
 
-For further transparency on contributions, consider including an additional `CONTRIBUTORS` or `AUTHORS` file in the repository.
-
 ---
 
 ## 📄 License
@@ -189,5 +190,3 @@ If you encounter any issues or have suggestions for improvements, please open an
 
 ---
 ```
-
-This improved README features a clean, modern design with clear headings, bullet points, and code blocks that enhance readability and visual appeal.

@@ -1,3 +1,30 @@
+"""
+This script demonstrates a comprehensive workflow for analyzing a high-dimensional dataset (Data10D_250.csv)
+using the riemann_stats_py package. Initially, the dataset is loaded and preprocessed using DataProcessing.load_data(),
+with a comma as the separator and a dot as the decimal marker. The script verifies the presence of a 'cluster' column
+to extract clustering information and separates it from the data used for analysis, preserving a copy of the original
+dataset for visualization purposes.
+
+Next, an instance of RiemannianUMAPAnalysis is created to compute several key metrics including:
+- UMAP graph similarities,
+- The rho matrix,
+- Riemannian vector differences,
+- The UMAP distance matrix,
+- Riemannian covariance and correlation matrices.
+
+Following this, the script extracts the principal components from the correlation matrix and calculates the explained
+inertia using the first two components. It also computes correlations between the original variables and these components.
+
+Finally, a suite of visualizations is generated based on the availability of clustering information. These include:
+- A 2D scatter plot with clusters,
+- A principal plane plot with clusters,
+- A 3D scatter plot with clusters,
+- A correlation circle plot.
+
+This example illustrates how riemann_stats_py enables a thorough analysis of complex high-dimensional data,
+effectively extracting and visually representing its key features in Riemannian spaces.
+"""
+
 from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, pca_inertia_by_components
 
 # ---------------------------

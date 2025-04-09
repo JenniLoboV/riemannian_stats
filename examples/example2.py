@@ -1,3 +1,30 @@
+"""
+This script demonstrates a complete workflow for analyzing the classic Iris dataset (iris.csv)
+using the riemann_stats_py package. The dataset is loaded and preprocessed using DataProcessing.load_data(),
+with a semicolon as the separator and a dot as the decimal marker. The script checks for the presence
+of a 'tipo' column to extract clustering information and separates it from the main analysis data.
+
+An instance of RiemannianUMAPAnalysis is then created to compute key metrics, including:
+- UMAP graph similarities,
+- The rho matrix,
+- Riemannian vector differences,
+- The UMAP distance matrix,
+- Riemannian covariance and correlation matrices.
+
+Principal components are extracted from the correlation matrix, and the explained inertia (using the first two
+components) is calculated as a percentage. Additionally, correlations between the original variables and the first
+two principal components are computed.
+
+Finally, the script generates various visualizations depending on whether clustering information is available:
+- A 2D scatter plot with clusters,
+- A principal plane plot with clusters,
+- A 3D scatter plot with clusters,
+- And a correlation circle plot.
+
+This example illustrates the flexibility of riemann_stats_py in handling a classical, lower-dimensional dataset
+with clusters, enabling a comprehensive visual exploration of the data.
+"""
+
 from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, pca_inertia_by_components
 
 # ---------------------------
