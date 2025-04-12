@@ -25,7 +25,7 @@ This example illustrates the flexibility of riemann_stats_py in handling a class
 with clusters, enabling a comprehensive visual exploration of the data.
 """
 
-from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, pca_inertia_by_components
+from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
 
 # ---------------------------
 # Example 2: Iris Dataset
@@ -84,7 +84,7 @@ print("riemannian_components_from_data_and_correlation:", riemann_components)
 # Compute the explained inertia (using components 0 and 1) as a percentage.
 # --------------------------------------------------------
 comp1, comp2 = 0, 1
-inertia = pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
+inertia = Utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
 print("pca_inertia_by_components:", inertia)
 
 # --------------------------------------------------------

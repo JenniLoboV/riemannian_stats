@@ -1,0 +1,11 @@
+https://www.youtube.com/watch?v=9Ii34WheBOA
+No incluir un "- " en el nombre del paquete porque da pequeños inconvenientes en la instalación. Se pueden poner nombres con mayúsculas?
+
+Recomendaciones para Nombres de Paquetes
+Usa solo letras minúsculas. Esto evita cualquier confusión relacionada con la sensibilidad a mayúsculas de Python y hace que el nombre sea fácil de escribir y recordar.
+
+Evita guiones si es posible. Opta por guiones bajos ("_") si necesitas separar palabras en el nombre del paquete. Esto mantiene la consistencia entre el nombre del paquete en PyPI y cómo los usuarios lo importarán en su código.
+
+Simplicidad y claridad. Elige nombres que sean fáciles de recordar y que describan claramente la funcionalidad del paquete.
+
+RiemannStatsPy --> riemann_stats_py preguntar al profe
