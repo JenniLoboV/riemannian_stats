@@ -3,14 +3,23 @@ import numpy as np
 import pandas as pd
 from riemann_stats_py import RiemannianUMAPAnalysis
 
+
 class TestRiemannianUMAPAnalysis(unittest.TestCase):
+    """
+    Unit test suite for the RiemannianUMAPAnalysis class.
+
+    This class contains unit tests to validate the behavior and correctness
+    of the methods defined in RiemannianUMAPAnalysis, especially the computation
+    of the UMAP similarity graph.
+    """
 
     def setUp(self):
         """
-        setUp runs before each test.
+        setUp method runs before each test.
 
-        It creates a small DataFrame with 10 samples and 2 features, and instantiates
-        a RiemannianUMAPAnalysis object with n_neighbors=2 for simplified testing.
+        It initializes a test DataFrame with 10 samples and 2 features.
+        An instance of RiemannianUMAPAnalysis is created with a small number
+        of neighbors (n_neighbors=2) to simplify and control the test conditions.
         """
         self.data = pd.DataFrame({
             'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -20,10 +29,10 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_calculate_umap_graph_similarities(self):
         """
-        Test that calculate_umap_graph_similarities returns a NumPy array of the expected shape.
+        Test the output type and shape of the UMAP similarity matrix.
 
-        It verifies that the output is a numpy.ndarray with dimensions (n, n),
-        where n is the number of samples in the input data.
+        This test ensures that the method calculate_umap_graph_similarities
+        returns a NumPy array and that its shape corresponds to the number of samples.
         """
         sim_matrix = self.analysis.calculate_umap_graph_similarities()
         n = self.data.shape[0]
@@ -32,10 +41,11 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_result_calculate_umap_graph_similarities(self):
         """
-        Test that the similarity matrix computed matches the expected result.
+        Test the content of the UMAP similarity matrix against a known result.
 
-        The expected matrix is defined as a 10x10 array where each element is set
-        according to the reference values (e.g. 1.0 where nodes are connected and 0.0 otherwise).
+        This test compares the computed similarity matrix to a predefined expected matrix.
+        It uses a small, controlled example where the structure of the UMAP graph is known.
+        The result is validated with floating-point tolerance using numpy's assert_allclose.
         """
         sim_matrix = self.analysis.calculate_umap_graph_similarities()
         expected_sim_matrix = np.array([
@@ -50,28 +60,29 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
             [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0],
             [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
         ])
-
-        # Compare the computed matrix with the expected one using a floating-point tolerance.
         np.testing.assert_allclose(sim_matrix, expected_sim_matrix, rtol=1e-5, atol=1e-5,
                                    err_msg="UMAP similarity matrix does not match the expected values.")
 
     def test_calculate_rho_matrix(self):
         """
-        Test that the rho matrix is correctly computed as 1 minus the similarity matrix.
+        Test that the Rho matrix is correctly computed as 1 minus the similarity matrix.
+
+        This test first computes the UMAP similarity matrix, then calls calculate_rho_matrix
+        and validates that each element is equal to 1 - similarity[i, j] using a floating-point
+        comparison with numpy's assert_allclose.
         """
         sim_matrix = self.analysis.calculate_umap_graph_similarities()
         rho_matrix = self.analysis.calculate_rho_matrix()
-        # Verify that each element of rho equals 1 minus the corresponding element of sim_matrix
         np.testing.assert_allclose(rho_matrix, 1 - sim_matrix)
 
     def test_result_calculate_rho_matrix(self):
         """
-        Verifies that the Rho matrix computed matches the expected result from Example 1 out.pdf.
+        Validate that the computed Rho matrix matches a known expected result.
 
-        The expected matrix is defined based on reference values, ensuring that each element
-        conforms to the expected 1 - similarity value.
+        This test uses a predefined matrix representing the correct output as per
+        Example 1 in 'out.pdf'. It ensures the Rho matrix conforms exactly to the
+        expected values based on the UMAP similarity matrix.
         """
-        # Make sure similarities are already calculated
         if self.analysis.umap_similarities is None:
             self.analysis.calculate_umap_graph_similarities()
         rho_matrix = self.analysis.calculate_rho_matrix()
@@ -88,19 +99,18 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
             [1., 1., 1., 1., 1., 1., 1., 0., 1., 0.],
             [1., 1., 1., 1., 1., 1., 1., 1., 0., 1.]
         ])
-
         np.testing.assert_allclose(rho_matrix, expected_rho_matrix, rtol=1e-5, atol=1e-5,
                                    err_msg="Rho matrix does not match the expected values.")
 
     def test_riemannian_vector_difference(self):
         """
-        Tests that the riemannian_vector_difference returns an array with the correct shape
-        and that for a given pair of samples the computed difference is correct.
+        Test that the riemannian_vector_difference returns an array with correct shape and content.
 
-        The expected difference for a given pair (here indices 0 and 1) is computed by multiplying
-        the rho value for that pair with the difference between their original feature vectors.
+        This test checks:
+        1. That the returned array is 3D with shape (n_samples, n_samples, n_features).
+        2. That the Riemannian difference between specific pairs (e.g., index 0 and 1) is correctly computed
+           as: rho[i,j] * (data[i] - data[j]).
         """
-        # It is required that the similarities and the rho matrix are calculated first
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
         riemann_diff = self.analysis.riemannian_vector_difference()
@@ -108,17 +118,16 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         features = self.data.shape[1]
         self.assertEqual(riemann_diff.shape, (n, n, features),
                          "The array of Riemannian differences must have shape (n, n, features)")
-        # Verify the value for a pair (e.g., i=0, j=1)
         expected = self.analysis.rho[0, 1] * (self.data.iloc[0] - self.data.iloc[1]).values
         np.testing.assert_allclose(riemann_diff[0, 1], expected)
 
     def test_result_riemannian_vector_difference(self):
         """
-        Verifies that the full 3D array of Riemannian vector differences matches the expected result
-        from Example 1 out.pdf.
+        Confirm the Riemannian vector differences match a known reference array.
 
-        The expected 3D array is defined as a 10x10x2 array containing the differences between
-        pairs of feature vectors, scaled by the corresponding rho values.
+        This test uses a hard-coded 10x10x2 array that encodes the correct differences
+        between pairs of data points scaled by the Rho matrix. This ensures that the
+        implementation behaves exactly as intended.
         """
         if self.analysis.rho is None:
             self.analysis.calculate_umap_graph_similarities()
@@ -247,7 +256,6 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
                 [0.0, 0.0]
             ]
         ])
-
         np.testing.assert_allclose(diff_3d, expected_diff, rtol=1e-5, atol=1e-5,
                                    err_msg="Riemannian vector differences do not match the expected values.")
 
@@ -255,9 +263,10 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         """
         Verifies that the UMAP distance matrix is computed correctly.
 
-        The test checks that the output distance matrix has the expected shape (n x n), and that
-        for at least one element (here at index [0, 1]), the value equals the Euclidean norm of the
-        corresponding difference vector computed in riemannian_vector_difference.
+        The test ensures:
+        - The shape of the resulting matrix is (n_samples, n_samples).
+        - The value at a selected index (e.g., [0, 1]) matches the Euclidean norm
+          of the difference vector computed by riemannian_vector_difference.
         """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
@@ -265,13 +274,18 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         dist_matrix = self.analysis.calculate_umap_distance_matrix()
         n = self.data.shape[0]
         self.assertEqual(dist_matrix.shape, (n, n), "The distance matrix must have shape (n, n)")
-        # For an element, verify that the norm of the difference vector matches
         diff = self.analysis.riemannian_diff[0, 1]
         expected_norm = np.linalg.norm(diff)
         self.assertAlmostEqual(dist_matrix[0, 1], expected_norm, places=5)
 
     def test_result_calculate_umap_distance_matrix(self):
-        # Ensure the 3D differences exist first
+        """
+        Confirms that the full UMAP distance matrix matches the expected result.
+
+        This test compares the computed matrix to a predefined 10x10 distance matrix
+        with known values from Example 1 in the reference document. The comparison
+        uses a strict floating-point tolerance.
+        """
         if self.analysis.riemannian_diff is None:
             self.analysis.calculate_umap_graph_similarities()
             self.analysis.calculate_rho_matrix()
@@ -297,8 +311,10 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_riemannian_covariance_matrix(self):
         """
-        Verifies that the computed Riemannian covariance matrix (from the UMAP distance matrix)
-        has the correct square shape corresponding to the number of features.
+        Test the shape of the Riemannian covariance matrix.
+
+        This test confirms that the matrix returned by riemannian_covariance_matrix
+        is square and its dimensions match the number of features in the dataset.
         """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
@@ -311,7 +327,11 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_result_riemannian_covariance_matrix(self):
         """
-        Verifies the Riemannian covariance matrix matches
+        Check that the computed Riemannian covariance matrix matches a known reference.
+
+        This test compares the calculated covariance matrix to a predefined matrix
+        based on the values expected from Example 1 in the documentation. Ensures
+        full accuracy within floating-point tolerance.
         """
         if self.analysis.umap_distance_matrix is None:
             self.analysis.calculate_umap_graph_similarities()
@@ -328,13 +348,20 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
         np.testing.assert_allclose(cov_matrix, expected_cov_matrix, rtol=1e-5, atol=1e-5,
                                    err_msg="Riemannian covariance matrix does not match the expected values.")
+
     def test_riemannian_covariance_matrix_general(self):
-        # Calculate a general covariance matrix for a combined DataFrame
+        """
+        Verifies that the general Riemannian covariance matrix is computed correctly.
+
+        This test uses a combined DataFrame made from the original data and dummy
+        components. It ensures the output matrix has the correct square shape
+        (n_features x n_features), where n_features includes both original and component variables.
+        """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
         self.analysis.riemannian_vector_difference()
         self.analysis.calculate_umap_distance_matrix()
-        # Concatenate original data with a dummy components matrix
+
         dummy_components = pd.DataFrame({
             'comp1': [0.1, 0.2, 0.3],
             'comp2': [0.4, 0.5, 0.6]
@@ -344,7 +371,15 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         n_features = combined_data.shape[1]
         self.assertEqual(cov_matrix_general.shape, (n_features, n_features),
                          "The general covariance matrix must have dimensions (n_features, n_features)")
+
     def test_riemannian_correlation_matrix(self):
+        """
+        Verifies the shape and basic properties of the Riemannian correlation matrix.
+
+        This test confirms that:
+        - The correlation matrix has dimensions equal to the number of features.
+        - The diagonal elements (self-correlations) are approximately 1.0.
+        """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
         self.analysis.riemannian_vector_difference()
@@ -353,10 +388,16 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         features = self.data.shape[1]
         self.assertEqual(corr_matrix.shape, (features, features),
                          "The correlation matrix must have dimensions (features, features)")
-        # Verify that the diagonal elements are approximately 1
         for i in range(features):
             self.assertAlmostEqual(corr_matrix[i, i], 1.0, places=5)
+
     def test_result_riemannian_correlation_matrix(self):
+        """
+        Verifies that the computed Riemannian correlation matrix matches a known expected result.
+
+        This test checks against a predefined matrix from Example 1 and ensures all values match
+        within a floating-point tolerance.
+        """
         if self.analysis.umap_distance_matrix is None:
             self.analysis.calculate_umap_graph_similarities()
             self.analysis.calculate_rho_matrix()
@@ -364,7 +405,6 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
             self.analysis.calculate_umap_distance_matrix()
 
         corr_matrix = self.analysis.riemannian_correlation_matrix()
-
         expected_corr_matrix = np.array([
             [1.0, 1.0],
             [1.0, 1.0]
@@ -372,12 +412,13 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
         np.testing.assert_allclose(corr_matrix, expected_corr_matrix, rtol=1e-5, atol=1e-5,
                                    err_msg="Riemannian correlation matrix does not match the expected values.")
+
     def test_riemannian_components_from_data_and_correlation(self):
         """
-        Verifies that the principal components matrix computed from the correlation matrix
-        has the correct shape.
+        Verifies that the principal components matrix from Riemannian PCA has the expected shape.
 
-        The expected shape is (n, features) where n is the number of samples.
+        The matrix should have shape (n_samples, n_features), representing the projection
+        of the original data into principal component space using the provided correlation matrix.
         """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
@@ -387,12 +428,16 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         components = self.analysis.riemannian_components_from_data_and_correlation(corr_matrix)
         n = self.data.shape[0]
         features = self.data.shape[1]
-        # Expect the components matrix to have n rows and "features" columns
         self.assertEqual(components.shape, (n, features),
-                         "The components matrix must have shape (n, features)")
+                         "The components matrix must have shape (n_samples, n_features)")
+
     def test_result_riemannian_components_from_data_and_correlation(self):
         """
-        Verifies that the principal components
+        Verifies that the computed Riemannian principal components match the expected values.
+
+        This test checks that the result of riemannian_components_from_data_and_correlation
+        aligns with a known matrix of principal components (as defined in a reference PDF).
+        The comparison uses a strict floating-point tolerance to ensure numerical correctness.
         """
         if self.analysis.umap_distance_matrix is None:
             self.analysis.calculate_umap_graph_similarities()
@@ -403,7 +448,6 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         corr_matrix = self.analysis.riemannian_correlation_matrix()
         components = self.analysis.riemannian_components_from_data_and_correlation(corr_matrix)
 
-        # If the PDF shows a matrix of shape (10, #features) for the principal components, store it here.
         expected_components = np.array([
             [-1.96352277e+00, 8.81429070e-18],
             [-1.47264208e+00, 3.91283976e-17],
@@ -419,12 +463,13 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
         np.testing.assert_allclose(components, expected_components, rtol=1e-5, atol=1e-5,
                                    err_msg="Riemannian components from data and correlation do not match the expected values.")
+
     def test_riemannian_components(self):
         """
         Verifies that the riemannian_components method returns a matrix with the correct shape.
 
-        The expected shape of the returned components matrix is (n, features),
-        where n is the number of samples and features is the number of columns in the data.
+        The expected shape of the returned matrix is (n_samples, n_features),
+        confirming that the PCA transformation was applied correctly.
         """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
@@ -439,10 +484,12 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_riemannian_correlation_variables_components(self):
         """
-        Verifies that the DataFrame produced by riemannian_correlation_variables_components has the correct shape and column names.
+        Verifies the structure of the DataFrame returned by riemannian_correlation_variables_components.
 
-        The resulting DataFrame should have one row for each feature and exactly two columns:
-        "Component_1" and "Component_2".
+        The resulting DataFrame should:
+        - Have one row per original feature.
+        - Contain two columns labeled 'Component_1' and 'Component_2'.
+        This ensures consistency in downstream interpretation of component-variable correlations.
         """
         self.analysis.calculate_umap_graph_similarities()
         self.analysis.calculate_rho_matrix()
@@ -451,7 +498,6 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         corr_matrix = self.analysis.riemannian_correlation_matrix()
         components = self.analysis.riemannian_components_from_data_and_correlation(corr_matrix)
         correlations_df = self.analysis.riemannian_correlation_variables_components(components)
-        # The DataFrame must have one row for each feature and columns "Component_1" and "Component_2"
         self.assertEqual(correlations_df.shape[0], self.data.shape[1],
                          "The number of rows in the DataFrame must equal the number of features")
         self.assertListEqual(list(correlations_df.columns), ["Component_1", "Component_2"],
@@ -459,12 +505,10 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
     def test_result_riemannian_correlation_variables_components(self):
         """
-        Verifies that the correlation variables DataFrame (correlations between original features and
-        the first two principal components) matches the expected table
+        Verifies the values in the correlation DataFrame between original variables and principal components.
 
-        The expected DataFrame is constructed with predefined values for "Component_1" and "Component_2"
-        for two features, and the test checks that the computed DataFrame matches in both shape and values,
-        taking into account floating-point tolerances.
+        This test compares the computed DataFrame with predefined expected values for two components.
+        It confirms both shape and values using pandas' assert_frame_equal with floating-point tolerance.
         """
         if self.analysis.umap_distance_matrix is None:
             self.analysis.calculate_umap_graph_similarities()
@@ -484,9 +528,7 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         expected_index = ["feature_1", "feature_2"]
         expected_df = pd.DataFrame(expected_data, index=expected_index, dtype=np.float64)
 
-        pd.testing.assert_frame_equal(result_df, expected_df, rtol=1e-5, atol=1e-5,
-                                      check_like=True)
-
+        pd.testing.assert_frame_equal(result_df, expected_df, rtol=1e-5, atol=1e-5, check_like=True)
 
 
 if __name__ == '__main__':

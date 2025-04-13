@@ -4,15 +4,26 @@ from riemann_stats_py import Utilities
 
 
 class TestPCAInertiaByComponents(unittest.TestCase):
+    """
+    Unit tests for the Utilities.pca_inertia_by_components static method.
+
+    These tests verify the correctness, input validation, and edge cases for computing
+    the proportion of variance (inertia) explained by selected principal components.
+    """
+
     def setUp(self):
-        # Define a valid square correlation matrix
+        """
+        Setup runs before each test method.
+
+        It initializes a valid 3x3 correlation matrix and an invalid non-square matrix
+        to test both valid and edge-case scenarios.
+        """
         self.valid_corr_matrix = np.array([
             [1.0, 0.8, 0.5],
             [0.8, 1.0, 0.3],
             [0.5, 0.3, 1.0]
         ])
 
-        # Define an invalid (non-square) correlation matrix
         self.invalid_corr_matrix = np.array([
             [1.0, 0.8],
             [0.8, 1.0],
@@ -20,18 +31,27 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         ])
 
     def test_valid_components(self):
-        # Check if the explained inertia calculation is correct for valid inputs
+        """
+        Verifies that the explained inertia value for valid components
+        lies between 0 and 1 (inclusive).
+        """
         explained_inertia = Utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 1)
         self.assertTrue(0 <= explained_inertia <= 1,
                         "Explained inertia must be between 0 and 1.")
 
     def test_invalid_corr_matrix(self):
-        # Check if function raises an error for non-square correlation matrix
+        """
+        Verifies that a ValueError is raised when the correlation matrix is not square.
+        """
         with self.assertRaises(ValueError):
             Utilities.pca_inertia_by_components(self.invalid_corr_matrix, 0, 1)
 
     def test_invalid_component_indices(self):
-        # Check if function raises an error for invalid component indices
+        """
+        Verifies that a ValueError is raised when invalid component indices are provided.
+
+        This includes negative indices and indices outside the valid component range.
+        """
         with self.assertRaises(ValueError):
             Utilities.pca_inertia_by_components(self.valid_corr_matrix, -1, 1)
 
@@ -39,14 +59,13 @@ class TestPCAInertiaByComponents(unittest.TestCase):
             Utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 3)
 
     def test_total_inertia_equals_one(self):
+        """
+        Verifies that the sum of all explained inertia (from all components)
+        equals approximately 1.0, ensuring a complete decomposition.
+        """
         eigenvalues, _ = np.linalg.eig(self.valid_corr_matrix)
         total_inertia = np.sum(eigenvalues)
-        selected_inertia = np.sum(eigenvalues)  # suma de todos los eigenvalores
-
+        selected_inertia = np.sum(eigenvalues)  # sum of all eigenvalues
         explained_inertia = selected_inertia / total_inertia
         self.assertAlmostEqual(explained_inertia, 1.0, places=5,
                                msg="Total inertia should sum up approximately to 1.")
-
-
-if __name__ == '__main__':
-    unittest.main()

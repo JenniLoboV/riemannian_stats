@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class DataProcessing:
     """
     Class for handling data loading and preparation.

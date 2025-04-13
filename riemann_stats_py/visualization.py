@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
 class Visualization:
     """
     Class for visualizing charts related to UMAP and PCA.

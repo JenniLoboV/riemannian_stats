@@ -1,5 +1,6 @@
 from typing import Union
 import matplotlib
+
 matplotlib.use("TkAgg")  # Alternatively, you can try 'Agg', 'Qt5Agg', 'GTK3Agg', etc.
 import umap
 import pandas as pd
@@ -125,7 +126,7 @@ class RiemannianUMAPAnalysis:
         cov_matrix = np.zeros((n_features, n_features))
         for i in range(n_samples):
             diff_vector = self.rho[i, riemannian_mean_index] * (
-                        self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
+                    self.data.iloc[i] - self.data.iloc[riemannian_mean_index])
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
 

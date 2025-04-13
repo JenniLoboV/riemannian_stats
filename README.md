@@ -37,8 +37,9 @@ riemann_stats_py/
 │   ├── example1.py
 │   └── example2.py
 │
-├── setup.py                             # Package installation script
-├── README.md                            # This file. General information and usage of the package
+├── requirements.txt                     # Dependencies 
+├── pyproject.toml                       # Package installation script
+├── README.md                            # General information and usage of the package
 └── LICENSE                              # BSD-3-Clause License
 
 ```
@@ -61,15 +62,18 @@ cd riemann_stats_py
 pip install .
 ```
 
+This project follows PEP 621 and uses pyproject.toml as the primary configuration file.
+
 **Main Dependencies:**
 
-- **matplotlib** (≈3.10.1)
-- **pandas** (≈2.2.3)
-- **numpy** (≈2.1.3)
-- **scikit-learn** (≈1.6.1)
-- **umap-learn**
+- **matplotlib** (>=3.9.2,<3.11)
+- **pandas** (>=2.2.2,<2.3)
+- **numpy** (>=1.26.4,<2.0)
+- **scikit-learn** (>=1.5.1,<1.7)
+- **umap-learn** (>=0.5.7,<0.6)
+- **setuptools** (>=75.1.0,<80.0)
 
-These dependencies are defined in the [setup.py](https://github.com/tu_usuario/riemann_stats_py/blob/main/setup.py) citeturn0file0 and [requirements.txt](https://github.com/tu_usuario/riemann_stats_py/blob/main/requirements.txt) citeturn0file1.
+These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in [requirements.txt](./requirements.txt) .
 
 ---
 
@@ -182,11 +186,32 @@ Distributed under the BSD-3-Clause License. See the [LICENSE](./LICENSE.txt) for
 If you encounter any issues or have suggestions for improvements, please open an issue on the repository or submit a pull request. Your feedback is invaluable to enhancing the package.
 
 ---
-
 ## 📚 References
 
-- [Official UMAP Documentation](https://umap-learn.readthedocs.io/)
-- [Scikit-learn Documentation](https://scikit-learn.org/)
+- **[Matplotlib Documentation](https://matplotlib.org/stable/contents.html)**  
+  Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.  
+  📦 PyPI: [matplotlib · PyPI](https://pypi.org/project/matplotlib/)
+
+- **[Pandas Documentation](https://pandas.pydata.org/docs/)**  
+  Pandas provides high-performance, easy-to-use data structures and data analysis tools for Python.  
+  📦 PyPI: [pandas · PyPI](https://pypi.org/project/pandas/)
+
+- **[NumPy Documentation](https://numpy.org/doc/)**  
+  NumPy is the fundamental package for numerical computation in Python.  
+  📦 PyPI: [numpy · PyPI](https://pypi.org/project/numpy/)
+
+- **[Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)**  
+  Scikit-learn is a machine learning library for Python, providing tools for classification, regression, clustering, and dimensionality reduction.  
+  📦 PyPI: [scikit-learn · PyPI](https://pypi.org/project/scikit-learn/)
+
+- **[UMAP-learn Documentation](https://umap-learn.readthedocs.io/)**  
+  UMAP (Uniform Manifold Approximation and Projection) is a dimension reduction technique for visualization and general non-linear dimension reduction.  
+  📦 PyPI: [umap-learn · PyPI](https://pypi.org/project/umap-learn/)
+
+- **[Setuptools Documentation](https://setuptools.pypa.io/en/latest/)**  
+  Setuptools is a package development and distribution tool used to package Python projects and manage dependencies.  
+  📦 PyPI: [setuptools · PyPI](https://pypi.org/project/setuptools/)
 
 ---
+
 ```
