@@ -637,103 +637,6 @@ def plot_correlation_circle(data, correlations, explained_inertia, title="Correl
 
 # region EXEMPLES
 
-# Para que imprima todo el array
-np.set_printoptions(threshold=np.inf)
-np.set_printoptions(threshold=4)
-
-
-# Cargar los datos desde el archivo CSV
-data = pd.read_csv("iris.csv",sep = ";", decimal = ".")
-data
-data_plot = data
-data = data.iloc[:, :-1]
-data
-cantidad_vecinos = 50
-cl = data_plot['tipo']
-cl
-
-# Crear el gráfico
-plt.figure(figsize=(10, 8))
-
-# Iterar sobre cada clúster para graficar los puntos
-for cluster in data_plot['tipo'].unique():
-    cluster_data_plot = data_plot[data_plot['tipo'] == cluster]
-    plt.scatter(
-        cluster_data_plot.iloc[:, 0],  # Primera columna
-        cluster_data_plot.iloc[:, 1],  # Segunda columna
-        label=f"Cluster {cluster}",
-        s=20,
-        edgecolor='k'
-    )
-
-# **************PRIMER GRAFICO****************
-plt.title("Sampled 250 Rows Colored by Cluster")
-plt.xlabel("Column 1")
-plt.ylabel("Column 2")
-plt.axis("equal")
-plt.legend(title="Clusters", loc="best", bbox_to_anchor=(1.05, 1), borderaxespad=0.)
-plt.tight_layout()
-plt.show()
-
-# Recomendación use cantidad_vecinos = Número filas de la tabla / Número de Clusters
-# Es decir, la cantidad de vecinos K será igual al promedio de individuos que tiene cada cluster
-
-
-data = pd.read_csv("EjemploEstudiantes.csv", sep = ";", decimal = ",", index_col = 0)
-data
-cantidad_vecinos = 3
-mean_centered_data = data - np.mean(data, axis=0)
-umap_simil = calculate_umap_graph_similarities_V1(data,n_neighbors=cantidad_vecinos)
-p_rho = calculate_rho_matrix(umap_simil)
-# Call the function to compute Riemannian differences
-riemannian_differences = riemannian_vector_difference(data, p_rho)
-umap_distance_matrix = calculate_umap_distance_matrix(riemannian_differences)
-riemannian_mean_index = np.argmin(np.sum(umap_distance_matrix, axis=1))
-data.iloc[riemannian_mean_index]
-riemannian_mean_centered_data = data - data.iloc[riemannian_mean_index]
-riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data**2, axis=0) / data.shape[0])
-std_population = np.sqrt(np.sum(mean_centered_data**2, axis=0) / data.shape[0])
-
-
-# Inicializar una matriz para los datos centrados
-riemannian_mean_centered_data = np.zeros_like(data)
-riemannian_mean_index = np.argmin(np.sum(umap_distance_matrix, axis=1))
-# Calcular las diferencias Riemannianas ponderadas
-for i in range(data.shape[0]):
-    # Aplicar el peso correspondiente de la matriz rho
-    print(i)
-    riemannian_mean_centered_data[i] = p_rho[i, riemannian_mean_index] * (data.iloc[i] - data.iloc[riemannian_mean_index])
-
-# Calcular la desviación estándar Riemanniana
-riemannian_std_population = np.sqrt(np.sum(riemannian_mean_centered_data**2, axis=0) / data.shape[0])
-
-np.set_printoptions(precision=2, suppress=True)
-print(riemannian_mean_centered_data)
-print(p_rho)
-
-
-
-mean_centered_data.iloc[2]
-riemannian_mean_centered_data[1]
-p_rho[6, riemannian_mean_index]
-data.iloc[0] - data.iloc[riemannian_mean_index]
-
-
-
-data = pd.read_csv("EjemploClientes.csv", sep = ";", decimal = ".", index_col = 0)
-data
-cantidad_vecinos = 13 # 37/3 = 12.333
-
-# Cargar los datos desde el archivo CSV
-data = pd.read_csv("Data10D_250.csv")
-data
-data_plot = data
-data = data.iloc[:, :-1]
-data
-cantidad_vecinos = 100
-cl = data_plot['cluster']
-cl
-
 # Cargar los datos desde el archivo CSV
 data = pd.read_csv("Data10D_250.csv")
 data
@@ -786,7 +689,7 @@ for cluster in unique_clusters:
     ax.scatter([], [], [], c=[color], label=f'Cluster {cluster}')
 # **************PRIMER GRAFICO****************
 # Configurar etiquetas de ejes y título
-ax.set_title('3D Scatter Plot of Clusters')
+ax.set_title('3D Scatter Plot of Clusters 111111')
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('var1')
@@ -801,22 +704,18 @@ plt.show()
 cov_matrix = covariance_matrix(data)
 cor_matrix = correlation_matrix(cov_matrix)
 principal_components = components_from_data_and_correlation(data, cor_matrix)
-# print("Componentes principales:")
-# print(principal_components)
 # Calcular la inercia explicada por las componentes 0 y 1
 componente1 = 0  # Primera componente principal
 componente2 = 1  # Segunda componente principal
 explained_inertia = pca_inertia_by_components(data, cor_matrix, componente1, componente2)
 
-# plot_principal_plane(data,principal_components,explained_inertia*100)
-
 plot_principal_plane_with_clusters(data,principal_components,cl,explained_inertia*100)
 
 correlations = correlation_variables_components(data, principal_components)
 plot_correlation_circle(data,correlations,explained_inertia*100)
+#----------------
 
-
-
+# Riemannian PCA Example
 np.set_printoptions(threshold=np.inf)
 
 umap_simil = calculate_umap_graph_similarities_V1(data,n_neighbors=cantidad_vecinos)
@@ -832,11 +731,10 @@ componente1 = 0  # Primera componente principal
 componente2 = 1  # Segunda componente principal
 explained_inertia = pca_inertia_by_components(data, riem_cor_matrix, componente1, componente2)
 
-# plot_principal_plane(data,riemannian_principal_components,explained_inertia*100)
-
 plot_principal_plane_with_clusters(data,riemannian_principal_components,cl,explained_inertia*100)
 
 correlations = riemannian_correlation_variables_components(data, riemannian_principal_components, p_rho, umap_distance_matrix)
+print("riemannian_correlation_variables_components:", correlations)
 plot_correlation_circle(data,correlations,explained_inertia*100)
 
 

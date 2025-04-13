@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from riemann_stats_py import Visualization, RiemannianUMAPAnalysis, pca_inertia_by_components
+from riemann_stats_py import Visualization, RiemannianUMAPAnalysis, Utilities
 
 class TestVisualization(unittest.TestCase):
 
@@ -8,8 +8,8 @@ class TestVisualization(unittest.TestCase):
         # Set up a simple dataset for testing
         self.data = pd.DataFrame({
             'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            'b': [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10],
-            'cluster': [0, 1, 0, 1, 0, 1, 0, 0, 0, 1]
+            'b': [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            'cluster': [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1]
         })
 
         self.analysis = RiemannianUMAPAnalysis(self.data[['a', 'b']], n_neighbors=2)
@@ -20,7 +20,7 @@ class TestVisualization(unittest.TestCase):
 
         self.corr_matrix = self.analysis.riemannian_correlation_matrix()
         self.components = self.analysis.riemannian_components(self.corr_matrix)
-        self.inertia = pca_inertia_by_components(self.corr_matrix, 0, 1) * 100
+        self.inertia = Utilities.pca_inertia_by_components(self.corr_matrix, 0, 1) * 100
 
         self.viz = Visualization(data=self.data,
                                  components=self.components,
