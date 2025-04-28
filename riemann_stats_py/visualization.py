@@ -18,19 +18,43 @@ class Visualization:
     def __init__(self, data: pd.DataFrame, components: Optional[np.ndarray] = None,
                  explained_inertia: float = 0.0, clusters: Optional[np.ndarray] = None) -> None:
         """
-        Initializes the Visualization object with the provided data, principal components,
-        explained inertia, and clusters.
+        Class for visualizing charts related to UMAP and PCA.
 
-        Parameters:
-            data (pandas.DataFrame): Data to be visualized.
-            components (numpy.ndarray, optional): Principal components matrix. Defaults to None.
-            explained_inertia (float, optional): Explained inertia percentage. Defaults to 0.0.
-            clusters (numpy.ndarray, optional): Cluster labels. Defaults to None.
+        Attributes:
+            data (pandas.DataFrame): Data used for visualization. Read-only property.
+            components (numpy.ndarray, optional): Matrix of principal components. Read-only property.
+            explained_inertia (float): Explained inertia percentage. Read-only property.
+            clusters (numpy.ndarray, optional): Array of cluster labels. Read-only property.
+
+        Notes:
+            - Internal representation uses protected attributes (_data, _components, _explained_inertia, _clusters).
+            - These attributes are exposed via read-only properties to ensure safe access.
         """
-        self.data = data
-        self.components = components
-        self.explained_inertia = explained_inertia
-        self.clusters = clusters
+
+        self._data = data
+        self._components = components
+        self._explained_inertia = explained_inertia
+        self._clusters = clusters
+
+    @property
+    def data(self) -> pd.DataFrame:
+        """Returns the data used for visualization."""
+        return self._data
+
+    @property
+    def components(self) -> Optional[np.ndarray]:
+        """Returns the matrix of principal components."""
+        return self._components
+
+    @property
+    def explained_inertia(self) -> float:
+        """Returns the explained inertia percentage."""
+        return self._explained_inertia
+
+    @property
+    def clusters(self) -> Optional[np.ndarray]:
+        """Returns the cluster labels for each data point."""
+        return self._clusters
 
     def plot_principal_plane(self, title: str = "") -> None:
         """

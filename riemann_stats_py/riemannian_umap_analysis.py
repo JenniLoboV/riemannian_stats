@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 import matplotlib
 
 matplotlib.use("TkAgg")  # Alternatively, you can try 'Agg', 'Qt5Agg', 'GTK3Agg', etc.
@@ -25,24 +25,53 @@ class RiemannianUMAPAnalysis:
     def __init__(self, data: Union[np.ndarray, pd.DataFrame], n_neighbors: int = 3,
                  min_dist: float = 0.1, metric: str = "euclidean") -> None:
         """
-        Initializes the RiemannianUMAPAnalysis class with UMAP parameters and input data.
+        Class for performing UMAP-based analysis combined with Riemannian geometry.
 
-        Parameters:
-            data (numpy.ndarray or pandas.DataFrame): Input data.
-            n_neighbors (int): Number of neighbors for UMAP. Defaults to 3.
-            min_dist (float): Minimum distance in the reduced space. Defaults to 0.1.
-            metric (str): Distance metric used in UMAP. Defaults to "euclidean".
+        Attributes:
+            data (numpy.ndarray or pandas.DataFrame): Input data to be analyzed. (public)
+            n_neighbors (int): Number of neighbors used for constructing the UMAP KNN graph. (public)
+            min_dist (float): Minimum distance parameter for UMAP, controlling the tightness of clusters. (public)
+            metric (str): Distance metric used in UMAP. (public)
+            umap_similarities (numpy.ndarray): Matrix of similarity values derived from the UMAP KNN graph. Read-only property.
+            rho (numpy.ndarray): Matrix computed as 1 minus the UMAP similarity matrix, used for weighting differences. Read-only property.
+            riemannian_diff (numpy.ndarray): 3D array containing the weighted Riemannian differences between each pair of data points. Read-only property.
+            umap_distance_matrix (numpy.ndarray): Matrix of distances calculated from the Riemannian differences. Read-only property.
+
+        Notes:
+            - Internal storage uses protected attributes (_umap_similarities, _rho, _riemannian_diff, _umap_distance_matrix).
+            - These are exposed via read-only properties.
         """
         self.data = data
         self.n_neighbors = n_neighbors
         self.min_dist = min_dist
         self.metric = metric
-        self.umap_similarities: Union[np.ndarray, None] = None
-        self.rho: Union[np.ndarray, None] = None
-        self.riemannian_diff: Union[np.ndarray, None] = None
-        self.umap_distance_matrix: Union[np.ndarray, None] = None
 
-    def calculate_umap_graph_similarities(self) -> np.ndarray:
+        self._umap_similarities: Union[np.ndarray, None] = self._calculate_umap_graph_similarities()
+        self._rho: Union[np.ndarray, None] = self._calculate_rho_matrix()
+        self._riemannian_diff: Union[np.ndarray, None] = self._riemannian_vector_difference()
+        self._umap_distance_matrix: Union[np.ndarray, None] = self._calculate_umap_distance_matrix()
+
+    @property
+    def umap_similarities(self) -> Optional[np.ndarray]:
+        """Returns the UMAP similarity matrix."""
+        return self._umap_similarities
+
+    @property
+    def rho(self) -> Optional[np.ndarray]:
+        """Returns the Rho matrix (1 - UMAP similarities)."""
+        return self._rho
+
+    @property
+    def riemannian_diff(self) -> Optional[np.ndarray]:
+        """Returns the 3D array of weighted Riemannian differences."""
+        return self._riemannian_diff
+
+    @property
+    def umap_distance_matrix(self) -> Optional[np.ndarray]:
+        """Returns the UMAP distance matrix."""
+        return self._umap_distance_matrix
+
+    def _calculate_umap_graph_similarities(self) -> np.ndarray:
         """
         Calculates UMAP similarities based on the KNN connectivity graph.
 
@@ -52,10 +81,10 @@ class RiemannianUMAPAnalysis:
         reducer = umap.UMAP(n_neighbors=self.n_neighbors, min_dist=self.min_dist, metric=self.metric)
         reducer.fit(self.data)
         umap_graph = reducer.graph_
-        self.umap_similarities = np.array(umap_graph.todense())
-        return self.umap_similarities
+        umap_similarities = np.array(umap_graph.todense())
+        return umap_similarities
 
-    def calculate_rho_matrix(self) -> np.ndarray:
+    def _calculate_rho_matrix(self) -> np.ndarray:
         """
         Calculates the Rho matrix as 1 minus the UMAP similarity matrix.
 
@@ -67,10 +96,10 @@ class RiemannianUMAPAnalysis:
         """
         if self.umap_similarities is None:
             raise ValueError("UMAP similarities must be calculated before obtaining the Rho matrix.")
-        self.rho = 1 - self.umap_similarities
-        return self.rho
+        rho = 1 - self.umap_similarities
+        return rho
 
-    def riemannian_vector_difference(self) -> np.ndarray:
+    def _riemannian_vector_difference(self) -> np.ndarray:
         """
         Calculates the Riemannian difference between each pair of row vectors in the data matrix.
 
@@ -83,13 +112,13 @@ class RiemannianUMAPAnalysis:
         if self.rho is None:
             raise ValueError("Rho matrix must be calculated before computing Riemannian differences.")
         n_rows = self.data.shape[0]
-        self.riemannian_diff = np.zeros((n_rows, n_rows, self.data.shape[1]))
+        riemannian_diff = np.zeros((n_rows, n_rows, self.data.shape[1]))
         for i in range(n_rows):
             for j in range(n_rows):
-                self.riemannian_diff[i, j] = self.rho[i, j] * (self.data.iloc[i] - self.data.iloc[j])
-        return self.riemannian_diff
+                riemannian_diff[i, j] = self.rho[i, j] * (self.data.iloc[i] - self.data.iloc[j])
+        return riemannian_diff
 
-    def calculate_umap_distance_matrix(self) -> np.ndarray:
+    def _calculate_umap_distance_matrix(self) -> np.ndarray:
         """
         Calculates the UMAP distance matrix using weighted Riemannian differences.
 
@@ -102,13 +131,13 @@ class RiemannianUMAPAnalysis:
         if self.riemannian_diff is None:
             raise ValueError("Riemannian differences must be calculated before obtaining the UMAP distance matrix.")
         n_rows = self.riemannian_diff.shape[0]
-        self.umap_distance_matrix = np.zeros((n_rows, n_rows))
+        umap_distance_matrix = np.zeros((n_rows, n_rows))
         for i in range(n_rows):
             for j in range(n_rows):
-                self.umap_distance_matrix[i, j] = np.linalg.norm(self.riemannian_diff[i, j])
-        return self.umap_distance_matrix
+                umap_distance_matrix[i, j] = np.linalg.norm(self.riemannian_diff[i, j])
+        return umap_distance_matrix
 
-    def riemannian_covariance_matrix(self) -> np.ndarray:
+    def _riemannian_covariance_matrix(self) -> np.ndarray:
         """
         Calculates the covariance matrix using Riemannian differences.
 
@@ -130,7 +159,7 @@ class RiemannianUMAPAnalysis:
             cov_matrix += np.outer(diff_vector, diff_vector)
         return cov_matrix / n_samples
 
-    def riemannian_covariance_matrix_general(self, combined_data: pd.DataFrame) -> np.ndarray:
+    def _riemannian_covariance_matrix_general(self, combined_data: pd.DataFrame) -> np.ndarray:
         """
         Helper method to calculate the Riemannian covariance matrix for a generic dataset.
 
@@ -156,7 +185,7 @@ class RiemannianUMAPAnalysis:
         Returns:
             numpy.ndarray: Riemannian correlation matrix.
         """
-        cov_matrix_riemannian = self.riemannian_covariance_matrix()
+        cov_matrix_riemannian = self._riemannian_covariance_matrix()
         n = cov_matrix_riemannian.shape[0]
         corr_matrix_riemannian = np.zeros_like(cov_matrix_riemannian)
         for i in range(n):
@@ -243,7 +272,7 @@ class RiemannianUMAPAnalysis:
             np.hstack((self.data, components[:, 0:2])),
             columns=[f"feature_{i + 1}" for i in range(self.data.shape[1])] + ["Component_1", "Component_2"]
         )
-        riemannian_cov_matrix = self.riemannian_covariance_matrix_general(combined_data)
+        riemannian_cov_matrix = self._riemannian_covariance_matrix_general(combined_data)
         correlations = pd.DataFrame(
             index=[f"feature_{i + 1}" for i in range(self.data.shape[1])],
             columns=["Component_1", "Component_2"]
