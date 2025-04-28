@@ -45,7 +45,6 @@ class RiemannianUMAPAnalysis:
         self.n_neighbors = n_neighbors
         self.min_dist = min_dist
         self.metric = metric
-
         self._umap_similarities: Union[np.ndarray, None] = self._calculate_umap_graph_similarities()
         self._rho: Union[np.ndarray, None] = self._calculate_rho_matrix()
         self._riemannian_diff: Union[np.ndarray, None] = self._riemannian_vector_difference()

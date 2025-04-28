@@ -53,26 +53,29 @@ analysis = RiemannianUMAPAnalysis(data, n_neighbors=n_neighbors)
 # --------------------------------------------------------
 # Compute UMAP graph similarities and rho matrix for the data
 # --------------------------------------------------------
-umap_similarities = analysis.calculate_umap_graph_similarities()
+umap_similarities = analysis.umap_similarities
 print("calculate_umap_graph_similarities:", umap_similarities)
 
-rho = analysis.calculate_rho_matrix()
+rho = analysis.rho
 print("calculate_rho_matrix:", rho)
 
 # --------------------------------------------------------
 # Compute Riemannian vector differences and UMAP distance matrix
 # --------------------------------------------------------
-riemannian_diff = analysis.riemannian_vector_difference()
+riemannian_diff = analysis.riemannian_diff
 print("riemannian_vector_difference:", riemannian_diff)
 
-umap_distance_matrix = analysis.calculate_umap_distance_matrix()
+umap_distance_matrix = analysis.umap_distance_matrix
 print("calculate_umap_distance_matrix:", umap_distance_matrix)
 
 # --------------------------------------------------------
 # Compute the Riemannian covariance and correlation matrices, and extract principal components
 # --------------------------------------------------------
+"""
+Protected*******************************
 riemann_cov_matrix = analysis.riemannian_covariance_matrix()
 print("riemannian_covariance_matrix:", riemann_cov_matrix)
+"""
 
 riemann_corr = analysis.riemannian_correlation_matrix()
 print("riemannian_correlation_matrix:", riemann_corr)
