@@ -69,3 +69,7 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         explained_inertia = selected_inertia / total_inertia
         self.assertAlmostEqual(explained_inertia, 1.0, places=5,
                                msg="Total inertia should sum up approximately to 1.")
+
+
+if __name__ == '__main__':
+    unittest.main()

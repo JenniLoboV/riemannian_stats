@@ -2,6 +2,7 @@ import unittest
 import pandas as pd
 from riemann_stats_py import Visualization, RiemannianUMAPAnalysis, Utilities
 
+
 class TestVisualization(unittest.TestCase):
     """
     Unit tests for the Visualization class in the Riemannian statistics module.
@@ -24,10 +25,6 @@ class TestVisualization(unittest.TestCase):
         })
 
         self.analysis = RiemannianUMAPAnalysis(self.data[['a', 'b']], n_neighbors=2)
-        self.analysis.calculate_umap_graph_similarities()
-        self.analysis.calculate_rho_matrix()
-        self.analysis.riemannian_vector_difference()
-        self.analysis.calculate_umap_distance_matrix()
 
         self.corr_matrix = self.analysis.riemannian_correlation_matrix()
         self.components = self.analysis.riemannian_components(self.corr_matrix)
@@ -85,9 +82,13 @@ class TestVisualization(unittest.TestCase):
         that plot_3d_scatter_with_clusters executes successfully.
         """
         self.data['c'] = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-        self.viz.data = self.data
+        self.viz._data = self.data
         try:
             self.viz.plot_3d_scatter_with_clusters(x_col='a', y_col='b', z_col='c', cluster_col='cluster',
                                                    title="Test 3D Scatter with Clusters")
         except Exception as e:
             self.fail(f"plot_3d_scatter_with_clusters raised an exception unexpectedly: {e}")
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -69,14 +69,8 @@ umap_distance_matrix = analysis.umap_distance_matrix
 print("calculate_umap_distance_matrix:", umap_distance_matrix)
 
 # --------------------------------------------------------
-# Compute the Riemannian covariance and correlation matrices, and extract principal components
+# Compute the Riemannian correlation matrices, and extract principal components
 # --------------------------------------------------------
-"""
-Protected*******************************
-riemann_cov_matrix = analysis.riemannian_covariance_matrix()
-print("riemannian_covariance_matrix:", riemann_cov_matrix)
-"""
-
 riemann_corr = analysis.riemannian_correlation_matrix()
 print("riemannian_correlation_matrix:", riemann_corr)
 
