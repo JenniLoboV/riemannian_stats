@@ -1,9 +1,9 @@
 
 ---
 
-# riemann_stats_py
+# RiemannStats
 
-**riemann_stats_py** is an open-source package that implements advanced methods for principal component analysis on Riemannian data using UMAP. It provides integrated tools for data preprocessing, statistical analysis, and visualization—making it an ideal choice for data science and machine learning projects that require extracting and representing key features in Riemannian spaces.
+**RiemannStats** is an open-source package that implements advanced methods for principal component analysis on Riemannian data using UMAP. It provides integrated tools for data preprocessing, statistical analysis, and visualization—making it an ideal choice for data science and machine learning projects that require extracting and representing key features in Riemannian spaces.
 
 ---
 
@@ -96,38 +96,10 @@ These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in 
 ---
 
 ## 📚 Examples
-
 The `examples/` directory contains two comprehensive examples demonstrating how to leverage **riemann_stats_py** for Riemannian data analysis and visualization.
 
-### Example 1: Data10D_250 Dataset
-
-This example demonstrates the analysis of a high-dimensional dataset (`Data10D_250.csv`). The workflow includes:
-
-- **Data Loading and Preprocessing:**  
-  The dataset is loaded with `DataProcessing.load_data()`, using a comma as the separator and a dot for decimals. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
-
-- **UMAP and Riemannian Analysis:**  
-  An instance of `RiemannianUMAPAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
-  - UMAP graph similarities.
-  - Computation of the rho matrix.
-  - Calculation of Riemannian vector differences.
-  - Generation of the UMAP distance matrix.
-  - Derivation of Riemannian covariance and correlation matrices.
-  - Extraction of principal components from the correlation matrix.
-  - Calculation of explained inertia using the first two principal components.
-
-- **Visualization:**  
-  Depending on the presence of clustering data, the example produces:
-  - A **2D scatter plot** with clusters.
-  - A **Principal plane plot** showcasing principal components.
-  - A **3D scatter plot** with clusters.
-  - A **Correlation circle plot** to display correlations between original variables and principal components.
-
-*For full details, see [example1.py](./examples/example1.py)*
-
----
-
-### Example 2: Iris Dataset
+--- 
+### Example 1: Iris Dataset
 
 Using the classic Iris dataset (`iris.csv`), this example illustrates the package's capabilities on a well-known, lower-dimensional dataset:
 
@@ -152,9 +124,38 @@ Using the classic Iris dataset (`iris.csv`), this example illustrates the packag
   - A **3D scatter plot** with clusters (adding a third dimension with `p.largo`).
   - A **Correlation circle plot** that is produced in all cases.
 
+*For full details, see [example1.py](./examples/example1.py)*
+
+---
+
+### Example 2: Data10D_250 Dataset
+
+This example demonstrates the analysis of a high-dimensional dataset (`Data10D_250.csv`). The workflow includes:
+
+- **Data Loading and Preprocessing:**  
+  The dataset is loaded with `DataProcessing.load_data()`, using a comma as the separator and a dot for decimals. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
+
+- **UMAP and Riemannian Analysis:**  
+  An instance of `RiemannianUMAPAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
+  - UMAP graph similarities.
+  - Computation of the rho matrix.
+  - Calculation of Riemannian vector differences.
+  - Generation of the UMAP distance matrix.
+  - Derivation of Riemannian covariance and correlation matrices.
+  - Extraction of principal components from the correlation matrix.
+  - Calculation of explained inertia using the first two principal components.
+
+- **Visualization:**  
+  Depending on the presence of clustering data, the example produces:
+  - A **2D scatter plot** with clusters.
+  - A **Principal plane plot** showcasing principal components.
+  - A **3D scatter plot** with clusters.
+  - A **Correlation circle plot** to display correlations between original variables and principal components.
+
 *For full details, see [example2.py](./examples/example2.py)*
 
 ---
+
 
 ## 🔍 Testing
 

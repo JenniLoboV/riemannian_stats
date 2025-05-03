@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "riemann_stats_py"
 version = "0.1.0"
-description = "Analysis on Riemannian data."
+description = "Advanced statistical and data analysis methods for Riemannian data."
 authors = [
     { name = "Oldemar Rodríguez Rojas", email = "oldemar.rodriguez@ucr.ac.cr" },
     { name = "Jennifer Lobo Vásquez", email = "jennifer.lobo.vasquez@est.una.ac.cr" }

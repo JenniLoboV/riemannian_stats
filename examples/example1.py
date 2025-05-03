@@ -1,57 +1,57 @@
 """
-This script demonstrates a comprehensive workflow for analyzing a high-dimensional dataset (Data10D_250.csv)
-using the riemann_stats_py package. Initially, the dataset is loaded and preprocessed using DataProcessing.load_data(),
-with a comma as the separator and a dot as the decimal marker. The script verifies the presence of a 'cluster' column
-to extract clustering information and separates it from the data used for analysis, preserving a copy of the original
-dataset for visualization purposes.
+This script demonstrates a complete workflow for analyzing the classic Iris dataset (iris.csv)
+using the riemann_stats_py package. The dataset is loaded and preprocessed using DataProcessing.load_data(),
+with a semicolon as the separator and a dot as the decimal marker. The script checks for the presence
+of a 'tipo' column to extract clustering information and separates it from the main analysis data.
 
-Next, an instance of RiemannianUMAPAnalysis is created to compute several key metrics including:
+An instance of RiemannianUMAPAnalysis is then created to compute key metrics, including:
 - UMAP graph similarities,
 - The rho matrix,
 - Riemannian vector differences,
 - The UMAP distance matrix,
 - Riemannian covariance and correlation matrices.
 
-Following this, the script extracts the principal components from the correlation matrix and calculates the explained
-inertia using the first two components. It also computes correlations between the original variables and these components.
+Principal components are extracted from the correlation matrix, and the explained inertia (using the first two
+components) is calculated as a percentage. Additionally, correlations between the original variables and the first
+two principal components are computed.
 
-Finally, a suite of visualizations is generated based on the availability of clustering information. These include:
+Finally, the script generates various visualizations depending on whether clustering information is available:
 - A 2D scatter plot with clusters,
 - A principal plane plot with clusters,
 - A 3D scatter plot with clusters,
-- A correlation circle plot.
+- And a correlation circle plot.
 
-This example illustrates how riemann_stats_py enables a thorough analysis of complex high-dimensional data,
-effectively extracting and visually representing its key features in Riemannian spaces.
+This example illustrates the flexibility of riemann_stats_py in handling a classical, lower-dimensional dataset
+with clusters, enabling a comprehensive visual exploration of the data.
 """
 
 from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
 
 # ---------------------------
-# Example 1: Data10D_250 Dataset
+# Example 2: Iris Dataset
 # ---------------------------
-# Load the Data10D_250.csv dataset using DataProcessing.load_data, specifying the separator and decimal format.
-data = DataProcessing.load_data("./data/Data10D_250.csv", separator=",", decimal=".")
+# Load the iris.csv dataset using DataProcessing.load_data, specifying the separator and decimal format.
+data = DataProcessing.load_data("./data/iris.csv", separator=";", decimal=".")
 
-# Define the number of neighbors as the length of the data divided by the number of clusters (in this example, 5).
-n_neighbors = int(len(data) / 5)
+# Define the number of neighbors as the length of the data divided by the number of clusters (in this example, 3).
+n_neighbors = int(len(data) / 3)
 
-# Check if the 'clusters' column exists to identify groups (clusters).
-if 'cluster' in data.columns:
-    clusters = data['cluster']
-    # Keep a copy of the original DataFrame (with the 'cluster' column) for 3D and 2D visualizations
+# Check if the 'tipo' column exists to identify groups (clusters).
+if 'tipo' in data.columns:
+    clusters = data['tipo']
+    # Keep a copy of the original DataFrame (with the 'tipo' column) for 2D and 3D visualizations.
     data_with_clusters = data.copy()
-    # Remove the 'cluster' column for analysis (if needed)
+    # Remove the 'tipo' column from the data for analysis (if needed).
     data = data.iloc[:, :-1]
 else:
     clusters = None
     data_with_clusters = data
 
-# Create an instance of RiemannianUMAPAnalysis for the dataset
+# Create an instance of RiemannianUMAPAnalysis for the dataset.
 analysis = RiemannianUMAPAnalysis(data, n_neighbors=n_neighbors)
 
 # --------------------------------------------------------
-# Compute UMAP graph similarities and rho matrix for the data
+# Compute UMAP graph similarities and the rho matrix for the data.
 # --------------------------------------------------------
 umap_similarities = analysis.umap_similarities
 print("calculate_umap_graph_similarities:", umap_similarities)
@@ -60,7 +60,7 @@ rho = analysis.rho
 print("calculate_rho_matrix:", rho)
 
 # --------------------------------------------------------
-# Compute Riemannian vector differences and UMAP distance matrix
+# Compute Riemannian vector differences and the UMAP distance matrix.
 # --------------------------------------------------------
 riemannian_diff = analysis.riemannian_diff
 print("riemannian_vector_difference:", riemannian_diff)
@@ -69,7 +69,7 @@ umap_distance_matrix = analysis.umap_distance_matrix
 print("calculate_umap_distance_matrix:", umap_distance_matrix)
 
 # --------------------------------------------------------
-# Compute the Riemannian correlation matrices, and extract principal components
+# Compute the Riemannian correlation matrices, and extract principal components.
 # --------------------------------------------------------
 riemann_corr = analysis.riemannian_correlation_matrix()
 print("riemannian_correlation_matrix:", riemann_corr)
@@ -78,14 +78,14 @@ riemann_components = analysis.riemannian_components_from_data_and_correlation(ri
 print("riemannian_components_from_data_and_correlation:", riemann_components)
 
 # --------------------------------------------------------
-# Compute the explained inertia (using components 0 and 1)
+# Compute the explained inertia (using components 0 and 1) as a percentage.
 # --------------------------------------------------------
 comp1, comp2 = 0, 1
 inertia = Utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
 print("pca_inertia_by_components:", inertia)
 
 # --------------------------------------------------------
-# Compute correlations between original variables and the first two principal components
+# Compute correlations between the original variables and the first two principal components.
 # --------------------------------------------------------
 correlations = analysis.riemannian_correlation_variables_components(riemann_components)
 print("riemannian_correlation_variables_components:", correlations)
@@ -95,42 +95,42 @@ print("riemannian_correlation_variables_components:", correlations)
 # If clusters are provided, use cluster-based plots; otherwise, use plots without clusters.
 # --------------------------------------------------------
 if clusters is not None:
-    # Create a Visualization instance including clusters
+    # Create a Visualization instance including cluster information.
     viz = Visualization(data=data_with_clusters,
                         components=riemann_components,
                         explained_inertia=inertia,
                         clusters=clusters)
     try:
-        # 1. 2D scatter plot with clusters (requires 'cluster' column in the DataFrame)
-        viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv")
+        # 1. 2D scatter plot with clusters (requires the 'tipo' column in the DataFrame).
+        viz.plot_2d_scatter_with_clusters(x_col="s.largo", y_col="s.ancho", cluster_col="tipo", title="iris.csv")
     except Exception as e:
         print("2D scatter plot with clusters failed:", e)
 
     try:
-        # 2. Principal plane with clusters
-        viz.plot_principal_plane_with_clusters(title="Data10D_250.csv")
+        # 2. Principal plane plot with clusters.
+        viz.plot_principal_plane_with_clusters(title="iris.csv")
     except Exception as e:
         print("Principal plane with clusters plot failed:", e)
 
     try:
-        # 3. 3D scatter plot with clusters (requires 'cluster' column and proper 3D data columns)
-        viz.plot_3d_scatter_with_clusters(x_col="x", y_col="y", z_col="var1", cluster_col="cluster",
-                                          title="Data10D_250.csv", figsize=(12, 8))
+        # 3. 3D scatter plot with clusters (requires the 'tipo' column and appropriate 3D data columns).
+        viz.plot_3d_scatter_with_clusters(x_col="s.largo", y_col="s.ancho", z_col="p.largo", cluster_col="tipo",
+                                          title="iris.csv", figsize=(12, 8))
     except Exception as e:
         print("3D scatter plot with clusters failed:", e)
 else:
-    # Create a Visualization instance without clusters
+    # Create a Visualization instance without clusters.
     viz = Visualization(data=data,
                         components=riemann_components,
                         explained_inertia=inertia)
     try:
-        # Plot principal plane (does not require cluster information)
-        viz.plot_principal_plane(title="Data10D_250.csv")
+        # Plot the principal plane (does not require cluster information).
+        viz.plot_principal_plane(title="iris.csv")
     except Exception as e:
         print("Principal plane plot failed:", e)
 
-# 4. Plot the correlation circle (should work regardless of clusters)
+# 4. Plot the correlation circle (should work regardless of clusters).
 try:
-    viz.plot_correlation_circle(correlations=correlations, title="Data10D_250.csv")
+    viz.plot_correlation_circle(correlations=correlations, title="iris.csv")
 except Exception as e:
     print("Correlation circle plot failed:", e)
