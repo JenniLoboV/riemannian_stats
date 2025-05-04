@@ -5,3 +5,4 @@ riemann_stats_py
    :maxdepth: 4
 
    riemann_stats_py
+   tests

@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>riemann_stats_py.riemannian_umap_analysis - riemann_stats_py 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=362ab14a" />
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>riemann_stats_py.riemannian_umap_analysis - RiemannStats Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -165,7 +165,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">riemann_stats_py 0.1.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">RiemannStats Documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">riemann_stats_py 0.1.0 documentation</span>
+  <span class="sidebar-brand-text">RiemannStats Documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -197,7 +197,16 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Menu</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">How to Install It</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">riemann_stats_py</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of riemann_stats_py</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../riemann_stats_py.html">riemann_stats_py package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../paper.html">Scientific Paper</a></li>
+</ul>
+
 </div>
 </div>
 
@@ -231,18 +240,18 @@
         </div>
         <article role="main" id="furo-main-content">
           <h1>Source code for riemann_stats_py.riemannian_umap_analysis</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
 
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;TkAgg&quot;</span><span class="p">)</span>  <span class="c1"># Alternatively, you can try &#39;Agg&#39;, &#39;Qt5Agg&#39;, &#39;GTK3Agg&#39;, etc.</span>
-<span class="kn">import</span> <span class="nn">umap</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">umap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
 <div class="viewcode-block" id="RiemannianUMAPAnalysis">
 <a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis">[docs]</a>
-<span class="k">class</span> <span class="nc">RiemannianUMAPAnalysis</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RiemannianUMAPAnalysis</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for performing UMAP-based analysis combined with Riemannian geometry.</span>
 
@@ -257,29 +266,55 @@
 <span class="sd">        umap_distance_matrix (numpy.ndarray, optional): Matrix of distances calculated from the Riemannian differences.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
                  <span class="n">min_dist</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the RiemannianUMAPAnalysis class with UMAP parameters and input data.</span>
+<span class="sd">        Class for performing UMAP-based analysis combined with Riemannian geometry.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">            data (numpy.ndarray or pandas.DataFrame): Input data.</span>
-<span class="sd">            n_neighbors (int): Number of neighbors for UMAP. Defaults to 3.</span>
-<span class="sd">            min_dist (float): Minimum distance in the reduced space. Defaults to 0.1.</span>
-<span class="sd">            metric (str): Distance metric used in UMAP. Defaults to &quot;euclidean&quot;.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            data (numpy.ndarray or pandas.DataFrame): Input data to be analyzed. (public)</span>
+<span class="sd">            n_neighbors (int): Number of neighbors used for constructing the UMAP KNN graph. (public)</span>
+<span class="sd">            min_dist (float): Minimum distance parameter for UMAP, controlling the tightness of clusters. (public)</span>
+<span class="sd">            metric (str): Distance metric used in UMAP. (public)</span>
+<span class="sd">            umap_similarities (numpy.ndarray): Matrix of similarity values derived from the UMAP KNN graph. Read-only property.</span>
+<span class="sd">            rho (numpy.ndarray): Matrix computed as 1 minus the UMAP similarity matrix, used for weighting differences. Read-only property.</span>
+<span class="sd">            riemannian_diff (numpy.ndarray): 3D array containing the weighted Riemannian differences between each pair of data points. Read-only property.</span>
+<span class="sd">            umap_distance_matrix (numpy.ndarray): Matrix of distances calculated from the Riemannian differences. Read-only property.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            - Internal storage uses protected attributes (_umap_similarities, _rho, _riemannian_diff, _umap_distance_matrix).</span>
+<span class="sd">            - These are exposed via read-only properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_dist</span> <span class="o">=</span> <span class="n">min_dist</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">umap_distance_matrix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_umap_similarities</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_umap_graph_similarities</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rho</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_rho_matrix</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_riemannian_diff</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riemannian_vector_difference</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_umap_distance_matrix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_umap_distance_matrix</span><span class="p">()</span>
 
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.calculate_umap_graph_similarities">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.calculate_umap_graph_similarities">[docs]</a>
-    <span class="k">def</span> <span class="nf">calculate_umap_graph_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">umap_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the UMAP similarity matrix.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_umap_similarities</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rho</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Rho matrix (1 - UMAP similarities).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rho</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">riemannian_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the 3D array of weighted Riemannian differences.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riemannian_diff</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">umap_distance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the UMAP distance matrix.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_umap_distance_matrix</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_umap_graph_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates UMAP similarities based on the KNN connectivity graph.</span>
 
@@ -289,13 +324,10 @@
         <span class="n">reducer</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">UMAP</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">min_dist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">min_dist</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">)</span>
         <span class="n">reducer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="n">umap_graph</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">graph_</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">umap_graph</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span></div>
+        <span class="n">umap_similarities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">umap_graph</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">umap_similarities</span>
 
-
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.calculate_rho_matrix">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.calculate_rho_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">calculate_rho_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_rho_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the Rho matrix as 1 minus the UMAP similarity matrix.</span>
 
@@ -307,13 +339,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;UMAP similarities must be calculated before obtaining the Rho matrix.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span></div>
+        <span class="n">rho</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">umap_similarities</span>
+        <span class="k">return</span> <span class="n">rho</span>
 
-
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_vector_difference">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_vector_difference">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_vector_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_riemannian_vector_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the Riemannian difference between each pair of row vectors in the data matrix.</span>
 
@@ -326,16 +355,13 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Rho matrix must be calculated before computing Riemannian differences.&quot;</span><span class="p">)</span>
         <span class="n">n_rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">riemannian_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span></div>
+                <span class="n">riemannian_diff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">riemannian_diff</span>
 
-
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.calculate_umap_distance_matrix">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.calculate_umap_distance_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">calculate_umap_distance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_umap_distance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the UMAP distance matrix using weighted Riemannian differences.</span>
 
@@ -348,16 +374,13 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Riemannian differences must be calculated before obtaining the UMAP distance matrix.&quot;</span><span class="p">)</span>
         <span class="n">n_rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">umap_distance_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">))</span>
+        <span class="n">umap_distance_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">umap_distance_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">umap_distance_matrix</span></div>
+                <span class="n">umap_distance_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riemannian_diff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">umap_distance_matrix</span>
 
-
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_covariance_matrix">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_covariance_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_covariance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_riemannian_covariance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the covariance matrix using Riemannian differences.</span>
 
@@ -377,12 +400,9 @@
             <span class="n">diff_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">riemannian_mean_index</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">riemannian_mean_index</span><span class="p">])</span>
             <span class="n">cov_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">diff_vector</span><span class="p">,</span> <span class="n">diff_vector</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">cov_matrix</span> <span class="o">/</span> <span class="n">n_samples</span></div>
+        <span class="k">return</span> <span class="n">cov_matrix</span> <span class="o">/</span> <span class="n">n_samples</span>
 
-
-<div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_covariance_matrix_general">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_covariance_matrix_general">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_covariance_matrix_general</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">combined_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_riemannian_covariance_matrix_general</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">combined_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Helper method to calculate the Riemannian covariance matrix for a generic dataset.</span>
 
@@ -399,19 +419,18 @@
             <span class="n">diff_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">riemannian_mean_index</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
                     <span class="n">combined_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">combined_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">riemannian_mean_index</span><span class="p">])</span>
             <span class="n">cov_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">diff_vector</span><span class="p">,</span> <span class="n">diff_vector</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">cov_matrix</span> <span class="o">/</span> <span class="n">n_samples</span></div>
-
+        <span class="k">return</span> <span class="n">cov_matrix</span> <span class="o">/</span> <span class="n">n_samples</span>
 
 <div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_correlation_matrix">
 <a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_correlation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">riemannian_correlation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the Riemannian correlation matrix from the Riemannian covariance matrix.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            numpy.ndarray: Riemannian correlation matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cov_matrix_riemannian</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_covariance_matrix</span><span class="p">()</span>
+        <span class="n">cov_matrix_riemannian</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riemannian_covariance_matrix</span><span class="p">()</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">cov_matrix_riemannian</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">corr_matrix_riemannian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">cov_matrix_riemannian</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -423,7 +442,7 @@
 
 <div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation">
 <a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_components_from_data_and_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corr_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">riemannian_components_from_data_and_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corr_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs Riemannian principal component analysis (PCA) using the data and the provided correlation matrix.</span>
 
@@ -458,7 +477,7 @@
 
 <div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_components">
 <a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corr_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">riemannian_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corr_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs Riemannian principal component analysis (PCA) using the supplied correlation matrix.</span>
 
@@ -493,7 +512,7 @@
 
 <div class="viewcode-block" id="RiemannianUMAPAnalysis.riemannian_correlation_variables_components">
 <a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_variables_components">[docs]</a>
-    <span class="k">def</span> <span class="nf">riemannian_correlation_variables_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">components</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">riemannian_correlation_variables_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">components</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the Riemannian correlation between the original variables and the first two components.</span>
 
@@ -507,7 +526,7 @@
             <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">components</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])),</span>
             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Component_1&quot;</span><span class="p">,</span> <span class="s2">&quot;Component_2&quot;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">riemannian_cov_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riemannian_covariance_matrix_general</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
+        <span class="n">riemannian_cov_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riemannian_covariance_matrix_general</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
         <span class="n">correlations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Component_1&quot;</span><span class="p">,</span> <span class="s2">&quot;Component_2&quot;</span><span class="p">]</span>
@@ -554,7 +573,7 @@
     </aside>
   </div>
 </div><script src="../../_static/documentation_options.js?v=01f34227"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
