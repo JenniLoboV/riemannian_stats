@@ -1,0 +1,30 @@
+User Guide
+==========
+
+.. toctree::
+   :maxdepth: 1
+
+   Index <index>
+   How to Use RiemannStats        <examples>
+   Install RiemannStats           <installation>
+
+
+RiemannStats Package
+=======
+
+.. toctree::
+   :maxdepth: 2
+
+   RiemannStats Modules <modules>
+   riemann_stats_py.riemannian_umap_analysis
+   riemann_stats_py.data_processing
+   riemann_stats_py.visualization
+   riemann_stats_py.utilities
+
+Scientific Paper
+===============
+
+.. toctree::
+   :maxdepth: 1
+
+   Scientific Paper              <paper>

@@ -1,7 +1,7 @@
-riemann\_stats\_py Package
+RiemannStats Package
 ==========================
 
-Submodules
+Submodules of the RiemannStats Package
 ----------
 riemann\_stats\_py.riemannian\_umap\_analysis module
 ----------------------------------------------------

@@ -1,16 +1,10 @@
 How to Install It
-=================
+==================
 
-Install from PyPI:
-
-.. code-block:: bash
-
-   pip install riemann_stats_py
-
-Or install from source:
+To install RiemannStats:
 
 .. code-block:: bash
 
-   git clone https://github.com/tu_usuario/riemann_stats_py.git
-   cd riemann_stats_py
-   pip install .
+   pip install riemannstats
+
+Make sure you have the required dependencies listed in `requirements.txt`.

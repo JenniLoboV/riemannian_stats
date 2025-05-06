@@ -1,7 +1,9 @@
-riemann_stats_py
-================
+RiemannStats Modules
+=====================
+
+This section contains the full API reference for all modules included in RiemannStats.
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
-   riemann_stats_py
+   <riemann_stats_py>

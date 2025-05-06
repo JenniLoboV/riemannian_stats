@@ -1,0 +1,53 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.5; /* Aumenta el espaciado entre líneas para mayor legibilidad */
+    color: #333; /* Texto oscuro para mejor contraste y legibilidad */
+}
+
+/* Estilo para el texto en la barra lateral */
+.sidebar-brand-text {
+    font-weight: bold;
+    font-size: 20px;
+    color: #004F8B; /* Color del título de la barra lateral */
+}
+
+/* Estilo para los enlaces */
+a {
+    color: #007acc; /* Azul más suave para los enlaces */
+    text-decoration: none; /* Sin subrayado para un diseño más limpio */
+}
+
+a:hover {
+    color: #004F8B; /* Cambiar color al pasar el cursor para indicar interactividad */
+    text-decoration: underline; /* Agregar subrayado solo al pasar el cursor */
+}
+
+/* Estilo para los títulos y apartados importantes */
+h1, h2, h3, h4, h5, h6 {
+    color: #004F8B; /* Azul para los títulos */
+    font-weight: normal; /* No poner los títulos en negrita para mantener la sobriedad */
+    line-height: 1.2; /* Mejor espaciado para los encabezados */
+}
+
+/* Estilo para apartados importantes */
+.important {
+    color: #004F8B;
+    font-weight: normal; /* Mantenerlo sobrio, sin negrita */
+}
+
+/* Estilo para la tabla de contenido */
+.toctree {
+    font-size: 14px;
+}
+
+/* Estilo para las listas numeradas o con viñetas */
+ul, ol {
+    margin-left: 20px;
+    font-size: 14px; /* Tamaño de fuente pequeño para listas */
+}
+
+li {
+    margin-bottom: 5px;
+}
