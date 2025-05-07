@@ -22,11 +22,10 @@ With **RiemannStats**, you can:
 
 This package is ideal for researchers, data scientists, and developers seeking to move beyond the traditional assumptions of classical statistics, applying models that respect the intrinsic structure of data.
 
----
+**User Guide**
 
 .. toctree::
    :maxdepth: 1
-   :caption: Menu
 
    How to Use RiemannStats        <examples>
    Install RiemannStats           <installation>

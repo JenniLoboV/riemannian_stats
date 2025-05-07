@@ -21,7 +21,7 @@ exclude_patterns = []
 
 html_theme = 'furo'
 
-html_title = "User Guide"
+html_title = "RiemannStats"
 # html_favicon = "_static/images/favicon.ico"     # opcional
 
 html_theme_options = {

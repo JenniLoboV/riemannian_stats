@@ -1,4 +1,4 @@
-User Guide
+RiemannStats
 ==========
 
 .. toctree::
@@ -16,10 +16,6 @@ RiemannStats Package
    :maxdepth: 2
 
    RiemannStats Modules <riemann_stats_py>
-   riemann_stats_py.riemannian_umap_analysis
-   riemann_stats_py.data_processing
-   riemann_stats_py.visualization
-   riemann_stats_py.utilities
 
 Scientific Paper
 ================

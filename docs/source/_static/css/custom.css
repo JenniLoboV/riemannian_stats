@@ -1,3 +1,14 @@
+/* Ajustar el tamaño de la barra lateral derecha */
+.sidebar-drawer {
+    width: 300px !important;  /* Aumenta el valor según tus necesidades */
+}
+
+/* Asegurarse de que el contenido principal se ajuste al nuevo tamaño de la barra lateral */
+.main {
+    margin-left: 10px;  /* Deja espacio suficiente para la barra lateral más ancha */
+    margin-right: 10px;  /* Deja espacio suficiente para la barra lateral más ancha */
+}
+
 /* Estilo general del cuerpo */
 body {
     font-family: "Segoe UI", sans-serif;
@@ -8,7 +19,7 @@ body {
 
 /* Aumentar tamaño del logo en la barra lateral */
 .sidebar-logo-container img {
-    max-height: 90px;  /* aumenta el valor según necesites */
+    max-height: 100px;  /* aumenta el valor según necesites */
     width: auto;
 }
 

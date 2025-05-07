@@ -1,44 +1,12 @@
 RiemannStats Package
-==========================
+======================
 
-Submodules of the RiemannStats Package
-----------
-riemann\_stats\_py.riemannian\_umap\_analysis module
-----------------------------------------------------
+.. toctree::
+   :maxdepth: 1
+   :caption: Submodules
 
-.. automodule:: riemann_stats_py.riemannian_umap_analysis
-   :members:
-   :show-inheritance:
-   :undoc-members:
+   RiemannianUMAPAnalysis <riemannian_umap_analysis>
+   DataProcessing      <data_processing>
+   Visualization      <visualization>
+   Utilities      <utilities>
 
-riemann\_stats\_py.data\_processing module
-------------------------------------------
-
-.. automodule:: riemann_stats_py.data_processing
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-riemann\_stats\_py.visualization module
----------------------------------------
-
-.. automodule:: riemann_stats_py.visualization
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-riemann\_stats\_py.utilities module
------------------------------------
-
-.. automodule:: riemann_stats_py.utilities
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: riemann_stats_py
-   :members:
-   :show-inheritance:
-   :undoc-members:
