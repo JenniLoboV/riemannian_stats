@@ -80,3 +80,15 @@ ul, ol {
 li {
     margin-bottom: 5px;
 }
+
+/* Enlaces globales en negrita */
+a {
+    color: black; /* Azul más suave para los enlaces */
+    text-decoration: none; /* Sin subrayado para un diseño más limpio */
+    font-weight: bold; /* Aplica negrita a todos los enlaces globales */
+}
+
+a:hover {
+    color: #004F8B; /* Cambiar color al pasar el cursor para indicar interactividad */
+    text-decoration: underline; /* Agregar subrayado solo al pasar el cursor */
+}
