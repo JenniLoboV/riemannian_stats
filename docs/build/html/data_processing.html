@@ -3,14 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Scientific Paper" href="paper.html" /><link rel="prev" title="RiemannianUMAPAnalysis" href="riemannian_umap_analysis.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Visualization" href="visualization.html" /><link rel="prev" title="RiemannianUMAPAnalysis" href="riemannian_umap_analysis.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>DataProcessing - RiemannStats</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=3a89c9f8" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
     
     
 
@@ -209,6 +209,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="paper.html">Scientific Paper</a></li>
@@ -252,9 +254,25 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-riemann_stats_py.data_processing">
-<span id="dataprocessing"></span><h1>DataProcessing<a class="headerlink" href="#module-riemann_stats_py.data_processing" title="Link to this heading">¶</a></h1>
-<dl class="py class">
+          <section id="dataprocessing">
+<h1>DataProcessing<a class="headerlink" href="#dataprocessing" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">DataProcessing</span></code> module provides functionality for handling data loading and preparation. It includes methods to load data from CSV files, which can be useful in various data science projects. The primary method of this class is designed to simplify the process of reading data files and converting them into Pandas DataFrames for further analysis.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>This class contains static methods to load CSV files into DataFrames, allowing for flexibility with delimiters and decimal characters. By using this module, you can easily handle various CSV formats, regardless of the separator or decimal format used in the file. It simplifies the data preparation process, which is often the first step in any data analysis workflow.</p>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Flexible CSV loading</strong>: Supports loading CSV files with customizable separators and decimal characters.</p></li>
+<li><p><strong>Pandas Integration</strong>: Converts the CSV data directly into a Pandas DataFrame, making it ready for analysis.</p></li>
+<li><p><strong>Ease of Use</strong>: Provides a straightforward method for importing data, with sensible default parameters for most common cases.</p></li>
+</ul>
+</section>
+<section id="module-documentation">
+<h2>Module Documentation<a class="headerlink" href="#module-documentation" title="Link to this heading">¶</a></h2>
+<p>For detailed information on the <cite>DataProcessing</cite> module, refer to the module’s API documentation:</p>
+<dl class="py class" id="module-riemann_stats_py.data_processing">
 <dt class="sig sig-object py" id="riemann_stats_py.data_processing.DataProcessing">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.data_processing.</span></span><span class="sig-name descname"><span class="pre">DataProcessing</span></span><a class="reference internal" href="_modules/riemann_stats_py/data_processing.html#DataProcessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.data_processing.DataProcessing" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -287,18 +305,19 @@ and the decimal character, with default values provided for ease of use.</p>
 </dd></dl>
 
 </section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="paper.html">
+          <a class="next-page" href="visualization.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Scientific Paper</div>
+                <div class="title">Visualization</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -344,8 +363,13 @@ and the decimal character, with default values provided for ease of use.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">DataProcessing</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.data_processing.DataProcessing"><code class="docutils literal notranslate"><span class="pre">DataProcessing</span></code></a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.data_processing.DataProcessing.load_data"><code class="docutils literal notranslate"><span class="pre">DataProcessing.load_data()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

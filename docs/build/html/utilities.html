@@ -3,14 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Scientific Paper" href="paper.html" /><link rel="prev" title="Visualization" href="visualization.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Utilities - RiemannStats</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=3a89c9f8" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
     
     
 
@@ -203,10 +203,16 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="examples.html">How to Use RiemannStats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Utilities</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="paper.html">Scientific Paper</a></li>
 </ul>
 
@@ -248,9 +254,47 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-riemann_stats_py.utilities">
-<span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-riemann_stats_py.utilities" title="Link to this heading">¶</a></h1>
-<dl class="py class">
+          <section id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">Utilities</span></code> module provides a collection of common utility functions for data science projects. It includes static methods that facilitate mathematical and statistical operations, designed to simplify integration into larger data processing and analysis workflows. These methods can be used directly without the need for class instantiation.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>This class includes utility functions that can be used to perform frequently needed operations in data analysis tasks. The methods focus on providing easy access to common mathematical computations, making them convenient for use across different data science projects. By not requiring instantiation, the tools can be quickly integrated into any analysis pipeline.</p>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>PCA Inertia Calculation</strong>: Calculates the inertia explained by two specific principal components in a Principal Component Analysis (PCA) task.</p></li>
+<li><p><strong>Statistical Tools</strong>: Provides essential functions for analyzing data in a data science pipeline.</p></li>
+</ul>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pca_inertia_by_components()</span></code>: This method calculates the inertia (explained variance) associated with two selected principal components of a correlation matrix, making it useful for understanding the significance of specific components in a PCA.</p></li>
+</ul>
+</section>
+<section id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading">¶</a></h2>
+<p>Here’s an example of how to use <code class="docutils literal notranslate"><span class="pre">Utilities</span></code>:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+from riemann_stats_py import Utilities
+import numpy as np</p>
+<p># Example correlation matrix
+correlation_matrix = np.array([[1.0, 0.8], [0.8, 1.0]])</p>
+<p># Calculate the inertia explained by the first two principal components
+inertia = Utilities.pca_inertia_by_components(correlation_matrix, component1=0, component2=1)</p>
+<section id="print-f-inertia-explained-by-the-first-two-components-inertia">
+<h3>print(f”Inertia explained by the first two components: {inertia}”)<a class="headerlink" href="#print-f-inertia-explained-by-the-first-two-components-inertia" title="Link to this heading">¶</a></h3>
+<p>## When to Use</p>
+<p>This module is particularly useful in data science workflows where common mathematical operations, such as PCA analysis, need to be performed. The function is designed to help quantify the importance of specific components in dimensionality reduction tasks, and its utility can be extended to a wide range of data analysis projects.</p>
+<p>By using these utility functions, you can streamline your data analysis processes and avoid reinventing the wheel when performing standard mathematical operations.</p>
+</section>
+</section>
+<section id="module-documentation">
+<h2>Module Documentation<a class="headerlink" href="#module-documentation" title="Link to this heading">¶</a></h2>
+<p>For detailed information on the <cite>Utilities</cite> module, refer to the module’s API documentation:</p>
+<dl class="py class" id="module-riemann_stats_py.utilities">
 <dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.utilities.</span></span><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -293,14 +337,33 @@ and analysis workflows.</p>
 </dd></dl>
 
 </section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="paper.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Scientific Paper</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="visualization.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Visualization</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -332,9 +395,19 @@ and analysis workflows.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Utilities</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#example-usage">Example Usage</a><ul>
+<li><a class="reference internal" href="#print-f-inertia-explained-by-the-first-two-components-inertia">print(f”Inertia explained by the first two components: {inertia}”)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities</span></code></a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities.Utilities</span></code></a></li>
 <li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities.pca_inertia_by_components"><code class="docutils literal notranslate"><span class="pre">Utilities.pca_inertia_by_components()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

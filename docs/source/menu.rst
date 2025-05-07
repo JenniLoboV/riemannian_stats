@@ -2,7 +2,7 @@ RiemannStats
 ==========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    Index <index>
    How to Use RiemannStats        <examples>
@@ -21,6 +21,6 @@ Scientific Paper
 ================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    Scientific Paper              <paper>

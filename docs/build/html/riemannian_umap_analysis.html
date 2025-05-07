@@ -3,14 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="DataProcessing" href="data_processing.html" /><link rel="prev" title="Submodules" href="riemann_stats_py.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="DataProcessing" href="data_processing.html" /><link rel="prev" title="RiemannStats Package" href="riemann_stats_py.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>RiemannianUMAPAnalysis - RiemannStats</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=3a89c9f8" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
     
     
 
@@ -209,6 +209,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="paper.html">Scientific Paper</a></li>
@@ -252,9 +254,36 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-riemann_stats_py.riemannian_umap_analysis">
-<span id="riemannianumapanalysis"></span><h1>RiemannianUMAPAnalysis<a class="headerlink" href="#module-riemann_stats_py.riemannian_umap_analysis" title="Link to this heading">¶</a></h1>
-<dl class="py class">
+          <section id="riemannianumapanalysis">
+<h1>RiemannianUMAPAnalysis<a class="headerlink" href="#riemannianumapanalysis" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis</span></code> module offers a sophisticated approach for dimensionality reduction and data analysis by combining Uniform Manifold Approximation and Projection (UMAP) with Riemannian geometry. This module enables users to explore and analyze high-dimensional datasets through the lens of Riemannian geometry, providing advanced tools for extracting meaningful patterns and structures from data.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>This class provides methods for UMAP-based dimensionality reduction, extended by incorporating Riemannian metrics to better capture geometric properties of the data. With the ability to analyze data using various distance metrics, <code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis</span></code> allows for flexibility in working with different types of datasets, including those that require non-Euclidean geometry.</p>
+</section>
+<section id="features">
+<h2>Features:<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>UMAP-based Analysis</strong>: Leverages UMAP for non-linear dimensionality reduction, a powerful tool for visualizing and understanding high-dimensional data.</p></li>
+<li><p><strong>Riemannian Geometry</strong>: Incorporates Riemannian principles to adjust the analysis based on the intrinsic geometry of the data, offering a more meaningful interpretation of distances and similarities in some applications.</p></li>
+<li><p><strong>Correlation Analysis</strong>: Includes methods for calculating Riemannian correlation matrices and performing principal component analysis (PCA) using Riemannian techniques.</p></li>
+<li><p><strong>Distance Metrics Flexibility</strong>: Supports custom distance metrics for UMAP, allowing for a tailored approach to different datasets.</p></li>
+</ul>
+</section>
+<section id="when-to-use">
+<h2>When to Use:<a class="headerlink" href="#when-to-use" title="Link to this heading">¶</a></h2>
+<p>This module is particularly useful for:</p>
+<ul class="simple">
+<li><p>High-dimensional data where traditional dimensionality reduction methods fall short.</p></li>
+<li><p>Applications that require advanced distance metrics or non-Euclidean spaces.</p></li>
+<li><p>Users looking to uncover deep relationships in data using Riemannian geometry principles.</p></li>
+</ul>
+<p>By utilizing this module, you can significantly enhance your data analysis workflow, gaining insights that may be hidden when using more traditional approaches.</p>
+</section>
+<section id="module-documentation">
+<h2>Module Documentation<a class="headerlink" href="#module-documentation" title="Link to this heading">¶</a></h2>
+<p>For detailed information on the <cite>RiemannianUMAPAnalysis</cite> module, refer to the module’s API documentation:</p>
+<dl class="py class" id="module-riemann_stats_py.riemannian_umap_analysis">
 <dt class="sig sig-object py" id="riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.riemannian_umap_analysis.</span></span><span class="sig-name descname"><span class="pre">RiemannianUMAPAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'euclidean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/riemann_stats_py/riemannian_umap_analysis.html#RiemannianUMAPAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -445,6 +474,7 @@
 </dd></dl>
 
 </section>
+</section>
 
         </article>
       </div>
@@ -467,7 +497,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Submodules</div>
+                <div class="title">RiemannStats Package</div>
                 
               </div>
             </a>
@@ -502,6 +532,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">RiemannianUMAPAnalysis</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#features">Features:</a></li>
+<li><a class="reference internal" href="#when-to-use">When to Use:</a></li>
+<li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis</span></code></a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.data"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.data</span></code></a></li>
 <li><a class="reference internal" href="#riemann_stats_py.riemannian_umap_analysis.RiemannianUMAPAnalysis.n_neighbors"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.n_neighbors</span></code></a></li>
@@ -519,6 +553,8 @@
 <li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_diff</span></code></a></li>
 <li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.umap_distance_matrix</span></code></a></li>
 <li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.umap_similarities</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -8,15 +8,17 @@ Each example below illustrates how to apply this process to different types of d
 Example 1: Iris Dataset
 -----------------------
 
-Este ejemplo utiliza el famoso conjunto de datos Iris para mostrar la capacidad de RiemannStats de revelar estructura en datos bien conocidos. Demuestra:
+This example uses the classic Iris dataset to showcase RiemannStats' ability to uncover structure in well-known data. It demonstrates:
 
-- Carga y preprocesamiento de datos con `DataProcessing.load_data`.
-- Detección de clústeres a partir de la columna `'tipo'`.
-- Aplicación del análisis Riemanniano con UMAP para calcular similitudes del grafo, diferencias vectoriales, distancias y matrices de correlación.
-- Extracción de componentes principales e inercia explicada.
-- Visualización de resultados mediante gráficos 2D, 3D, planos principales y círculos de correlación.
+- Loading and preprocessing the data using DataProcessing.load_data.
+- Detecting clusters (from the 'tipo' column).
+- Applying Riemannian UMAP analysis to compute graph similarities, vector differences, distances, and correlation matrices.
+- Extracting principal components and calculating explained inertia.
+- Visualizing results using 2D and 3D scatter plots, principal planes, and correlation circles.
 
-Es ideal para comprender el flujo de trabajo y explorar estructuras significativas en un conjunto de datos de baja dimensión.
+This example is ideal for those looking to understand the workflow and inspect meaningful geometry in low-dimensional datasets
+
+**Insertar html generado por rstudio**
 
 .. literalinclude:: ../../examples/example1.py
    :language: python
@@ -34,6 +36,9 @@ This example applies RiemannStats to a synthetic, high-dimensional dataset with 
 - Showing how R-PCA preserves and enhances the interpretability of complex datasets compared to classical PCA.
 
 This example highlights the robustness of RiemannStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.
+
+**Insertar html generado por rstudio**
+
 
 .. literalinclude:: ../../examples/example2.py
    :language: python

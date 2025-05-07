@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=3a89c9f8" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
     
     
 
@@ -206,7 +206,18 @@
   <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Use RiemannStats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html#features">Features:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html#key-attributes-and-methods">Key Attributes and Methods:</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="riemannian_umap_analysis.html#example-usage">Example Usage</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Example Usage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="paper.html">Scientific Paper</a></li>
 </ul>
 
@@ -254,15 +265,16 @@
 <p>Each example below illustrates how to apply this process to different types of datasets: one classical and low-dimensional, the other high-dimensional and synthetic.</p>
 <section id="example-1-iris-dataset">
 <h2>Example 1: Iris Dataset<a class="headerlink" href="#example-1-iris-dataset" title="Link to this heading">¶</a></h2>
-<p>Este ejemplo utiliza el famoso conjunto de datos Iris para mostrar la capacidad de RiemannStats de revelar estructura en datos bien conocidos. Demuestra:</p>
+<p>This example uses the classic Iris dataset to showcase RiemannStats’ ability to uncover structure in well-known data. It demonstrates:</p>
 <ul class="simple">
-<li><p>Carga y preprocesamiento de datos con <cite>DataProcessing.load_data</cite>.</p></li>
-<li><p>Detección de clústeres a partir de la columna <cite>‘tipo’</cite>.</p></li>
-<li><p>Aplicación del análisis Riemanniano con UMAP para calcular similitudes del grafo, diferencias vectoriales, distancias y matrices de correlación.</p></li>
-<li><p>Extracción de componentes principales e inercia explicada.</p></li>
-<li><p>Visualización de resultados mediante gráficos 2D, 3D, planos principales y círculos de correlación.</p></li>
+<li><p>Loading and preprocessing the data using DataProcessing.load_data.</p></li>
+<li><p>Detecting clusters (from the ‘tipo’ column).</p></li>
+<li><p>Applying Riemannian UMAP analysis to compute graph similarities, vector differences, distances, and correlation matrices.</p></li>
+<li><p>Extracting principal components and calculating explained inertia.</p></li>
+<li><p>Visualizing results using 2D and 3D scatter plots, principal planes, and correlation circles.</p></li>
 </ul>
-<p>Es ideal para comprender el flujo de trabajo y explorar estructuras significativas en un conjunto de datos de baja dimensión.</p>
+<p>This example is ideal for those looking to understand the workflow and inspect meaningful geometry in low-dimensional datasets</p>
+<p><strong>Insertar html generado por rstudio</strong></p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Example 1</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -416,6 +428,7 @@
 <li><p>Showing how R-PCA preserves and enhances the interpretability of complex datasets compared to classical PCA.</p></li>
 </ul>
 <p>This example highlights the robustness of RiemannStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.</p>
+<p><strong>Insertar html generado por rstudio</strong></p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Example 2</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
