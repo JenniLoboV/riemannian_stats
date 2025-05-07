@@ -21,16 +21,16 @@ exclude_patterns = []
 
 html_theme = 'furo'
 
-html_title = "RiemannStats Documentation"
-html_logo = "_static/images/logo-light.png"     # si tienes un logo
-html_favicon = "_static/images/favicon.ico"     # opcional
+html_title = "User Guide"
+# html_favicon = "_static/images/favicon.ico"     # opcional
 
 html_theme_options = {
+    "light_logo": "images/light_logo.jpg",
+    "dark_logo": "images/dark_logo.jpg",
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
-    "light_logo": "logo-light.jng",      # asegúrate de tener estos archivos
-    "dark_logo": "logo-dark.jng",
 }
+
 
 html_static_path = ['_static']
 html_css_files = [
