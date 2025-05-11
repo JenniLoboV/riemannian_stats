@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7499c9da" />
     
     
 
@@ -298,38 +298,30 @@ inertia = Utilities.pca_inertia_by_components(correlation_matrix, component1=0, 
 <dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.utilities.</span></span><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py class">
-<dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities.Utilities">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities.Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities.Utilities" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for common utility functions in data science projects.</p>
-<p>This class provides static methods for performing common mathematical and
-statistical operations that facilitate data analysis tasks.</p>
-<p>The methods are designed to be used without requiring instantiation,
-which simplifies the integration of these tools into larger data processing
-and analysis workflows.</p>
-</dd></dl>
-
+<p>Provides static methods for mathematical or statistical operations,
+such as PCA-based calculations, designed to support data analysis pipelines
+without requiring class instantiation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities.pca_inertia_by_components">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pca_inertia_by_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlation_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities.pca_inertia_by_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities.pca_inertia_by_components" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the inertia explained by two specific principal components in a PCA.</p>
+<dd><p>Calculates the inertia (explained variance ratio) of two specified principal components from a correlation matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>correlation_matrix</strong> (<em>numpy.ndarray</em>) – Correlation matrix of the variables.</p></li>
-<li><p><strong>component1</strong> (<em>int</em>) – Index of the first principal component (based on descending order of explained variance).</p></li>
-<li><p><strong>component2</strong> (<em>int</em>) – Index of the second principal component (based on descending order of explained variance).</p></li>
+<li><p><strong>correlation_matrix</strong> (<em>np.ndarray</em>) – Square correlation matrix used in PCA.</p></li>
+<li><p><strong>component1</strong> (<em>int</em>) – Index of the first principal component (0-based, after sorting by eigenvalue).</p></li>
+<li><p><strong>component2</strong> (<em>int</em>) – Index of the second principal component (0-based, after sorting by eigenvalue).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Inertia explained by the selected principal components.</p>
+<dd class="field-even"><p>The proportion of total variance explained by the two components (value between 0 and 1).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the correlation matrix is not square or if the component indices are out of range.</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If the correlation matrix is not square or if the component indices are out of bounds.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -404,7 +396,6 @@ and analysis workflows.</p>
 </li>
 <li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
 <li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities</span></code></a><ul>
-<li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities.Utilities</span></code></a></li>
 <li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities.pca_inertia_by_components"><code class="docutils literal notranslate"><span class="pre">Utilities.pca_inertia_by_components()</span></code></a></li>
 </ul>
 </li>

@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e57fc5f4" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7499c9da" />
     
     
 
@@ -276,28 +276,27 @@
 <dt class="sig sig-object py" id="riemann_stats_py.data_processing.DataProcessing">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.data_processing.</span></span><span class="sig-name descname"><span class="pre">DataProcessing</span></span><a class="reference internal" href="_modules/riemann_stats_py/data_processing.html#DataProcessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.data_processing.DataProcessing" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class for handling data loading and preparation.</p>
-<p>This class offers static methods to read CSV files and convert them into DataFrames,
-facilitating data analysis in data science projects.</p>
+<p>Utility class for loading and preparing tabular data.</p>
+<p>Provides static methods for reading CSV files into pandas DataFrames, with
+support for custom delimiters and decimal formats. Useful for standardized
+data loading in preprocessing pipelines.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="riemann_stats_py.data_processing.DataProcessing.load_data">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">';'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/riemann_stats_py/data_processing.html#DataProcessing.load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.data_processing.DataProcessing.load_data" title="Link to this definition">¶</a></dt>
-<dd><p>Loads data from a CSV file and returns a DataFrame.</p>
-<p>This method reads a CSV file using the pandas library. It allows specifying the delimiter
-and the decimal character, with default values provided for ease of use.</p>
+<dd><p>Load a CSV file into a pandas DataFrame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em>) – Path to the CSV file.</p></li>
-<li><p><strong>separator</strong> (<em>str</em><em>, </em><em>optional</em>) – Delimiter used in the CSV file. Defaults to “;”.</p></li>
-<li><p><strong>decimal</strong> (<em>str</em><em>, </em><em>optional</em>) – Character used for decimal points in the CSV file. Defaults to “.”.</p></li>
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the CSV file to be loaded.</p></li>
+<li><p><strong>separator</strong> (<em>str</em><em>, </em><em>optional</em>) – Field delimiter used in the CSV file. Default is “;”.</p></li>
+<li><p><strong>decimal</strong> (<em>str</em><em>, </em><em>optional</em>) – Character to recognize as decimal point. Default is “.”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A DataFrame containing the data loaded from the CSV file.</p>
+<dd class="field-even"><p>DataFrame containing the parsed data from the file.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.DataFrame</p>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
