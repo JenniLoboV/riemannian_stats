@@ -3,26 +3,25 @@ import pandas as pd
 
 class DataProcessing:
     """
-    Class for handling data loading and preparation.
+    Utility class for loading and preparing tabular data.
 
-    This class offers static methods to read CSV files and convert them into DataFrames,
-    facilitating data analysis in data science projects.
+    Provides static methods for reading CSV files into pandas DataFrames, with
+    support for custom delimiters and decimal formats. Useful for standardized
+    data loading in preprocessing pipelines.
     """
 
     @staticmethod
     def load_data(filepath: str, separator: str = ";", decimal: str = ".") -> pd.DataFrame:
         """
-        Loads data from a CSV file and returns a DataFrame.
-
-        This method reads a CSV file using the pandas library. It allows specifying the delimiter
-        and the decimal character, with default values provided for ease of use.
+        Load a CSV file into a pandas DataFrame.
 
         Parameters:
-            filepath (str): Path to the CSV file.
-            separator (str, optional): Delimiter used in the CSV file. Defaults to ";".
-            decimal (str, optional): Character used for decimal points in the CSV file. Defaults to ".".
+            filepath (str): Path to the CSV file to be loaded.
+            separator (str, optional): Field delimiter used in the CSV file. Default is ";".
+            decimal (str, optional): Character to recognize as decimal point. Default is ".".
 
         Returns:
-            pandas.DataFrame: A DataFrame containing the data loaded from the CSV file.
+            pd.DataFrame: DataFrame containing the parsed data from the file.
         """
+
         return pd.read_csv(filepath, sep=separator, decimal=decimal)

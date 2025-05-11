@@ -6,30 +6,46 @@ import pandas as pd
 
 class Visualization:
     """
-    Class for visualizing charts related to UMAP and PCA.
+    A class for generating visualizations of UMAP or PCA results, including projections, clusters, and correlation circles.
+
+    This class is designed to assist in interpreting dimensionality-reduced data through visual inspection.
+
+    Parameters:
+        data (pd.DataFrame): The dataset to be visualized (must include index and optionally cluster columns).
+        components (np.ndarray, optional): Principal component matrix with at least two dimensions.
+        explained_inertia (float, optional): The total explained inertia (variance) by the components.
+        clusters (np.ndarray, optional): Array of cluster labels corresponding to the data rows.
 
     Attributes:
-        data (pandas.DataFrame): Data used for visualization.
-        components (numpy.ndarray, optional): Matrix of principal components.
-        explained_inertia (float): Explained inertia percentage.
-        clusters (numpy.ndarray, optional): Array of cluster labels for each data point.
+        data (pd.DataFrame): Read-only access to the input dataset.
+        components (np.ndarray or None): Read-only access to PCA/UMAP component matrix.
+        explained_inertia (float): Read-only access to the explained inertia percentage.
+        clusters (np.ndarray or None): Read-only access to cluster labels.
+
+    Methods:
+        plot_principal_plane(title=""): 2D projection of the components with point labels.
+        plot_principal_plane_with_clusters(title=""): Same as above, but colored by clusters.
+        plot_correlation_circle(correlations, title="", scale=1, draw_circle=True): Visualizes correlation of variables.
+        plot_2d_scatter_with_clusters(x_col, y_col, cluster_col, title="", figsize=(10, 8)): 2D scatter plot by cluster.
+        plot_3d_scatter_with_clusters(x_col, y_col, z_col, cluster_col, title="", ...): 3D scatter plot by cluster.
     """
 
     def __init__(self, data: pd.DataFrame, components: Optional[np.ndarray] = None,
                  explained_inertia: float = 0.0, clusters: Optional[np.ndarray] = None) -> None:
         """
-        Class for visualizing charts related to UMAP and PCA.
+            Initializes the Visualization object with data and optional component, cluster, and variance information.
 
-        Attributes:
-            data (pandas.DataFrame): Data used for visualization. Read-only property.
-            components (numpy.ndarray, optional): Matrix of principal components. Read-only property.
-            explained_inertia (float): Explained inertia percentage. Read-only property.
-            clusters (numpy.ndarray, optional): Array of cluster labels. Read-only property.
+            Parameters:
+                data (pd.DataFrame): The dataset to be used for plotting (index used as labels).
+                components (np.ndarray, optional): Matrix of principal components or UMAP embeddings (n_samples, n_components).
+                explained_inertia (float, optional): Percentage of variance explained by the components. Default is 0.0.
+                clusters (np.ndarray, optional): Optional array of cluster labels aligned with data rows.
 
-        Notes:
-            - Internal representation uses protected attributes (_data, _components, _explained_inertia, _clusters).
-            - These attributes are exposed via read-only properties to ensure safe access.
-        """
+            Notes:
+                - Internally uses protected attributes (_data, _components, _explained_inertia, _clusters).
+                - Read-only properties are used to safely expose internal data.
+                - Most plots assume at least 2D components or features for visualization.
+            """
 
         self._data = data
         self._components = components

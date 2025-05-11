@@ -316,7 +316,7 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         based on the values expected from Example 1 in the documentation. Ensures
         full accuracy within floating-point tolerance.
         """
-        cov_matrix = self.analysis._riemannian_covariance_matrix()
+        cov_matrix = self.analysis. _riemannian_covariance_matrix()
 
         expected_cov_matrix = np.array([
             [8.3, 8.3],
