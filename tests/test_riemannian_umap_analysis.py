@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 import pandas as pd
-from riemann_stats_py import RiemannianUMAPAnalysis
+from riemannian_stats import RiemannianUMAPAnalysis
 
 
 class TestRiemannianUMAPAnalysis(unittest.TestCase):

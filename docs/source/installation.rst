@@ -1,35 +1,35 @@
 How to Install It
 ==================
 
-To install the **RiemannStats** package, you can use **pip** from the Python Package Index (PyPI) or install it directly from the source.
+To install the **RiemannianStats** package, you can use **pip** from the Python Package Index (PyPI) or install it directly from the source.
 
 Install via PyPI
 ----------------
 
-To install the latest version of **RiemannStats** directly from PyPI, simply run the following command:
+To install the latest version of **RiemannianStats** directly from PyPI, simply run the following command:
 
 .. code-block:: bash
 
-   pip install riemannstats
+   pip install riemannian_stats
 
 This will automatically install the package along with its required dependencies.
 
 Install from Source
 -------------------
 
-If you prefer to install **RiemannStats** from the source code, follow these steps:
+If you prefer to install **RiemannianStats** from the source code, follow these steps:
 
 1. Clone the repository from GitHub:
 
 .. code-block:: bash
 
-   git clone https://github.com/your_username/riemann_stats_py.git
+   git clone https://github.com/your_username/riemannian_stats.git
 
 2. Navigate to the cloned directory:
 
 .. code-block:: bash
 
-   cd riemann_stats_py
+   cd riemannian_stats
 
 3. Install the package and its dependencies:
 
@@ -48,7 +48,7 @@ Make sure you have the necessary dependencies listed in the `requirements.txt` f
 - **umap-learn** (>=0.5.7,<0.6)
 - **setuptools** (>=75.1.0,<80.0)
 
-These dependencies are automatically installed when you use `pip install riemannstats`. However, if you prefer to manage the dependencies manually, you can install them from the `requirements.txt` file:
+These dependencies are automatically installed when you use `pip install riemannian_stats`. However, if you prefer to manage the dependencies manually, you can install them from the `requirements.txt` file:
 
 .. code-block:: bash
 

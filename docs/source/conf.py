@@ -1,7 +1,7 @@
 # -- Project Information --
 
-project = 'RiemannStats'
-author = 'Tu Nombre o Equipo'
+project = 'RiemannianStats'
+author = 'Oldemar Rodríguez Rojas, Jennifer Lobo Vásquez'
 release = '1.0.0'
 
 # -- General Configuration --
@@ -21,7 +21,7 @@ exclude_patterns = []
 
 html_theme = 'furo'
 
-html_title = "RiemannStats"
+html_title = "Riemannian Stats"
 # html_favicon = "_static/images/favicon.ico"     # opcional
 
 html_theme_options = {

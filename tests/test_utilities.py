@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from riemann_stats_py import Utilities
+from riemannian_stats import Utilities
 
 
 class TestPCAInertiaByComponents(unittest.TestCase):

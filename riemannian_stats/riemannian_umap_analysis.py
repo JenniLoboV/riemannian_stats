@@ -62,7 +62,8 @@ class RiemannianUMAPAnalysis:
             data (Union[np.ndarray, pd.DataFrame]): Input dataset where rows represent observations and
                 columns represent features. It is internally stored and accessible via a read/write property.
             n_neighbors (int): Number of neighbors to use for local connectivity in UMAP. Default is 3.
-            min_dist (float): Minimum distance between embedded points in UMAP space. Default is 0.1.                metric (str): Distance metric for UMAP. Common options include "euclidean", "manhattan", etc. Default is "euclidean".
+            min_dist (float): Minimum distance between embedded points in UMAP space. Default is 0.1.
+            metric (str): Distance metric for UMAP. Common options include "euclidean", "manhattan", etc. Default is "euclidean".
 
         Behavior:
             Upon instantiation, the class computes:

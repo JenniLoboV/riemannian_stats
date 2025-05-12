@@ -1,17 +1,17 @@
 
 ---
 
-# RiemannStats
+# RiemannianStats
 
 ---
 
-### 📊 **RiemannStats: Statistical Analysis on Riemannian Manifolds**
+### 📊 **RiemannianStats: Statistical Analysis on Riemannian Manifolds**
 
-**RiemannStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
+**RiemannianStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
 
 Instead of assuming data resides in Euclidean space, RiemannStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.
 
-With **RiemannStats**, you can:
+With **RiemannianStats**, you can:
 
 * Incorporate the local geometry of your data for meaningful dimensionality reduction.
 * Generate visual representations that better reflect the true structure of your data.
@@ -27,9 +27,9 @@ This package is ideal for researchers, data scientists, and developers seeking t
 The project structure is organized as follows:
 
 ```
-riemann_stats_py/
+riemannian_stats/
 │
-├── riemann_stats_py/
+├── riemannian_stats/
 │   ├── __init__.py                      # Makes package modules importable
 │   ├── data_processing.py               # Classes for data loading and manipulation
 │   ├── riemannian_umap_analysis.py      # Riemannian statistical methods using UMAP
@@ -66,14 +66,14 @@ riemann_stats_py/
 Ensure you have [Python ≥ 3.6](https://www.python.org/downloads/) installed, then run:
 
 ```bash
-pip install riemann_stats_py
+pip install riemannian_stats
 ```
 
 Alternatively, to install from the source code, clone the repository and execute:
 
 ```bash
-git clone https://github.com/tu_usuario/riemann_stats_py.git
-cd riemann_stats_py
+git clone https://github.com/tu_usuario/riemannian_stats.git
+cd riemannian_stats
 pip install .
 ```
 
@@ -94,7 +94,7 @@ These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in 
 
 ## 🛠️ Features and Usage
 
-**RiemannStats** offers several key functionalities:
+**RiemannianStats** offers several key functionalities:
 
 - **Data Preprocessing:**  
   Easily import and transform datasets using functions in `data_processing.py`.

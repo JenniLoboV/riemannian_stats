@@ -22,7 +22,7 @@ Example Usage
 Here’s an example of how to use ``Utilities``:
 
 ```python
-from riemann_stats_py import Utilities
+from riemannian_stats import Utilities
 import numpy as np
 
 # Example correlation matrix
@@ -45,7 +45,7 @@ Module Documentation
 
 For detailed information on the `Utilities` module, refer to the module's API documentation:
 
-.. automodule:: riemann_stats_py.utilities
+.. automodule:: riemannian_stats.utilities
    :members:
    :show-inheritance:
    :undoc-members:
