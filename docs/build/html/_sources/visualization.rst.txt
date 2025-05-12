@@ -27,7 +27,7 @@ Module Documentation
 ---------------------
 For detailed information on the `Visualization` module, refer to the module's API documentation:
 
-.. automodule:: riemann_stats_py.visualization
+.. automodule:: riemannian_stats.visualization
    :members:
    :show-inheritance:
    :undoc-members:

@@ -1,21 +1,21 @@
-RiemannStats
-==========
+RiemannianStats
+================
 
 .. toctree::
    :maxdepth: 2
 
    Index <index>
-   How to Use RiemannStats        <examples>
-   Install RiemannStats           <installation>
+   How to Use RiemannianStats        <examples>
+   Install RiemannianStats           <installation>
 
 
-RiemannStats Package
-====================
+RiemannianStats Modules
+========================
 
 .. toctree::
    :maxdepth: 2
 
-   RiemannStats Modules <riemann_stats_py>
+   RiemannStats Modules <riemannian_stats>
 
 Scientific Paper
 ================

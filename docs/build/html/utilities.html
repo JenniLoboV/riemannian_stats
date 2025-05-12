@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Scientific Paper" href="paper.html" /><link rel="prev" title="Visualization" href="visualization.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>Utilities - RiemannStats</title>
+        <title>Utilities - Riemannian Stats</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">RiemannStats</div></a>
+      <a href="index.html"><div class="brand">Riemannian Stats</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo only-dark" src="_static/images/dark_logo.jpg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">RiemannStats</span>
+  <span class="sidebar-brand-text">Riemannian Stats</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -204,9 +204,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">How to Use RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">How to Use RiemannianStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannianStats</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
@@ -256,55 +256,69 @@
         <article role="main" id="furo-main-content">
           <section id="utilities">
 <h1>Utilities<a class="headerlink" href="#utilities" title="Link to this heading">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">Utilities</span></code> module provides a collection of common utility functions for data science projects. It includes static methods that facilitate mathematical and statistical operations, designed to simplify integration into larger data processing and analysis workflows. These methods can be used directly without the need for class instantiation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Utilities</span></code> module provides a collection of common utility functions for data science projects.
+It includes static methods that facilitate mathematical and statistical operations, designed to simplify
+integration into larger data processing and analysis workflows. These methods can be used directly without
+the need for class instantiation.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
-<p>This class includes utility functions that can be used to perform frequently needed operations in data analysis tasks. The methods focus on providing easy access to common mathematical computations, making them convenient for use across different data science projects. By not requiring instantiation, the tools can be quickly integrated into any analysis pipeline.</p>
+<p>This class includes utility functions that can be used to perform frequently needed operations in data analysis tasks.
+The methods focus on providing easy access to common mathematical computations, making them convenient for use
+across different data science projects. By not requiring instantiation, the tools can be quickly integrated into
+any analysis pipeline.</p>
 </section>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>PCA Inertia Calculation</strong>: Calculates the inertia explained by two specific principal components in a Principal Component Analysis (PCA) task.</p></li>
+<li><p><strong>PCA Inertia Calculation</strong>: Calculates the inertia explained by two specific principal components in a PCA task.</p></li>
 <li><p><strong>Statistical Tools</strong>: Provides essential functions for analyzing data in a data science pipeline.</p></li>
 </ul>
 </section>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pca_inertia_by_components()</span></code>: This method calculates the inertia (explained variance) associated with two selected principal components of a correlation matrix, making it useful for understanding the significance of specific components in a PCA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pca_inertia_by_components()</span></code>: Calculates the inertia (explained variance) associated with two selected principal
+components of a correlation matrix.</p></li>
 </ul>
 </section>
 <section id="example-usage">
 <h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading">¶</a></h2>
 <p>Here’s an example of how to use <code class="docutils literal notranslate"><span class="pre">Utilities</span></code>:</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
-from riemann_stats_py import Utilities
-import numpy as np</p>
-<p># Example correlation matrix
-correlation_matrix = np.array([[1.0, 0.8], [0.8, 1.0]])</p>
-<p># Calculate the inertia explained by the first two principal components
-inertia = Utilities.pca_inertia_by_components(correlation_matrix, component1=0, component2=1)</p>
-<section id="print-f-inertia-explained-by-the-first-two-components-inertia">
-<h3>print(f”Inertia explained by the first two components: {inertia}”)<a class="headerlink" href="#print-f-inertia-explained-by-the-first-two-components-inertia" title="Link to this heading">¶</a></h3>
-<p>## When to Use</p>
-<p>This module is particularly useful in data science workflows where common mathematical operations, such as PCA analysis, need to be performed. The function is designed to help quantify the importance of specific components in dimensionality reduction tasks, and its utility can be extended to a wide range of data analysis projects.</p>
-<p>By using these utility functions, you can streamline your data analysis processes and avoid reinventing the wheel when performing standard mathematical operations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">riemannian_stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">Utilities</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Example correlation matrix</span>
+<span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+
+<span class="c1"># Calculate the inertia explained by the first two principal components</span>
+<span class="n">inertia</span> <span class="o">=</span> <span class="n">Utilities</span><span class="o">.</span><span class="n">pca_inertia_by_components</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">component1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">component2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inertia explained by the first two components: </span><span class="si">{</span><span class="n">inertia</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
+<section id="when-to-use">
+<h2>When to Use<a class="headerlink" href="#when-to-use" title="Link to this heading">¶</a></h2>
+<p>This module is particularly useful in data science workflows where common mathematical operations,
+such as PCA analysis, need to be performed. The function helps quantify the importance of specific
+components in dimensionality reduction tasks, and its utility can be extended to a wide range of data analysis projects.</p>
+<p>By using these utility functions, you can streamline your data analysis processes and avoid reinventing
+the wheel when performing standard mathematical operations.</p>
 </section>
 <section id="module-documentation">
 <h2>Module Documentation<a class="headerlink" href="#module-documentation" title="Link to this heading">¶</a></h2>
-<p>For detailed information on the <cite>Utilities</cite> module, refer to the module’s API documentation:</p>
-<dl class="py class" id="module-riemann_stats_py.utilities">
-<dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemann_stats_py.utilities.</span></span><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities" title="Link to this definition">¶</a></dt>
+<p>For detailed information on the <code class="docutils literal notranslate"><span class="pre">Utilities</span></code> module, refer to the module’s API documentation:</p>
+<dl class="py class" id="module-riemannian_stats.utilities">
+<dt class="sig sig-object py" id="riemannian_stats.utilities.Utilities">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemannian_stats.utilities.</span></span><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/riemannian_stats/utilities.html#Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.utilities.Utilities" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for common utility functions in data science projects.</p>
 <p>Provides static methods for mathematical or statistical operations,
 such as PCA-based calculations, designed to support data analysis pipelines
 without requiring class instantiation.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="riemann_stats_py.utilities.Utilities.pca_inertia_by_components">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pca_inertia_by_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlation_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/riemann_stats_py/utilities.html#Utilities.pca_inertia_by_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemann_stats_py.utilities.Utilities.pca_inertia_by_components" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="riemannian_stats.utilities.Utilities.pca_inertia_by_components">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pca_inertia_by_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlation_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/riemannian_stats/utilities.html#Utilities.pca_inertia_by_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.utilities.Utilities.pca_inertia_by_components" title="Link to this definition">¶</a></dt>
 <dd><p>Calculates the inertia (explained variance ratio) of two specified principal components from a correlation matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -390,13 +404,11 @@ without requiring class instantiation.</p>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#methods">Methods</a></li>
-<li><a class="reference internal" href="#example-usage">Example Usage</a><ul>
-<li><a class="reference internal" href="#print-f-inertia-explained-by-the-first-two-components-inertia">print(f”Inertia explained by the first two components: {inertia}”)</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#example-usage">Example Usage</a></li>
+<li><a class="reference internal" href="#when-to-use">When to Use</a></li>
 <li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
-<li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities</span></code></a><ul>
-<li><a class="reference internal" href="#riemann_stats_py.utilities.Utilities.pca_inertia_by_components"><code class="docutils literal notranslate"><span class="pre">Utilities.pca_inertia_by_components()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities</span></code></a><ul>
+<li><a class="reference internal" href="#riemannian_stats.utilities.Utilities.pca_inertia_by_components"><code class="docutils literal notranslate"><span class="pre">Utilities.pca_inertia_by_components()</span></code></a></li>
 </ul>
 </li>
 </ul>

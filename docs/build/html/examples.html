@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="How to Install It" href="installation.html" /><link rel="prev" title="RiemannStats" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="How to Install It" href="installation.html" /><link rel="prev" title="RiemannianStats" href="index.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>How to Use RiemannStats - RiemannStats</title>
+        <title>How to Use RiemannianStats - Riemannian Stats</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">RiemannStats</div></a>
+      <a href="index.html"><div class="brand">Riemannian Stats</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo only-dark" src="_static/images/dark_logo.jpg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">RiemannStats</span>
+  <span class="sidebar-brand-text">Riemannian Stats</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -204,9 +204,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Use RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="riemann_stats_py.html">RiemannStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Use RiemannianStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannianStats</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
@@ -254,13 +254,13 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-use-riemannstats">
-<h1>How to Use RiemannStats<a class="headerlink" href="#how-to-use-riemannstats" title="Link to this heading">¶</a></h1>
-<p>RiemannStats provides an intuitive and powerful interface to perform Principal Component Analysis on Riemannian manifolds derived from any tabular dataset. Below you’ll find two comprehensive examples that demonstrate how to load data, configure the analysis, compute Riemannian structures, and visualize the results.</p>
+          <section id="how-to-use-riemannianstats">
+<h1>How to Use RiemannianStats<a class="headerlink" href="#how-to-use-riemannianstats" title="Link to this heading">¶</a></h1>
+<p>RiemannianStats provides an intuitive and powerful interface to perform Principal Component Analysis on Riemannian manifolds derived from any tabular dataset. Below you’ll find two comprehensive examples that demonstrate how to load data, configure the analysis, compute Riemannian structures, and visualize the results.</p>
 <p>Each example below illustrates how to apply this process to different types of datasets: one classical and low-dimensional, the other high-dimensional and synthetic.</p>
 <section id="example-1-iris-dataset">
 <h2>Example 1: Iris Dataset<a class="headerlink" href="#example-1-iris-dataset" title="Link to this heading">¶</a></h2>
-<p>This example uses the classic Iris dataset to showcase RiemannStats’ ability to uncover structure in well-known data. It demonstrates:</p>
+<p>This example uses the classic Iris dataset to showcase RiemannianStats’ ability to uncover structure in well-known data. It demonstrates:</p>
 <ul class="simple">
 <li><p>Loading and preprocessing the data using DataProcessing.load_data.</p></li>
 <li><p>Detecting clusters (from the ‘tipo’ column).</p></li>
@@ -274,7 +274,7 @@
 <div class="code-block-caption"><span class="caption-text">Example 1</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This script demonstrates a complete workflow for analyzing the classic Iris dataset (iris.csv)</span>
-<span class="sd">using the riemann_stats_py package. The dataset is loaded and preprocessed using DataProcessing.load_data(),</span>
+<span class="sd">using the riemannian_stats package. The dataset is loaded and preprocessed using DataProcessing.load_data(),</span>
 <span class="sd">with a semicolon as the separator and a dot as the decimal marker. The script checks for the presence</span>
 <span class="sd">of a &#39;tipo&#39; column to extract clustering information and separates it from the main analysis data.</span>
 
@@ -295,11 +295,11 @@
 <span class="sd">- A 3D scatter plot with clusters,</span>
 <span class="sd">- And a correlation circle plot.</span>
 
-<span class="sd">This example illustrates the flexibility of riemann_stats_py in handling a classical, lower-dimensional dataset</span>
+<span class="sd">This example illustrates the flexibility of riemannian_stats in handling a classical, lower-dimensional dataset</span>
 <span class="sd">with clusters, enabling a comprehensive visual exploration of the data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">riemann_stats_py</span><span class="w"> </span><span class="kn">import</span> <span class="n">RiemannianUMAPAnalysis</span><span class="p">,</span> <span class="n">Visualization</span><span class="p">,</span> <span class="n">DataProcessing</span><span class="p">,</span> <span class="n">Utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">riemannian_stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">RiemannianUMAPAnalysis</span><span class="p">,</span> <span class="n">Visualization</span><span class="p">,</span> <span class="n">DataProcessing</span><span class="p">,</span> <span class="n">Utilities</span>
 
 <span class="c1"># ---------------------------</span>
 <span class="c1"># Example 2: Iris Dataset</span>
@@ -414,7 +414,7 @@
 </section>
 <section id="example-2-data10d-250">
 <h2>Example 2: Data10D_250<a class="headerlink" href="#example-2-data10d-250" title="Link to this heading">¶</a></h2>
-<p>This example applies RiemannStats to a synthetic, high-dimensional dataset with known cluster structure. It demonstrates:</p>
+<p>This example applies RiemannianStats to a synthetic, high-dimensional dataset with known cluster structure. It demonstrates:</p>
 <ul class="simple">
 <li><p>Handling datasets with more variables and complex geometry.</p></li>
 <li><p>Separating clustering labels (from the <cite>‘cluster’</cite> column) from the analysis data.</p></li>
@@ -422,13 +422,13 @@
 <li><p>Generating detailed visualizations that reveal cluster relationships in 2D and 3D spaces.</p></li>
 <li><p>Showing how R-PCA preserves and enhances the interpretability of complex datasets compared to classical PCA.</p></li>
 </ul>
-<p>This example highlights the robustness of RiemannStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.</p>
+<p>This example highlights the robustness of RiemannianStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.</p>
 <p><strong>Insertar html generado por rstudio</strong></p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Example 2</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This script demonstrates a comprehensive workflow for analyzing a high-dimensional dataset (Data10D_250.csv)</span>
-<span class="sd">using the riemann_stats_py package. Initially, the dataset is loaded and preprocessed using DataProcessing.load_data(),</span>
+<span class="sd">using the riemannian_stats package. Initially, the dataset is loaded and preprocessed using DataProcessing.load_data(),</span>
 <span class="sd">with a comma as the separator and a dot as the decimal marker. The script verifies the presence of a &#39;cluster&#39; column</span>
 <span class="sd">to extract clustering information and separates it from the data used for analysis, preserving a copy of the original</span>
 <span class="sd">dataset for visualization purposes.</span>
@@ -449,11 +449,11 @@
 <span class="sd">- A 3D scatter plot with clusters,</span>
 <span class="sd">- A correlation circle plot.</span>
 
-<span class="sd">This example illustrates how riemann_stats_py enables a thorough analysis of complex high-dimensional data,</span>
+<span class="sd">This example illustrates how riemannian_stats enables a thorough analysis of complex high-dimensional data,</span>
 <span class="sd">effectively extracting and visually representing its key features in Riemannian spaces.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">riemann_stats_py</span><span class="w"> </span><span class="kn">import</span> <span class="n">RiemannianUMAPAnalysis</span><span class="p">,</span> <span class="n">Visualization</span><span class="p">,</span> <span class="n">DataProcessing</span><span class="p">,</span> <span class="n">Utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">riemannian_stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">RiemannianUMAPAnalysis</span><span class="p">,</span> <span class="n">Visualization</span><span class="p">,</span> <span class="n">DataProcessing</span><span class="p">,</span> <span class="n">Utilities</span>
 
 <span class="c1"># ---------------------------</span>
 <span class="c1"># Example 1: Data10D_250 Dataset</span>
@@ -623,7 +623,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">How to Use RiemannStats</a><ul>
+<li><a class="reference internal" href="#">How to Use RiemannianStats</a><ul>
 <li><a class="reference internal" href="#example-1-iris-dataset">Example 1: Iris Dataset</a></li>
 <li><a class="reference internal" href="#example-2-data10d-250">Example 2: Data10D_250</a></li>
 </ul>

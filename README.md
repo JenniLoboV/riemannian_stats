@@ -86,7 +86,6 @@ This project follows PEP 621 and uses pyproject.toml as the primary configuratio
 - **numpy** (>=1.26.4,<2.0)
 - **scikit-learn** (>=1.5.1,<1.7)
 - **umap-learn** (>=0.5.7,<0.6)
-- **setuptools** (>=75.1.0,<80.0)
 
 These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in [requirements.txt](./requirements.txt) .
 

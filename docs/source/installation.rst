@@ -46,7 +46,6 @@ Make sure you have the necessary dependencies listed in the `requirements.txt` f
 - **numpy** (>=1.26.4,<2.0)
 - **scikit-learn** (>=1.5.1,<1.7)
 - **umap-learn** (>=0.5.7,<0.6)
-- **setuptools** (>=75.1.0,<80.0)
 
 These dependencies are automatically installed when you use `pip install riemannian_stats`. However, if you prefer to manage the dependencies manually, you can install them from the `requirements.txt` file:
 
@@ -63,4 +62,4 @@ Python Version
 
    python --version
 
-For more detailed installation instructions or to contribute to the project, visit the [GitHub repository](https://github.com/your_username/riemann_stats_py).
+For more detailed installation instructions or to contribute to the project, visit the [GitHub repository](https://github.com/your_username/riemannian_stats_py).
