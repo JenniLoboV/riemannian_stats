@@ -20,7 +20,6 @@ dependencies = [
     "numpy>=1.26.4,<2.0",
     "scikit-learn>=1.5.1,<1.7",
     "umap-learn>=0.5.7,<0.6",
-    # "setuptools>=75.1.0,<80.0" no es necesario aquí porque ya está en build-system
 ]
 
 [project.optional-dependencies]
@@ -31,4 +30,4 @@ plot = [
 
 [project.urls]
 Homepage = "https://github.com/tuusuario/riemannian_stats_py"
-Repository = "https://github.com/tuusuario/riemannian_stats_py"
+Repository = "https://github.com/JenniLoboV/riemann_stats_py.git"

@@ -9,7 +9,7 @@
 
 **RiemannianStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
 
-Instead of assuming data resides in Euclidean space, RiemannStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.
+Instead of assuming data resides in Euclidean space, RiemannianStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.
 
 With **RiemannianStats**, you can:
 
@@ -22,7 +22,25 @@ This package is ideal for researchers, data scientists, and developers seeking t
 
 ---
 
-## 📦 Estructura del Paquete
+## 🛠️ Features and Usage
+
+**RiemannianStats** offers several key functionalities:
+
+- **Data Preprocessing:**  
+  Easily import and transform datasets using functions in `data_processing.py`.
+
+- **Riemannian Analysis with UMAP:**  
+  Perform advanced statistical methods with `riemannian_umap_analysis.py` for extracting principal components in Riemannian spaces.
+
+- **Visualization:**  
+  Generate insightful 2D and 3D plots, along with other visualizations using `visualization.py`.
+
+- **Additional Utilities:**  
+  Use helper functions available in `utilities.py` for various tasks.
+
+---
+
+## 📦 Package structure
 
 The project structure is organized as follows:
 
@@ -72,7 +90,7 @@ pip install riemannian_stats
 Alternatively, to install from the source code, clone the repository and execute:
 
 ```bash
-git clone https://github.com/tu_usuario/riemannian_stats.git
+git clone https://github.com/JenniLoboV/riemann_stats_py.git
 cd riemannian_stats
 pip install .
 ```
@@ -91,25 +109,8 @@ These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in 
 
 ---
 
-## 🛠️ Features and Usage
 
-**RiemannianStats** offers several key functionalities:
-
-- **Data Preprocessing:**  
-  Easily import and transform datasets using functions in `data_processing.py`.
-
-- **Riemannian Analysis with UMAP:**  
-  Perform advanced statistical methods with `riemannian_umap_analysis.py` for extracting principal components in Riemannian spaces.
-
-- **Visualization:**  
-  Generate insightful 2D and 3D plots, along with other visualizations using `visualization.py`.
-
-- **Additional Utilities:**  
-  Use helper functions available in `utilities.py` for various tasks.
-
----
-
-## 📚 Examples
+## 📚 Examples of use
 The `examples/` directory contains two comprehensive examples demonstrating how to leverage **RiemannStats** for Riemannian data analysis and visualization.
 
 --- 
@@ -173,7 +174,7 @@ This example demonstrates the analysis of a high-dimensional dataset (`Data10D_2
 
 ## 🔍 Testing
 
-The package includes a suite of unit tests located in the `tests/` directory. To run the tests, ensure [pytest](https://pytest.org/) is installed (it's included in the package configuration) and run:
+The package includes a suite of unit tests located in the `tests/` directory. To run the tests, ensure [pytest](https://pytest.org/) is installed and run:
 
 ```bash
 pytest
