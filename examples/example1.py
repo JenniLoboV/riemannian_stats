@@ -1,6 +1,6 @@
 """
 This script demonstrates a complete workflow for analyzing the classic Iris dataset (iris.csv)
-using the riemann_stats_py package. The dataset is loaded and preprocessed using DataProcessing.load_data(),
+using the riemannian_stats package. The dataset is loaded and preprocessed using DataProcessing.load_data(),
 with a semicolon as the separator and a dot as the decimal marker. The script checks for the presence
 of a 'tipo' column to extract clustering information and separates it from the main analysis data.
 
@@ -21,11 +21,11 @@ Finally, the script generates various visualizations depending on whether cluste
 - A 3D scatter plot with clusters,
 - And a correlation circle plot.
 
-This example illustrates the flexibility of riemann_stats_py in handling a classical, lower-dimensional dataset
+This example illustrates the flexibility of riemannian_stats in handling a classical, lower-dimensional dataset
 with clusters, enabling a comprehensive visual exploration of the data.
 """
 
-from riemann_stats_py import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
+from riemannian_stats import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
 
 # ---------------------------
 # Example 2: Iris Dataset

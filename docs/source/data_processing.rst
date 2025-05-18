@@ -19,7 +19,7 @@ Module Documentation
 ---------------------
 For detailed information on the `DataProcessing` module, refer to the module's API documentation:
 
-.. automodule:: riemann_stats_py.data_processing
+.. automodule:: riemannian_stats.data_processing
    :members:
    :show-inheritance:
    :undoc-members:

@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>riemann_stats_py.visualization - RiemannStats Documentation</title>
+        <title>riemannian_stats.visualization - Riemannian Stats</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=579cdcf1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=7499c9da" />
     
     
 
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">RiemannStats Documentation</div></a>
+      <a href="../../index.html"><div class="brand">Riemannian Stats</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,11 +190,11 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   <div class="sidebar-logo-container">
-    <img class="sidebar-logo only-light" src="../../_static/logo-light.jng" alt="Light Logo"/>
-    <img class="sidebar-logo only-dark" src="../../_static/logo-dark.jng" alt="Dark Logo"/>
+    <img class="sidebar-logo only-light" src="../../_static/images/light_logo.jpg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/images/dark_logo.jpg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">RiemannStats Documentation</span>
+  <span class="sidebar-brand-text">Riemannian Stats</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -202,11 +202,16 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Menu</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../examples.html">How to Use RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../riemann_stats_py.html">RiemannStats Package</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">How to Use RiemannianStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Install RiemannianStats</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../riemannian_stats.html">RiemannianStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_processing.html">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities.html">Utilities</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper.html">Scientific Paper</a></li>
 </ul>
 
@@ -242,7 +247,7 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>Source code for riemann_stats_py.visualization</h1><div class="highlight"><pre>
+          <h1>Source code for riemannian_stats.visualization</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -250,33 +255,49 @@
 
 
 <div class="viewcode-block" id="Visualization">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Visualization</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class for visualizing charts related to UMAP and PCA.</span>
+<span class="sd">    A class for generating visualizations of UMAP or PCA results, including projections, clusters, and correlation circles.</span>
+
+<span class="sd">    This class is designed to assist in interpreting dimensionality-reduced data through visual inspection.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        data (pd.DataFrame): The dataset to be visualized (must include index and optionally cluster columns).</span>
+<span class="sd">        components (np.ndarray, optional): Principal component matrix with at least two dimensions.</span>
+<span class="sd">        explained_inertia (float, optional): The total explained inertia (variance) by the components.</span>
+<span class="sd">        clusters (np.ndarray, optional): Array of cluster labels corresponding to the data rows.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        data (pandas.DataFrame): Data used for visualization.</span>
-<span class="sd">        components (numpy.ndarray, optional): Matrix of principal components.</span>
-<span class="sd">        explained_inertia (float): Explained inertia percentage.</span>
-<span class="sd">        clusters (numpy.ndarray, optional): Array of cluster labels for each data point.</span>
+<span class="sd">        data (pd.DataFrame): Read-only access to the input dataset.</span>
+<span class="sd">        components (np.ndarray or None): Read-only access to PCA/UMAP component matrix.</span>
+<span class="sd">        explained_inertia (float): Read-only access to the explained inertia percentage.</span>
+<span class="sd">        clusters (np.ndarray or None): Read-only access to cluster labels.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        plot_principal_plane(title=&quot;&quot;): 2D projection of the components with point labels.</span>
+<span class="sd">        plot_principal_plane_with_clusters(title=&quot;&quot;): Same as above, but colored by clusters.</span>
+<span class="sd">        plot_correlation_circle(correlations, title=&quot;&quot;, scale=1, draw_circle=True): Visualizes correlation of variables.</span>
+<span class="sd">        plot_2d_scatter_with_clusters(x_col, y_col, cluster_col, title=&quot;&quot;, figsize=(10, 8)): 2D scatter plot by cluster.</span>
+<span class="sd">        plot_3d_scatter_with_clusters(x_col, y_col, z_col, cluster_col, title=&quot;&quot;, ...): 3D scatter plot by cluster.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">components</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">explained_inertia</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Class for visualizing charts related to UMAP and PCA.</span>
+<span class="sd">            Initializes the Visualization object with data and optional component, cluster, and variance information.</span>
 
-<span class="sd">        Attributes:</span>
-<span class="sd">            data (pandas.DataFrame): Data used for visualization. Read-only property.</span>
-<span class="sd">            components (numpy.ndarray, optional): Matrix of principal components. Read-only property.</span>
-<span class="sd">            explained_inertia (float): Explained inertia percentage. Read-only property.</span>
-<span class="sd">            clusters (numpy.ndarray, optional): Array of cluster labels. Read-only property.</span>
+<span class="sd">            Parameters:</span>
+<span class="sd">                data (pd.DataFrame): The dataset to be used for plotting (index used as labels).</span>
+<span class="sd">                components (np.ndarray, optional): Matrix of principal components or UMAP embeddings (n_samples, n_components).</span>
+<span class="sd">                explained_inertia (float, optional): Percentage of variance explained by the components. Default is 0.0.</span>
+<span class="sd">                clusters (np.ndarray, optional): Optional array of cluster labels aligned with data rows.</span>
 
-<span class="sd">        Notes:</span>
-<span class="sd">            - Internal representation uses protected attributes (_data, _components, _explained_inertia, _clusters).</span>
-<span class="sd">            - These attributes are exposed via read-only properties to ensure safe access.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            Notes:</span>
+<span class="sd">                - Internally uses protected attributes (_data, _components, _explained_inertia, _clusters).</span>
+<span class="sd">                - Read-only properties are used to safely expose internal data.</span>
+<span class="sd">                - Most plots assume at least 2D components or features for visualization.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_components</span> <span class="o">=</span> <span class="n">components</span>
@@ -304,7 +325,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span>
 
 <div class="viewcode-block" id="Visualization.plot_principal_plane">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization.plot_principal_plane">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization.plot_principal_plane">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_principal_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a plot of the principal plane using the principal components.</span>
@@ -332,7 +353,7 @@
 
 
 <div class="viewcode-block" id="Visualization.plot_principal_plane_with_clusters">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization.plot_principal_plane_with_clusters">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_principal_plane_with_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a plot of the principal plane with points colored according to clusters.</span>
@@ -368,7 +389,7 @@
 
 
 <div class="viewcode-block" id="Visualization.plot_correlation_circle">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization.plot_correlation_circle">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization.plot_correlation_circle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_correlation_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">correlations</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                                 <span class="n">draw_circle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -401,7 +422,7 @@
 
 
 <div class="viewcode-block" id="Visualization.plot_2d_scatter_with_clusters">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization.plot_2d_scatter_with_clusters">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_2d_scatter_with_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cluster_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                                       <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -434,7 +455,7 @@
 
 
 <div class="viewcode-block" id="Visualization.plot_3d_scatter_with_clusters">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.visualization.Visualization.plot_3d_scatter_with_clusters">[docs]</a>
+<a class="viewcode-back" href="../../visualization.html#riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_3d_scatter_with_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">z_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cluster_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                                       <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                                       <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

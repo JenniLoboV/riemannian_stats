@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>riemann_stats_py.utilities - RiemannStats Documentation</title>
+        <title>riemannian_stats.data_processing - Riemannian Stats</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=579cdcf1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=7499c9da" />
     
     
 
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">RiemannStats Documentation</div></a>
+      <a href="../../index.html"><div class="brand">Riemannian Stats</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,11 +190,11 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   <div class="sidebar-logo-container">
-    <img class="sidebar-logo only-light" src="../../_static/logo-light.jng" alt="Light Logo"/>
-    <img class="sidebar-logo only-dark" src="../../_static/logo-dark.jng" alt="Dark Logo"/>
+    <img class="sidebar-logo only-light" src="../../_static/images/light_logo.jpg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/images/dark_logo.jpg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">RiemannStats Documentation</span>
+  <span class="sidebar-brand-text">Riemannian Stats</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -202,11 +202,16 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Menu</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../examples.html">How to Use RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Install RiemannStats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../riemann_stats_py.html">RiemannStats Package</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">How to Use RiemannianStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Install RiemannianStats</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../riemannian_stats.html">RiemannianStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_processing.html">DataProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities.html">Utilities</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../paper.html">Scientific Paper</a></li>
 </ul>
 
@@ -242,67 +247,38 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>Source code for riemann_stats_py.utilities</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+          <h1>Source code for riemannian_stats.data_processing</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 
-<div class="viewcode-block" id="Utilities">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.utilities.Utilities">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Utilities</span><span class="p">:</span>
-<div class="viewcode-block" id="Utilities.Utilities">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.utilities.Utilities.Utilities">[docs]</a>
-    <span class="k">class</span><span class="w"> </span><span class="nc">Utilities</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Class for common utility functions in data science projects.</span>
+<div class="viewcode-block" id="DataProcessing">
+<a class="viewcode-back" href="../../data_processing.html#riemannian_stats.data_processing.DataProcessing">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataProcessing</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility class for loading and preparing tabular data.</span>
 
-<span class="sd">        This class provides static methods for performing common mathematical and</span>
-<span class="sd">        statistical operations that facilitate data analysis tasks.</span>
+<span class="sd">    Provides static methods for reading CSV files into pandas DataFrames, with</span>
+<span class="sd">    support for custom delimiters and decimal formats. Useful for standardized</span>
+<span class="sd">    data loading in preprocessing pipelines.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="sd">        The methods are designed to be used without requiring instantiation,</span>
-<span class="sd">        which simplifies the integration of these tools into larger data processing</span>
-<span class="sd">        and analysis workflows.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-
-
-<div class="viewcode-block" id="Utilities.pca_inertia_by_components">
-<a class="viewcode-back" href="../../riemann_stats_py.html#riemann_stats_py.utilities.Utilities.pca_inertia_by_components">[docs]</a>
+<div class="viewcode-block" id="DataProcessing.load_data">
+<a class="viewcode-back" href="../../data_processing.html#riemannian_stats.data_processing.DataProcessing.load_data">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">pca_inertia_by_components</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">component1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">component2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">separator</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculates the inertia explained by two specific principal components in a PCA.</span>
+<span class="sd">        Load a CSV file into a pandas DataFrame.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">            correlation_matrix (numpy.ndarray): Correlation matrix of the variables.</span>
-<span class="sd">            component1 (int): Index of the first principal component (based on descending order of explained variance).</span>
-<span class="sd">            component2 (int): Index of the second principal component (based on descending order of explained variance).</span>
+<span class="sd">            filepath (str): Path to the CSV file to be loaded.</span>
+<span class="sd">            separator (str, optional): Field delimiter used in the CSV file. Default is &quot;;&quot;.</span>
+<span class="sd">            decimal (str, optional): Character to recognize as decimal point. Default is &quot;.&quot;.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            float: Inertia explained by the selected principal components.</span>
-
-<span class="sd">        Raises:</span>
-<span class="sd">            ValueError: If the correlation matrix is not square or if the component indices are out of range.</span>
+<span class="sd">            pd.DataFrame: DataFrame containing the parsed data from the file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Verify that the correlation matrix is square.</span>
-        <span class="k">if</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The correlation matrix must be square.&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Verify that the components are valid.</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">component1</span> <span class="o">&lt;</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">component2</span> <span class="o">&lt;</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The indices of the principal components must be within the valid range.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># Compute eigenvalues and eigenvectors.</span>
-        <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">)</span>
-
-        <span class="c1"># Sort eigenvalues in descending order.</span>
-        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
-
-        <span class="c1"># Calculate the inertia explained by the two selected components.</span>
-        <span class="n">total_inertia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
-        <span class="n">selected_inertia</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">component1</span><span class="p">]</span> <span class="o">+</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">component2</span><span class="p">]</span>
-        <span class="n">explained_inertia</span> <span class="o">=</span> <span class="n">selected_inertia</span> <span class="o">/</span> <span class="n">total_inertia</span>
-
-        <span class="k">return</span> <span class="n">explained_inertia</span></div>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">separator</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="n">decimal</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

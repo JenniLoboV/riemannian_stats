@@ -7,7 +7,7 @@ Se utilizan los datasets:
 - iris.csv
 """
 
-from riemann_stats_py import RiemannianUMAPAnalysis, DataProcessing, Utilities
+from riemannian_stats import RiemannianUMAPAnalysis, DataProcessing, Utilities
 
 # ---------------------------
 # Paso 1: Cargar primer dataset (Data10D_250.csv)

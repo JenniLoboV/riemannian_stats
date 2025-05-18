@@ -30,7 +30,7 @@ Module Documentation
 ---------------------
 For detailed information on the `RiemannianUMAPAnalysis` module, refer to the module's API documentation:
 
-.. automodule:: riemann_stats_py.riemannian_umap_analysis
+.. automodule:: riemannian_stats.riemannian_umap_analysis
    :members:
    :show-inheritance:
    :undoc-members:

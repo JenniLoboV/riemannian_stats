@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from riemann_stats_py import Visualization, RiemannianUMAPAnalysis, Utilities
+from riemannian_stats import Visualization, RiemannianUMAPAnalysis, Utilities
 
 
 class TestVisualization(unittest.TestCase):

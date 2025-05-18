@@ -1,5 +1,5 @@
 """
-riemann_stats_py
+riemannian_stats
 
 This package provides tools for Riemannian statistical analysis using UMAP, including:
 - Data preprocessing

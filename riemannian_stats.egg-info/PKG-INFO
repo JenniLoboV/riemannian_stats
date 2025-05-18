@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: riemann_stats_py
+Name: riemannian_stats
 Version: 0.1.0
 Summary: Analysis on Riemannian data.
 Author-email: Oldemar Rodríguez Rojas <oldemar.rodriguez@ucr.ac.cr>, Jennifer Lobo Vásquez <jennifer.lobo.vasquez@est.una.ac.cr>
@@ -23,9 +23,9 @@ Dynamic: license-file
 
 ---
 
-# riemann_stats_py
+# riemannian_stats
 
-**riemann_stats_py** is an open-source package that implements advanced methods for principal component analysis on Riemannian data using UMAP. It provides integrated tools for data preprocessing, statistical analysis, and visualization—making it an ideal choice for data science and machine learning projects that require extracting and representing key features in Riemannian spaces.
+**riemannian_stats** is an open-source package that implements advanced methods for principal component analysis on Riemannian data using UMAP. It provides integrated tools for data preprocessing, statistical analysis, and visualization—making it an ideal choice for data science and machine learning projects that require extracting and representing key features in Riemannian spaces.
 
 ---
 
@@ -34,9 +34,9 @@ Dynamic: license-file
 The project structure is organized as follows:
 
 ```
-riemann_stats_py/
+riemannian_stats/
 │
-├── riemann_stats_py/
+├── riemannian_stats/
 │   ├── __init__.py                      # Makes package modules importable
 │   ├── data_processing.py               # Classes for data loading and manipulation
 │   ├── riemannian_umap_analysis.py      # Riemannian statistical methods using UMAP
@@ -73,7 +73,7 @@ riemann_stats_py/
 Ensure you have [Python ≥ 3.6](https://www.python.org/downloads/) installed, then run:
 
 ```bash
-pip install riemann_stats_py
+pip install riemannian_stats
 ```
 
 Alternatively, to install from the source code, clone the repository and execute:
@@ -101,7 +101,7 @@ These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in 
 
 ## 🛠️ Features and Usage
 
-**riemann_stats_py** offers several key functionalities:
+**riemannian_stats** offers several key functionalities:
 
 - **Data Preprocessing:**  
   Easily import and transform datasets using functions in `data_processing.py`.
@@ -119,7 +119,7 @@ These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in 
 
 ## 📚 Examples
 
-The `examples/` directory contains two comprehensive examples demonstrating how to leverage **riemann_stats_py** for Riemannian data analysis and visualization.
+The `examples/` directory contains two comprehensive examples demonstrating how to leverage **riemannian_stats** for Riemannian data analysis and visualization.
 
 ### Example 1: Data10D_250 Dataset
 
