@@ -18,11 +18,18 @@ This example uses the classic Iris dataset to showcase RiemannianStats' ability 
 
 This example is ideal for those looking to understand the workflow and inspect meaningful geometry in low-dimensional datasets
 
-**Insertar html generado por rstudio**
+.. raw:: html
 
-.. literalinclude:: ../../examples/example1.py
-   :language: python
-   :caption: Example 1
+   <a href="_static/examples/Example1_Iris.html" target="_blank">
+   View the full Iris Example
+   </a>
+
+`Download Complete Python Script <../../../examples/example1.py>`_
+
+.. raw:: html
+
+   <iframe src="_static/examples/Example1_Iris.html" width="100%" height="600px" frameborder="0"></iframe>
+
 
 Example 2: Data10D_250
 ----------------------

@@ -90,7 +90,7 @@ pip install riemannian_stats
 Alternatively, to install from the source code, clone the repository and execute:
 
 ```bash
-git clone https://github.com/JenniLoboV/riemann_stats_py.git
+git clone https://github.com/JenniLoboV/riemannian_stats.git
 cd riemannian_stats
 pip install .
 ```

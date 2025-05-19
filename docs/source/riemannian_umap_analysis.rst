@@ -8,7 +8,7 @@ Overview
 
 This class provides methods for UMAP-based dimensionality reduction, extended by incorporating Riemannian metrics to better capture geometric properties of the data. With the ability to analyze data using various distance metrics, ``RiemannianUMAPAnalysis`` allows for flexibility in working with different types of datasets, including those that require non-Euclidean geometry.
 
-Features:
+Features
 ---------
 - **UMAP-based Analysis**: Leverages UMAP for non-linear dimensionality reduction, a powerful tool for visualizing and understanding high-dimensional data.
 - **Riemannian Geometry**: Incorporates Riemannian principles to adjust the analysis based on the intrinsic geometry of the data, offering a more meaningful interpretation of distances and similarities in some applications.
@@ -16,7 +16,7 @@ Features:
 - **Distance Metrics Flexibility**: Supports custom distance metrics for UMAP, allowing for a tailored approach to different datasets.
 
 
-When to Use:
+When to Use
 ------------
 This module is particularly useful for:
 
