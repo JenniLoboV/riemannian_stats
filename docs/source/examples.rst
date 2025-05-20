@@ -24,11 +24,7 @@ This example is ideal for those looking to understand the workflow and inspect m
    View the full Iris Example
    </a>
 
-`Download Complete Python Script <../../../examples/example1.py>`_
-
-.. raw:: html
-
-   <iframe src="_static/examples/Example1_Iris.html" width="100%" height="600px" frameborder="0"></iframe>
+`Download Complete Iris Python Script <../../../examples/example1.py>`_
 
 
 Example 2: Data10D_250
@@ -44,9 +40,10 @@ This example applies RiemannianStats to a synthetic, high-dimensional dataset wi
 
 This example highlights the robustness of RiemannianStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.
 
-**Insertar html generado por rstudio**
+.. raw:: html
 
+   <a href="_static/examples/Example2_Data10D_250.html" target="_blank">
+   View the full Iris Example
+   </a>
 
-.. literalinclude:: ../../examples/example2.py
-   :language: python
-   :caption: Example 2
+`Download Complete Data10D_250 Python Script <../../../examples/example2.py>`_

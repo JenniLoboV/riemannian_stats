@@ -15,7 +15,7 @@ RiemannianStats Modules
 .. toctree::
    :maxdepth: 2
 
-   RiemannStats Modules <riemannian_stats>
+   RiemannStats Modules <modules>
 
 Scientific Paper
 ================
@@ -23,4 +23,4 @@ Scientific Paper
 .. toctree::
    :maxdepth: 2
 
-   Scientific Paper              <paper>
+   Scientific Paper   <paper>
