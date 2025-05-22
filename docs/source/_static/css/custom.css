@@ -1,94 +1,70 @@
-/* Ajustar el tamaño de la barra lateral derecha */
-.sidebar-drawer {
-    width: 300px !important;  /* Aumenta el valor según tus necesidades */
-}
-
-/* Asegurarse de que el contenido principal se ajuste al nuevo tamaño de la barra lateral */
-.main {
-    margin-left: 10px;  /* Deja espacio suficiente para la barra lateral más ancha */
-    margin-right: 10px;  /* Deja espacio suficiente para la barra lateral más ancha */
-}
-
-/* Estilo general del cuerpo */
+/* Fondo general del sitio (body): un gris muy claro para que la página no sea completamente blanca */
 body {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 16px;
-    line-height: 1.5; /* Aumenta el espaciado entre líneas para mayor legibilidad */
-    color: #333; /* Texto oscuro para mejor contraste y legibilidad */
+    background-color: #f9f9f9; /* Gris casi blanco */
+    color: #1a1a1a; /* Texto principal en gris oscuro (casi negro) */
 }
 
-/* Aumentar tamaño del logo en la barra lateral */
-.sidebar-logo-container img {
-    max-height: 100px;  /* aumenta el valor según necesites */
-    width: auto;
+/* Área principal del contenido, dentro del <article> (donde va la documentación en sí) */
+article {
+    background-color: #ffffff; /* Fondo blanco para resaltar el contenido */
+    color: #1a1a1a; /* Texto en gris oscuro para buena legibilidad */
 }
 
-/* Enlaces del menú lateral en negro y negrita */
-.sidebar-tree a {
-    color: black !important;
-    font-weight: bold !important;
+/* Enlaces dentro del contenido principal */
+article a {
+    color: #000e66; /* Azul oscuro para diferenciar los enlaces del texto común */
+    font-weight: bold; /* Enlaces en negrita para destacarlos */
+    text-decoration: none; /* Sin subrayado por defecto, para un estilo limpio */
 }
 
-/* Opcional: al pasar el mouse */
-.sidebar-tree a:hover {
-    color: #004F8B !important; /* o mantenlo en negro si prefieres */
-    text-decoration: underline;
+/* Efecto hover en los enlaces del contenido */
+article a:hover {
+    color: #005599; /* Azul más brillante al pasar el ratón para resaltar la interactividad */
+    text-decoration: underline; /* Subrayado solo al pasar el cursor */
 }
 
-/* Estilo para el texto en la barra lateral */
-.sidebar-brand-text {
-    font-weight: bold;
-    font-size: 20px;
-    color: #004F8B; /* Color del título de la barra lateral */
-}
-
-/* Estilo para los enlaces */
-a {
-    color: #007acc; /* Azul más suave para los enlaces */
-    text-decoration: none; /* Sin subrayado para un diseño más limpio */
-}
-
-a:hover {
-    color: #004F8B; /* Cambiar color al pasar el cursor para indicar interactividad */
-    text-decoration: underline; /* Agregar subrayado solo al pasar el cursor */
-}
-
-/* Estilo para los títulos y apartados importantes */
+/* Colores para todos los títulos (h1 a h6) */
 h1, h2, h3, h4, h5, h6 {
-    color: #004F8B; /* Azul para los títulos */
-    font-weight: normal; /* No poner los títulos en negrita para mantener la sobriedad */
-    line-height: 1.2; /* Mejor espaciado para los encabezados */
+    color: #111111; /* Negro ligeramente suavizado para una jerarquía visual clara */
 }
 
-/* Estilo para apartados importantes */
-.important {
-    color: #004F8B;
-    font-weight: normal; /* Mantenerlo sobrio, sin negrita */
+/* Estilos para bloques de código (pre) y código inline (code) */
+code, pre {
+    background-color: #eeeeee; /* Fondo gris claro para distinguirlos del resto del contenido */
+    color: #002b36; /* Azul oscuro/grisáceo para el texto del código */
+    font-weight: normal; /* Sin negrita para mantener el estilo de código limpio */
 }
 
-/* Estilo para la tabla de contenido */
-.toctree {
-    font-size: 14px;
+/* Bordes de las tablas dentro del contenido */
+article table {
+    border-color: #cccccc; /* Bordes exteriores de la tabla en gris suave */
 }
 
-/* Estilo para las listas numeradas o con viñetas */
-ul, ol {
-    margin-left: 20px;
-    font-size: 14px; /* Tamaño de fuente pequeño para listas */
+/* Celdas de las tablas: encabezados y datos */
+article th, article td {
+    border: 1px solid #cccccc; /* Bordes individuales de las celdas */
+    padding: 0.5em; /* Espaciado interno para que el contenido no quede pegado al borde */
 }
 
-li {
-    margin-bottom: 5px;
+/* Estilo para las admoniciones (notas, tips, advertencias, etc.) */
+.admonition {
+    background-color: #f0f4f8; /* Fondo azul-gris claro, suave y neutro */
+    border-left: 4px solid #0077cc; /* Línea azul a la izquierda para diferenciarla visualmente */
+    color: #1a1a1a; /* Texto oscuro para buena lectura */
 }
 
-/* Enlaces globales en negrita */
-a {
-    color: black; /* Azul más suave para los enlaces */
-    text-decoration: none; /* Sin subrayado para un diseño más limpio */
-    font-weight: bold; /* Aplica negrita a todos los enlaces globales */
+/* Fondo y texto para la barra lateral, el índice (TOC), y la zona de navegación relacionada */
+.sidebar, .toc, .theme-toggle, .related-navigation {
+    background-color: #f0f0f0; /* Fondo gris claro para no destacar demasiado */
+    color: #111111; /* Texto oscuro pero no negro puro */
 }
 
-a:hover {
-    color: #004F8B; /* Cambiar color al pasar el cursor para indicar interactividad */
-    text-decoration: underline; /* Agregar subrayado solo al pasar el cursor */
+/* Enlaces dentro del menú lateral, índice y navegación relacionada */
+.sidebar a, .toc a, .related-navigation a {
+    color: #003366; /* Azul oscuro para los enlaces */
+}
+
+/* Efecto hover en esos enlaces del menú lateral y navegación */
+.sidebar a:hover, .toc a:hover, .related-navigation a:hover {
+    color: #005599; /* Azul más claro al pasar el ratón para indicar que se puede hacer clic */
 }

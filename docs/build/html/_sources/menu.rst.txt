@@ -23,4 +23,4 @@ Scientific Paper
 .. toctree::
    :maxdepth: 2
 
-   Scientific Paper              <paper>
+   Scientific Paper   <paper>
