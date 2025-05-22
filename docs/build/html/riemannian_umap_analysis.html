@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7499c9da" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7d477787" />
     
     
 
@@ -204,11 +204,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">How to Use RiemannianStats</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to Use RiemannianStats</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">How to Use RiemannianStats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Install RiemannianStats</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
@@ -285,192 +283,6 @@
 <section id="module-documentation">
 <h2>Module Documentation<a class="headerlink" href="#module-documentation" title="Link to this heading">¶</a></h2>
 <p>For detailed information on the <cite>RiemannianUMAPAnalysis</cite> module, refer to the module’s API documentation:</p>
-<dl class="py class" id="module-riemannian_stats.riemannian_umap_analysis">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riemannian_stats.riemannian_umap_analysis.</span></span><span class="sig-name descname"><span class="pre">RiemannianUMAPAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'euclidean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A class to perform UMAP-based analysis combined with Riemannian geometry.</p>
-<p>This class allows dimensionality reduction, similarity graph analysis, and custom covariance/correlation
-computations using a Riemannian-weighted framework, enhancing traditional UMAP with structure-aware geometry.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>np.ndarray</em><em> or </em><em>pd.DataFrame</em>) – Input dataset.</p></li>
-<li><p><strong>n_neighbors</strong> (<em>int</em>) – Number of neighbors for UMAP KNN graph construction. Default is 3.</p></li>
-<li><p><strong>min_dist</strong> (<em>float</em>) – Minimum distance parameter for UMAP, controlling cluster tightness. Default is 0.1.</p></li>
-<li><p><strong>metric</strong> (<em>str</em>) – Distance metric for UMAP (e.g., “euclidean”, “manhattan”). Default is “euclidean”.</p></li>
-</ul>
-</dd>
-</dl>
-<dl>
-<dt>Properties:</dt><dd><p>data (np.ndarray or pd.DataFrame): The input data. Setting this triggers automatic recomputation of all derived matrices.
-n_neighbors (int): Number of neighbors for UMAP. Setting this re-triggers internal recomputations.
-min_dist (float): Minimum distance used in UMAP embedding. Automatically recomputes internal matrices on change.
-metric (str): UMAP distance metric. Triggers recomputation if modified.</p>
-<p>umap_similarities (np.ndarray): Matrix of similarity values from the UMAP fuzzy graph.
-rho (np.ndarray): Matrix computed as (1 - UMAP similarity), used to weight vector differences.
-riemannian_diff (np.ndarray): 3D array of weighted pairwise vector differences between observations.
-umap_distance_matrix (np.ndarray): Pairwise distance matrix computed from Riemannian differences.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_matrix">
-<span class="sig-name descname"><span class="pre">riemannian_correlation_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">np.ndarray</span></span></span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis.riemannian_correlation_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_matrix" title="Link to this definition">¶</a></dt>
-<dd><p>Computes the correlation matrix based on the Riemannian covariance structure.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">riemannian_components(corr_matrix</span></span></dt>
-<dd><p>np.ndarray) -&gt; np.ndarray:
-Performs Riemannian PCA using the supplied correlation matrix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">riemannian_components_from_data_and_correlation(corr_matrix</span></span></dt>
-<dd><p>np.ndarray) -&gt; np.ndarray:
-Like <cite>riemannian_components</cite>, but uses both data and a given correlation matrix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">riemannian_correlation_variables_components(components</span></span></dt>
-<dd><p>np.ndarray) -&gt; pd.DataFrame:
-Calculates Riemannian correlations between original features and the first two components.</p>
-</dd></dl>
-
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>Setting <cite>data</cite>, <cite>n_neighbors</cite>, <cite>min_dist</cite>, or <cite>metric</cite> automatically recalculates:</dt><dd><ul>
-<li><p>UMAP similarities</p></li>
-<li><p>Rho matrix</p></li>
-<li><p>Riemannian differences</p></li>
-<li><p>UMAP distance matrix</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>Internal methods (prefixed with double underscores) are used for computing intermediate matrices and are not intended for external use.</p></li>
-</ul>
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.data">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.data" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.metric">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.metric" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.min_dist">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_dist</span></span><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.min_dist" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.n_neighbors">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_neighbors</span></span><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.n_neighbors" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.rho">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rho</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.rho" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the Rho matrix (1 - UMAP similarities).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components">
-<span class="sig-name descname"><span class="pre">riemannian_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis.riemannian_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components" title="Link to this definition">¶</a></dt>
-<dd><p>Performs Riemannian principal component analysis (PCA) using the supplied correlation matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>corr_matrix</strong> (<em>numpy.ndarray</em>) – Riemannian correlation matrix.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Matrix of principal components.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the correlation matrix is not square or if its size does not match the number of data columns.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation">
-<span class="sig-name descname"><span class="pre">riemannian_components_from_data_and_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation" title="Link to this definition">¶</a></dt>
-<dd><p>Performs Riemannian principal component analysis (PCA) using the data and the provided correlation matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>corr_matrix</strong> (<em>numpy.ndarray</em>) – Correlation matrix of the variables.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Matrix of principal components.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>numpy.ndarray</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the correlation matrix is not square or if its size does not match the number of data columns.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">riemannian_correlation_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis.riemannian_correlation_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the Riemannian correlation matrix from the Riemannian covariance matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Riemannian correlation matrix.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>numpy.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_variables_components">
-<span class="sig-name descname"><span class="pre">riemannian_correlation_variables_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/riemannian_stats/riemannian_umap_analysis.html#RiemannianUMAPAnalysis.riemannian_correlation_variables_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_variables_components" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the Riemannian correlation between the original variables and the first two components.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>components</strong> (<em>numpy.ndarray</em>) – Matrix of components (at least two columns are expected).</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>DataFrame with the correlation of each original variable with the first and second components.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_diff">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">riemannian_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_diff" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the 3D array of weighted Riemannian differences.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_distance_matrix">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">umap_distance_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_distance_matrix" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the UMAP distance matrix.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_similarities">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">umap_similarities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_similarities" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the UMAP similarity matrix.</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 
@@ -533,25 +345,7 @@ Calculates Riemannian correlations between original features and the first two c
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#when-to-use">When to Use</a></li>
-<li><a class="reference internal" href="#module-documentation">Module Documentation</a><ul>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis</span></code></a><ul>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_matrix"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_correlation_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.data"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.data</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.metric"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.metric</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.min_dist"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.min_dist</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.n_neighbors"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.n_neighbors</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.rho"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.rho</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_components()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_components_from_data_and_correlation()</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_correlation_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_correlation_variables_components"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_correlation_variables_components()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.riemannian_diff"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.riemannian_diff</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_distance_matrix"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.umap_distance_matrix</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.riemannian_umap_analysis.RiemannianUMAPAnalysis.umap_similarities"><code class="docutils literal notranslate"><span class="pre">RiemannianUMAPAnalysis.umap_similarities</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-documentation">Module Documentation</a></li>
 </ul>
 </li>
 </ul>

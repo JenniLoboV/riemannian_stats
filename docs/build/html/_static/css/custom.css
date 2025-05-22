@@ -12,7 +12,7 @@ article {
 
 /* Enlaces dentro del contenido principal */
 article a {
-    color: #003366; /* Azul oscuro para diferenciar los enlaces del texto común */
+    color: #000e66; /* Azul oscuro para diferenciar los enlaces del texto común */
     font-weight: bold; /* Enlaces en negrita para destacarlos */
     text-decoration: none; /* Sin subrayado por defecto, para un estilo limpio */
 }

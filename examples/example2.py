@@ -25,7 +25,7 @@ This example illustrates how riemannian_stats enables a thorough analysis of com
 effectively extracting and visually representing its key features in Riemannian spaces.
 """
 
-from riemannian_stats import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
+from riemannian_stats import RiemannianAnalysis, Visualization, DataProcessing, Utilities
 
 # ---------------------------
 # Example 1: Data10D_250 Dataset
@@ -48,7 +48,7 @@ else:
     data_with_clusters = data
 
 # Create an instance of RiemannianUMAPAnalysis for the dataset
-analysis = RiemannianUMAPAnalysis(data, n_neighbors=n_neighbors)
+analysis = RiemannianAnalysis(data, n_neighbors=n_neighbors)
 
 # --------------------------------------------------------
 # Compute UMAP graph similarities and rho matrix for the data

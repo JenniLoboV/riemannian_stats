@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 
-class RiemannianUMAPAnalysis:
+class RiemannianAnalysis:
     """
     A class to perform UMAP-based analysis combined with Riemannian geometry.
 

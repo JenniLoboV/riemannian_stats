@@ -128,6 +128,32 @@ This project follows PEP 621 and uses pyproject.toml as the primary configuratio
 
 These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in [requirements.txt](./requirements.txt) .
 
+
+---
+
+## 🔄 Importing Modules and Classes
+
+RiemannianStats supports multiple import styles to improve flexibility and usability:
+
+### ✅ Standard Imports
+
+Use PascalCase class names for clarity and convention:
+
+```python
+from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, Utilities
+````
+
+### ✨ Lowercase Aliases
+
+Alternatively, you can use lowercase aliases for convenience:
+
+```python
+from riemannian_stats import riemannian_analysis, dataprocessing, visualization, utilities
+```
+
+Both styles provide access to the same classes—choose the one that fits your workflow best.
+
+
 ---
 
 

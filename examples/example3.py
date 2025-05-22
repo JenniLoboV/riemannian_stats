@@ -7,7 +7,7 @@ Se utilizan los datasets:
 - iris.csv
 """
 
-from riemannian_stats import RiemannianUMAPAnalysis, DataProcessing, Utilities
+from riemannian_stats import RiemannianAnalysis, DataProcessing, Utilities
 
 # ---------------------------
 # Paso 1: Cargar primer dataset (Data10D_250.csv)
@@ -20,7 +20,7 @@ else:
 n_neighbors_10d = int(len(data_10d) / 5)
 
 print("\n🔍 Inicializando análisis con Data10D_250.csv")
-analysis = RiemannianUMAPAnalysis(data_10d, n_neighbors=n_neighbors_10d)
+analysis = RiemannianAnalysis(data_10d, n_neighbors=n_neighbors_10d)
 
 print("\n[ANTES de modificar data y n_neighbors]")
 print("calculate_umap_graph_similarities:")

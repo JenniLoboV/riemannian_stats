@@ -25,7 +25,7 @@ This example illustrates the flexibility of riemannian_stats in handling a class
 with clusters, enabling a comprehensive visual exploration of the data.
 """
 
-from riemannian_stats import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities
+from riemannian_stats import RiemannianAnalysis, Visualization, DataProcessing, Utilities
 
 # ---------------------------
 # Example 2: Iris Dataset
@@ -48,7 +48,7 @@ else:
     data_with_clusters = data
 
 # Create an instance of RiemannianUMAPAnalysis for the dataset.
-analysis = RiemannianUMAPAnalysis(data, n_neighbors=n_neighbors)
+analysis = RiemannianAnalysis(data, n_neighbors=n_neighbors)
 
 # --------------------------------------------------------
 # Compute UMAP graph similarities and the rho matrix for the data.

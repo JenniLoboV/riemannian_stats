@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 import pandas as pd
-from riemannian_stats import RiemannianUMAPAnalysis
+from riemannian_stats import RiemannianAnalysis
 
 
 class TestRiemannianUMAPAnalysis(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
             'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             'b': [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         })
-        self.analysis = RiemannianUMAPAnalysis(self.data, n_neighbors=2)
+        self.analysis = RiemannianAnalysis(self.data, n_neighbors=2)
 
     def test_calculate_umap_graph_similarities(self):
         """

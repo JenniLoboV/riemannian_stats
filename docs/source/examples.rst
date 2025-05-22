@@ -5,6 +5,26 @@ RiemannianStats provides an intuitive and powerful interface to perform Principa
 
 Each example below illustrates how to apply this process to different types of datasets: one classical and low-dimensional, the other high-dimensional and synthetic.
 
+Importing RiemannianStats
+--------------------------
+
+RiemannianStats supports multiple import styles to improve user flexibility and comfort:
+
+**Standard imports** (recommended for clarity and readability):
+
+.. code-block:: python
+
+    from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, Utilities
+
+**Lowercase aliases** (for convenience and quick scripting):
+
+.. code-block:: python
+
+    from riemannian_stats import riemannian_analysis, dataprocessing, visualization, utilities
+
+Both approaches provide access to the same classes—choose the one that suits your workflow.
+
+
 Example 1: Iris Dataset
 -----------------------
 

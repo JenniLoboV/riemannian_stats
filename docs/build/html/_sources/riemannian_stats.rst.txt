@@ -5,7 +5,7 @@ The ``RiemannStats`` package is a comprehensive collection of tools designed for
 
 This package is organized into the following key modules:
 
-- **RiemannianUMAPAnalysis**: A module for performing UMAP-based dimensionality reduction combined with Riemannian geometry, allowing for the analysis and exploration of high-dimensional data.
+- **RiemannianAnalysis**: A module for performing UMAP-based dimensionality reduction combined with Riemannian geometry, allowing for the analysis and exploration of high-dimensional data.
 - **DataProcessing**: A module for handling the loading and preparation of data, especially for CSV files, making it easier to import data into a format ready for analysis.
 - **Visualization**: A module for generating a variety of visualizations, including 2D and 3D scatter plots, correlation circles, and principal component analysis (PCA) plots, to facilitate the interpretation of data.
 - **Utilities**: A utility module that provides a collection of common mathematical and statistical functions, such as PCA inertia calculations, to streamline data analysis workflows.
@@ -17,7 +17,7 @@ Explore the following modules for detailed information on their functionalities:
 .. toctree::
    :maxdepth: 2
 
-   RiemannianUMAPAnalysis <riemannian_umap_analysis>
+   RiemannianUMAPAnalysis <riemannian_analysis>
    DataProcessing      <data_processing>
    Visualization      <visualization>
    Utilities          <utilities>

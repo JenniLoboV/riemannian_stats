@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from riemannian_stats import Visualization, RiemannianUMAPAnalysis, Utilities
+from riemannian_stats import Visualization, RiemannianAnalysis, Utilities
 
 
 class TestVisualization(unittest.TestCase):
@@ -24,7 +24,7 @@ class TestVisualization(unittest.TestCase):
             'cluster': [0, 1, 0, 1, 0, 1, 0, 0, 0, 1]
         })
 
-        self.analysis = RiemannianUMAPAnalysis(self.data[['a', 'b']], n_neighbors=2)
+        self.analysis = RiemannianAnalysis(self.data[['a', 'b']], n_neighbors=2)
 
         self.corr_matrix = self.analysis.riemannian_correlation_matrix()
         self.components = self.analysis.riemannian_components(self.corr_matrix)

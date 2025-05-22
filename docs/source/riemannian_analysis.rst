@@ -1,12 +1,12 @@
 RiemannianUMAPAnalysis
 ======================
 
-The ``RiemannianUMAPAnalysis`` module offers a sophisticated approach for dimensionality reduction and data analysis by combining Uniform Manifold Approximation and Projection (UMAP) with Riemannian geometry. This module enables users to explore and analyze high-dimensional datasets through the lens of Riemannian geometry, providing advanced tools for extracting meaningful patterns and structures from data.
+The ``RiemannianAnalysis`` module offers a sophisticated approach for dimensionality reduction and data analysis by combining Uniform Manifold Approximation and Projection (UMAP) with Riemannian geometry. This module enables users to explore and analyze high-dimensional datasets through the lens of Riemannian geometry, providing advanced tools for extracting meaningful patterns and structures from data.
 
 Overview
 --------
 
-This class provides methods for UMAP-based dimensionality reduction, extended by incorporating Riemannian metrics to better capture geometric properties of the data. With the ability to analyze data using various distance metrics, ``RiemannianUMAPAnalysis`` allows for flexibility in working with different types of datasets, including those that require non-Euclidean geometry.
+This class provides methods for UMAP-based dimensionality reduction, extended by incorporating Riemannian metrics to better capture geometric properties of the data. With the ability to analyze data using various distance metrics, ``RiemannianAnalysis`` allows for flexibility in working with different types of datasets, including those that require non-Euclidean geometry.
 
 Features
 ---------
@@ -28,9 +28,9 @@ By utilizing this module, you can significantly enhance your data analysis workf
 
 Module Documentation
 ---------------------
-For detailed information on the `RiemannianUMAPAnalysis` module, refer to the module's API documentation:
+For detailed information on the `RiemannianAnalysis` module, refer to the module's API documentation:
 
-.. automodule:: riemannian_stats.riemannian_umap_analysis
+.. automodule:: riemannian_stats.riemannian_analysis
    :members:
    :show-inheritance:
    :undoc-members:

@@ -1,12 +1,23 @@
 How to Install It
 ==================
 
-To install the **RiemannianStats** package, you can use **pip** from the Python Package Index (PyPI) or install it directly from the source.
+To install the **RiemannianStats** package, you can use **pip** from the Python Package Index (PyPI), directly from GitHub, or by building and installing it locally from source.
+
+We strongly recommend installing the package inside a **virtual environment** to avoid conflicts with other Python packages.
+
+.. note::
+
+   You can create and activate a virtual environment with:
+
+   .. code-block:: bash
+
+      python -m venv .venv
+      source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
 Install via PyPI
 ----------------
 
-To install the latest version of **RiemannianStats** directly from PyPI, simply run the following command:
+To install the latest version of **RiemannianStats** directly from PyPI, simply run:
 
 .. code-block:: bash
 
@@ -14,31 +25,52 @@ To install the latest version of **RiemannianStats** directly from PyPI, simply 
 
 This will automatically install the package along with its required dependencies.
 
-Install from Source
+Install from GitHub
 -------------------
 
-If you prefer to install **RiemannianStats** from the source code, follow these steps:
-
-1. Clone the repository from GitHub:
+To install the latest development version directly from the GitHub repository:
 
 .. code-block:: bash
 
-   git clone https://github.com/your_username/riemannian_stats.git
+   pip install git+https://github.com/your_username/riemannian_stats.git
 
-2. Navigate to the cloned directory:
+This method does not require cloning the repository manually.
+
+Install from Local Source
+-------------------------
+
+If you prefer to clone the repository and install the package from local files:
+
+1. Clone the repository:
+
+   .. code-block:: bash
+
+      git clone https://github.com/your_username/riemannian_stats.git
+
+2. Navigate to the project directory:
+
+   .. code-block:: bash
+
+      cd riemannian_stats
+
+3. Install the package:
+
+   .. code-block:: bash
+
+      pip install .
+
+Install from a Local tar.gz File
+--------------------------------
+
+If you have built the package using `python -m build`, you can install it from the generated `.tar.gz` file:
 
 .. code-block:: bash
 
-   cd riemannian_stats
-
-3. Install the package and its dependencies:
-
-.. code-block:: bash
-
-   pip install .
+   pip install dist/riemannian_stats-0.1.0.tar.gz
 
 Requirements
 -------------
+
 Make sure you have the necessary dependencies listed in the `requirements.txt` file. The core dependencies include:
 
 - **matplotlib** (>=3.9.2,<3.11)
@@ -47,7 +79,7 @@ Make sure you have the necessary dependencies listed in the `requirements.txt` f
 - **scikit-learn** (>=1.5.1,<1.7)
 - **umap-learn** (>=0.5.7,<0.6)
 
-These dependencies are automatically installed when you use `pip install riemannian_stats`. However, if you prefer to manage the dependencies manually, you can install them from the `requirements.txt` file:
+These dependencies are automatically installed with `pip install`, but you can also install them manually:
 
 .. code-block:: bash
 
@@ -56,10 +88,10 @@ These dependencies are automatically installed when you use `pip install riemann
 Python Version
 ---------------
 
-**RiemannStats** requires Python version **3.8 or higher**. Ensure you have the correct version of Python installed. You can check your Python version by running:
+**RiemannStats** requires Python version **3.8 or higher**. You can check your current Python version with:
 
 .. code-block:: bash
 
    python --version
 
-For more detailed installation instructions or to contribute to the project, visit the [GitHub repository](https://github.com/your_username/riemannian_stats_py).
+For more detailed installation instructions or to contribute to the project, visit the `GitHub repository <https://github.com/your_username/riemannian_stats_py>`_.

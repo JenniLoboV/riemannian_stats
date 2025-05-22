@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7499c9da" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7d477787" />
     
     
 
@@ -258,6 +258,19 @@
 <h1>How to Use RiemannianStats<a class="headerlink" href="#how-to-use-riemannianstats" title="Link to this heading">¶</a></h1>
 <p>RiemannianStats provides an intuitive and powerful interface to perform Principal Component Analysis on Riemannian manifolds derived from any tabular dataset. Below you’ll find two comprehensive examples that demonstrate how to load data, configure the analysis, compute Riemannian structures, and visualize the results.</p>
 <p>Each example below illustrates how to apply this process to different types of datasets: one classical and low-dimensional, the other high-dimensional and synthetic.</p>
+<section id="importing-riemannianstats">
+<h2>Importing RiemannianStats<a class="headerlink" href="#importing-riemannianstats" title="Link to this heading">¶</a></h2>
+<p>RiemannianStats supports multiple import styles to improve user flexibility and comfort:</p>
+<p><strong>Standard imports</strong> (recommended for clarity and readability):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">riemannian_stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">RiemannianAnalysis</span><span class="p">,</span> <span class="n">DataProcessing</span><span class="p">,</span> <span class="n">Visualization</span><span class="p">,</span> <span class="n">Utilities</span>
+</pre></div>
+</div>
+<p><strong>Lowercase aliases</strong> (for convenience and quick scripting):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">riemannian_stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">riemannian_analysis</span><span class="p">,</span> <span class="n">dataprocessing</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="n">utilities</span>
+</pre></div>
+</div>
+<p>Both approaches provide access to the same classes—choose the one that suits your workflow.</p>
+</section>
 <section id="example-1-iris-dataset">
 <h2>Example 1: Iris Dataset<a class="headerlink" href="#example-1-iris-dataset" title="Link to this heading">¶</a></h2>
 <p>This example uses the classic Iris dataset to showcase RiemannianStats’ ability to uncover structure in well-known data. It demonstrates:</p>
@@ -346,6 +359,7 @@ View the full Iris Example
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">How to Use RiemannianStats</a><ul>
+<li><a class="reference internal" href="#importing-riemannianstats">Importing RiemannianStats</a></li>
 <li><a class="reference internal" href="#example-1-iris-dataset">Example 1: Iris Dataset</a></li>
 <li><a class="reference internal" href="#example-2-data10d-250">Example 2: Data10D_250</a></li>
 </ul>

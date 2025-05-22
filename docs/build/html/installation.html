@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7499c9da" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7d477787" />
     
     
 
@@ -204,12 +204,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">How to Use RiemannianStats</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to Use RiemannianStats</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">How to Use RiemannianStats</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Install RiemannianStats</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="riemannian_umap_analysis.html">RiemannianUMAPAnalysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="riemannian_stats.html">RiemannianStats Package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of RiemannianStats Package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="riemannian_analysis.html">RiemannianUMAPAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_processing.html">DataProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
@@ -258,34 +256,57 @@
         <article role="main" id="furo-main-content">
           <section id="how-to-install-it">
 <h1>How to Install It<a class="headerlink" href="#how-to-install-it" title="Link to this heading">¶</a></h1>
-<p>To install the <strong>RiemannianStats</strong> package, you can use <strong>pip</strong> from the Python Package Index (PyPI) or install it directly from the source.</p>
+<p>To install the <strong>RiemannianStats</strong> package, you can use <strong>pip</strong> from the Python Package Index (PyPI), directly from GitHub, or by building and installing it locally from source.</p>
+<p>We strongly recommend installing the package inside a <strong>virtual environment</strong> to avoid conflicts with other Python packages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can create and activate a virtual environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># On Windows use: .venv\Scripts\activate</span>
+</pre></div>
+</div>
+</div>
 <section id="install-via-pypi">
 <h2>Install via PyPI<a class="headerlink" href="#install-via-pypi" title="Link to this heading">¶</a></h2>
-<p>To install the latest version of <strong>RiemannianStats</strong> directly from PyPI, simply run the following command:</p>
+<p>To install the latest version of <strong>RiemannianStats</strong> directly from PyPI, simply run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>riemannian_stats
 </pre></div>
 </div>
 <p>This will automatically install the package along with its required dependencies.</p>
 </section>
-<section id="install-from-source">
-<h2>Install from Source<a class="headerlink" href="#install-from-source" title="Link to this heading">¶</a></h2>
-<p>If you prefer to install <strong>RiemannianStats</strong> from the source code, follow these steps:</p>
-<ol class="arabic simple">
-<li><p>Clone the repository from GitHub:</p></li>
-</ol>
+<section id="install-from-github">
+<h2>Install from GitHub<a class="headerlink" href="#install-from-github" title="Link to this heading">¶</a></h2>
+<p>To install the latest development version directly from the GitHub repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/your_username/riemannian_stats.git
+</pre></div>
+</div>
+<p>This method does not require cloning the repository manually.</p>
+</section>
+<section id="install-from-local-source">
+<h2>Install from Local Source<a class="headerlink" href="#install-from-local-source" title="Link to this heading">¶</a></h2>
+<p>If you prefer to clone the repository and install the package from local files:</p>
+<ol class="arabic">
+<li><p>Clone the repository:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your_username/riemannian_stats.git
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Navigate to the cloned directory:</p></li>
-</ol>
+</li>
+<li><p>Navigate to the project directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>riemannian_stats
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Install the package and its dependencies:</p></li>
-</ol>
+</li>
+<li><p>Install the package:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="install-from-a-local-tar-gz-file">
+<h2>Install from a Local tar.gz File<a class="headerlink" href="#install-from-a-local-tar-gz-file" title="Link to this heading">¶</a></h2>
+<p>If you have built the package using <cite>python -m build</cite>, you can install it from the generated <cite>.tar.gz</cite> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dist/riemannian_stats-0.1.0.tar.gz
 </pre></div>
 </div>
 </section>
@@ -299,18 +320,18 @@
 <li><p><strong>scikit-learn</strong> (&gt;=1.5.1,&lt;1.7)</p></li>
 <li><p><strong>umap-learn</strong> (&gt;=0.5.7,&lt;0.6)</p></li>
 </ul>
-<p>These dependencies are automatically installed when you use <cite>pip install riemannian_stats</cite>. However, if you prefer to manage the dependencies manually, you can install them from the <cite>requirements.txt</cite> file:</p>
+<p>These dependencies are automatically installed with <cite>pip install</cite>, but you can also install them manually:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </section>
 <section id="python-version">
 <h2>Python Version<a class="headerlink" href="#python-version" title="Link to this heading">¶</a></h2>
-<p><strong>RiemannStats</strong> requires Python version <strong>3.8 or higher</strong>. Ensure you have the correct version of Python installed. You can check your Python version by running:</p>
+<p><strong>RiemannStats</strong> requires Python version <strong>3.8 or higher</strong>. You can check your current Python version with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
 </pre></div>
 </div>
-<p>For more detailed installation instructions or to contribute to the project, visit the [GitHub repository](<a class="reference external" href="https://github.com/your_username/riemannian_stats_py">https://github.com/your_username/riemannian_stats_py</a>).</p>
+<p>For more detailed installation instructions or to contribute to the project, visit the <a class="reference external" href="https://github.com/your_username/riemannian_stats_py">GitHub repository</a>.</p>
 </section>
 </section>
 
@@ -371,7 +392,9 @@
             <ul>
 <li><a class="reference internal" href="#">How to Install It</a><ul>
 <li><a class="reference internal" href="#install-via-pypi">Install via PyPI</a></li>
-<li><a class="reference internal" href="#install-from-source">Install from Source</a></li>
+<li><a class="reference internal" href="#install-from-github">Install from GitHub</a></li>
+<li><a class="reference internal" href="#install-from-local-source">Install from Local Source</a></li>
+<li><a class="reference internal" href="#install-from-a-local-tar-gz-file">Install from a Local tar.gz File</a></li>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#python-version">Python Version</a></li>
 </ul>
