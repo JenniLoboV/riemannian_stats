@@ -24,10 +24,34 @@ This package is ideal for researchers, data scientists, and developers seeking t
 
 **User Guide**
 
-.. toctree::
-   :maxdepth: 1
+.. raw:: html
 
-   How to Use RiemannianStats        <examples>
-   Install RiemannianStats           <installation>
-   RiemannianStats Package           <riemannian_stats>
-   Scientific Paper                  <paper>
+   <div class="card-grid">
+       <a href="examples.html" class="card">
+           <img src="_static/icons/example.svg" alt="Examples">
+           <span>How to Use RiemannianStats</span>
+       </a>
+       <a href="installation.html" class="card">
+           <img src="_static/icons/installation.png" alt="Installation">
+           <span>Install RiemannianStats</span>
+       </a>
+       <a href="riemannian_stats.html" class="card">
+           <img src="_static/icons/package.png" alt="RiemannianStats">
+           <span>RiemannianStats Package</span>
+       </a>
+       <a href="paper.html" class="card">
+           <img src="_static/icons/paper.png" alt="Paper">
+           <span>Scientific Paper</span>
+       </a>
+   </div>
+
+.. only:: html
+
+   .. toctree::
+      :hidden:
+      :maxdepth: 1
+
+      How to Use RiemannianStats        <examples>
+      Install RiemannianStats           <installation>
+      RiemannianStats Package           <riemannian_stats>
+      Scientific Paper                  <paper>

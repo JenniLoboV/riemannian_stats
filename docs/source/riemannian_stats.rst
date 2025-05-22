@@ -10,14 +10,53 @@ This package is organized into the following key modules:
 - **Visualization**: A module for generating a variety of visualizations, including 2D and 3D scatter plots, correlation circles, and principal component analysis (PCA) plots, to facilitate the interpretation of data.
 - **Utilities**: A utility module that provides a collection of common mathematical and statistical functions, such as PCA inertia calculations, to streamline data analysis workflows.
 
-Each module is designed to be highly flexible, enabling users to apply the appropriate tools in their specific data analysis tasks. Whether you're working on dimensionality reduction, preparing data for analysis, or creating insightful visualizations, the ``RiemannStats`` package offers the necessary tools to enhance your data science workflows.
+Each module is designed to be highly flexible, enabling users to apply the appropriate tools in their specific data analysis tasks. Whether you're working on dimensionality reduction, preparing data for analysis, or creating insightful visualizations, the `RiemannStats package offers the necessary tools to enhance your data science workflows.
 
 Explore the following modules for detailed information on their functionalities:
 
-.. toctree::
-   :maxdepth: 2
+.. raw:: html
 
-   RiemannianUMAPAnalysis <riemannian_analysis>
-   DataProcessing      <data_processing>
-   Visualization      <visualization>
-   Utilities          <utilities>
+   <div class="accordion">
+
+   <details>
+     <summary><strong>RiemannianUMAPAnalysis</strong></summary>
+     <ul>
+       <li><a href="riemannian_analysis.html#overview">Overview</a></li>
+       <li><a href="riemannian_analysis.html#features">Features</a></li>
+       <li><a href="riemannian_analysis.html#when-to-use">When to Use</a></li>
+       <li><a href="riemannian_analysis.html#module-documentation">Module Documentation</a></li>
+     </ul>
+   </details>
+
+   <details>
+     <summary><strong>DataProcessing</strong></summary>
+     <ul>
+       <li><a href="data_processing.html#overview">Overview</a></li>
+       <li><a href="data_processing.html#features">Features</a></li>
+       <li><a href="data_processing.html#module-documentation">Module Documentation</a></li>
+     </ul>
+   </details>
+
+   <details>
+     <summary><strong>Visualization</strong></summary>
+     <ul>
+       <li><a href="visualization.html#overview">Overview</a></li>
+       <li><a href="visualization.html#features">Features</a></li>
+       <li><a href="visualization.html#when-to-use">When to Use</a></li>
+       <li><a href="visualization.html#module-documentation">Module Documentation</a></li>
+     </ul>
+   </details>
+
+   <details>
+     <summary><strong>Utilities</strong></summary>
+     <ul>
+       <li><a href="utilities.html#overview">Overview</a></li>
+       <li><a href="utilities.html#features">Features</a></li>
+       <li><a href="utilities.html#methods">Methods</a></li>
+       <li><a href="utilities.html#example-usage">Example Usage</a></li>
+       <li><a href="utilities.html#when-to-use">When to Use</a></li>
+       <li><a href="utilities.html#module-documentation">Module Documentation</a></li>
+     </ul>
+   </details>
+
+   </div>
