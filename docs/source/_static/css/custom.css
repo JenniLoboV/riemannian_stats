@@ -1,70 +1,143 @@
-/* Fondo general del sitio (body): un gris muy claro para que la página no sea completamente blanca */
-body {
-    background-color: #f9f9f9; /* Gris casi blanco */
-    color: #1a1a1a; /* Texto principal en gris oscuro (casi negro) */
+/* ====================
+   VARIABLES PERSONALIZADAS
+   ==================== */
+:root {
+    --link-color: #4f73a8;          /* Azul marino */
+    --link-hover-color: #004080;    /* Azul marino más claro */
+
+    --code-background: #f4f4f4;     /* Gris claro sobrio */
+    --code-text: #0b1017;           /* Azul grisáceo oscuro */
+
+    --admonition-background: #eef2f6; /* Gris azulado suave */
+    --admonition-border: #aec5d3;     /* Azul medio sobrio */
+
+    --table-border-color: #d0d7de;    /* Gris muy claro */
 }
 
-/* Área principal del contenido, dentro del <article> (donde va la documentación en sí) */
-article {
-    background-color: #ffffff; /* Fondo blanco para resaltar el contenido */
-    color: #1a1a1a; /* Texto en gris oscuro para buena legibilidad */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --link-color: #66b0ff;
+        --link-hover-color: #99ccff;
+
+        --code-background: rgba(30, 30, 30, 0.71);
+        --code-text: #00cc30;
+
+        --admonition-background: #1c2a3a;
+        --admonition-border: #3b82f6;
+
+        --table-border-color: #3a3f44;
+    }
 }
 
-/* Enlaces dentro del contenido principal */
+/* ====================
+   ENLACES
+   ==================== */
 article a {
-    color: #000e66; /* Azul oscuro para diferenciar los enlaces del texto común */
-    font-weight: bold; /* Enlaces en negrita para destacarlos */
-    text-decoration: none; /* Sin subrayado por defecto, para un estilo limpio */
+    color: var(--link-color);
+    font-weight: bold;
+    text-decoration: none;
 }
 
-/* Efecto hover en los enlaces del contenido */
 article a:hover {
-    color: #005599; /* Azul más brillante al pasar el ratón para resaltar la interactividad */
-    text-decoration: underline; /* Subrayado solo al pasar el cursor */
+    color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
-/* Colores para todos los títulos (h1 a h6) */
+/* ====================
+   TÍTULOS
+   ==================== */
 h1, h2, h3, h4, h5, h6 {
-    color: #111111; /* Negro ligeramente suavizado para una jerarquía visual clara */
+    font-weight: bold;
 }
 
-/* Estilos para bloques de código (pre) y código inline (code) */
+/* ====================
+   CÓDIGO
+   ==================== */
 code, pre {
-    background-color: #eeeeee; /* Fondo gris claro para distinguirlos del resto del contenido */
-    color: #002b36; /* Azul oscuro/grisáceo para el texto del código */
-    font-weight: normal; /* Sin negrita para mantener el estilo de código limpio */
+    background-color: var(--code-background);
+    color: var(--code-text);
+    font-family: 'Fira Code', Consolas, monospace;
+    font-size: 0.95em;
+    border-radius: 4px;
+    padding: 0.25em 0.5em;
 }
 
-/* Bordes de las tablas dentro del contenido */
-article table {
-    border-color: #cccccc; /* Bordes exteriores de la tabla en gris suave */
+/* Mejora visual de bloques de código */
+pre {
+    overflow-x: auto;
+    padding: 1em;
 }
 
-/* Celdas de las tablas: encabezados y datos */
+/* ====================
+   TABLAS
+   ==================== */
 article th, article td {
-    border: 1px solid #cccccc; /* Bordes individuales de las celdas */
-    padding: 0.5em; /* Espaciado interno para que el contenido no quede pegado al borde */
+    padding: 0.5em;
+    border: 1px solid var(--table-border-color);
 }
 
-/* Estilo para las admoniciones (notas, tips, advertencias, etc.) */
+/* ====================
+   ADMONICIONES POR TIPO
+   ==================== */
+
+/* --- NOTE --- */
+.admonition.note {
+    border-left-color: #4f73a8;
+    background-color: #eef2f6;
+}
+
+@media (prefers-color-scheme: dark) {
+    .admonition.note {
+        border-left-color: #6ca0dc;
+        background-color: #1e293b;
+    }
+}
+
+/* --- WARNING --- */
+.admonition.warning {
+    border-left-color: #e0a800;
+    background-color: #fffbea;
+}
+
+@media (prefers-color-scheme: dark) {
+    .admonition.warning {
+        border-left-color: #fcd34d;
+        background-color: #3a2e00;
+    }
+}
+
+/* --- TIP --- */
+.admonition.tip {
+    border-left-color: #10b981;
+    background-color: #e6f4f1;
+}
+
+@media (prefers-color-scheme: dark) {
+    .admonition.tip {
+        border-left-color: #34d399;
+        background-color: #0f2f27;
+    }
+}
+
+/* --- IMPORTANT --- */
+.admonition.important {
+    border-left-color: #db2777;
+    background-color: #fef2f8;
+}
+
+@media (prefers-color-scheme: dark) {
+    .admonition.important {
+        border-left-color: #f472b6;
+        background-color: #3b0a2f;
+    }
+}
+/* ====================
+   ADMONICIONES
+   ==================== */
 .admonition {
-    background-color: #f0f4f8; /* Fondo azul-gris claro, suave y neutro */
-    border-left: 4px solid #0077cc; /* Línea azul a la izquierda para diferenciarla visualmente */
-    color: #1a1a1a; /* Texto oscuro para buena lectura */
-}
-
-/* Fondo y texto para la barra lateral, el índice (TOC), y la zona de navegación relacionada */
-.sidebar, .toc, .theme-toggle, .related-navigation {
-    background-color: #f0f0f0; /* Fondo gris claro para no destacar demasiado */
-    color: #111111; /* Texto oscuro pero no negro puro */
-}
-
-/* Enlaces dentro del menú lateral, índice y navegación relacionada */
-.sidebar a, .toc a, .related-navigation a {
-    color: #003366; /* Azul oscuro para los enlaces */
-}
-
-/* Efecto hover en esos enlaces del menú lateral y navegación */
-.sidebar a:hover, .toc a:hover, .related-navigation a:hover {
-    color: #005599; /* Azul más claro al pasar el ratón para indicar que se puede hacer clic */
+    background-color: var(--admonition-background);
+    border-left: 4px solid var(--admonition-border);
+    padding: 1em;
+    border-radius: 4px;
+    color: inherit;
 }
