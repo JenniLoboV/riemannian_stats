@@ -3,7 +3,7 @@
     "public": ".",
     "ignore": [
       "firebase.json",
-      "**/../html*",
+      "**/./ build/html*",
       "**/node_modules/**"
     ]
   }
