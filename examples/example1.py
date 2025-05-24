@@ -4,7 +4,7 @@ using the riemannian_stats package. The dataset is loaded and preprocessed using
 with a semicolon as the separator and a dot as the decimal marker. The script checks for the presence
 of a 'tipo' column to extract clustering information and separates it from the main analysis data.
 
-An instance of RiemannianUMAPAnalysis is then created to compute key metrics, including:
+An instance of RiemannianAnalysis is then created to compute key metrics, including:
 - UMAP graph similarities,
 - The rho matrix,
 - Riemannian vector differences,

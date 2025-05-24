@@ -56,7 +56,7 @@ This package is ideal for researchers, data scientists, and developers seeking t
       :maxdepth: 1
 
       How to Use Riemannian STATS       <examples>
-      Install RiemannianStats           <installation>
+      Install Riemannian STATS           <installation>
       RiemannianStats Package           <riemannian_stats>
       Source Code and Contributors      <github_repository>
       Scientific Paper                  <paper>

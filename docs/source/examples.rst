@@ -1,14 +1,14 @@
-How to Use RiemannianStats
+How to Use Riemannian STATS
 ============================
 
-RiemannianStats provides an intuitive and powerful interface to perform Principal Component Analysis on Riemannian manifolds derived from any tabular dataset. Below you’ll find two comprehensive examples that demonstrate how to load data, configure the analysis, compute Riemannian structures, and visualize the results.
+Riemannian STATS provides an intuitive and powerful interface to perform Principal Component Analysis on Riemannian manifolds derived from any tabular dataset. Below you’ll find two comprehensive examples that demonstrate how to load data, configure the analysis, compute Riemannian structures, and visualize the results.
 
 Each example below illustrates how to apply this process to different types of datasets: one classical and low-dimensional, the other high-dimensional and synthetic.
 
-Importing RiemannianStats
+Importing Riemannian STATS
 --------------------------
 
-RiemannianStats supports multiple import styles to improve user flexibility and comfort:
+Riemannian STATS supports multiple import styles to improve user flexibility and comfort:
 
 **Standard imports** (recommended for clarity and readability):
 
@@ -28,7 +28,7 @@ Both approaches provide access to the same classes—choose the one that suits y
 Example 1: Iris Dataset
 -----------------------
 
-This example uses the classic Iris dataset to showcase RiemannianStats' ability to uncover structure in well-known data. It demonstrates:
+This example uses the classic Iris dataset to showcase Riemannian STATS' ability to uncover structure in well-known data. It demonstrates:
 
 - Loading and preprocessing the data using DataProcessing.load_data.
 - Detecting clusters (from the 'tipo' column).
@@ -50,7 +50,7 @@ This example is ideal for those looking to understand the workflow and inspect m
 Example 2: Data10D_250
 ----------------------
 
-This example applies RiemannianStats to a synthetic, high-dimensional dataset with known cluster structure. It demonstrates:
+This example applies Riemannian STATS to a synthetic, high-dimensional dataset with known cluster structure. It demonstrates:
 
 - Handling datasets with more variables and complex geometry.
 - Separating clustering labels (from the `'cluster'` column) from the analysis data.

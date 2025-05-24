@@ -1,7 +1,7 @@
 Source Code and Contributors
 ============================
 
-The source code for the **RiemannianStats** package is publicly available on GitHub:
+The source code for the **Riemannian STATS** package is publicly available on GitHub:
 
 🔗 **GitHub Repository**:
 https://github.com/JenniLoboV/riemann_stats_py
@@ -23,4 +23,4 @@ This package is developed and maintained by:
 We welcome contributions from the community!
 If you are interested in contributing, please open an issue or submit a pull request on GitHub.
 
-Thank you to everyone who supports and improves **RiemannianStats**.
+Thank you to everyone who supports and improves **Riemannian STATS**.

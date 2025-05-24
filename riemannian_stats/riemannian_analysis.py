@@ -56,7 +56,7 @@ class RiemannianAnalysis:
     def __init__(self, data: Union[np.ndarray, pd.DataFrame], n_neighbors: int = 3,
                  min_dist: float = 0.1, metric: str = "euclidean") -> None:
         """
-        Initialize the RiemannianUMAPAnalysis object with data and UMAP parameters.
+        Initialize the RiemannianAnalysis object with data and UMAP parameters.
 
         Parameters:
             data (Union[np.ndarray, pd.DataFrame]): Input dataset where rows represent observations and

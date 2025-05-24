@@ -6,7 +6,7 @@ from riemannian_stats import RiemannianAnalysis
 
 class TestRiemannianUMAPAnalysis(unittest.TestCase):
     """
-    Unit test suite for the RiemannianUMAPAnalysis class.
+    Unit test suite for the RiemannianAnalysis class.
 
     This class contains unit tests to validate the behavior and correctness
     of the methods defined in RiemannianUMAPAnalysis, especially the computation

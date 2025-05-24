@@ -1,7 +1,7 @@
 How to Install It
 ==================
 
-To install the **RiemannianStats** package, you can use **pip** from the Python Package Index (PyPI), directly from GitHub, or by building and installing it locally from source.
+To install the **Riemannian STATS** package, you can use **pip** from the Python Package Index (PyPI), directly from GitHub, or by building and installing it locally from source.
 
 We strongly recommend installing the package inside a **virtual environment** to avoid conflicts with other Python packages.
 

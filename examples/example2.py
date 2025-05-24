@@ -5,7 +5,7 @@ with a comma as the separator and a dot as the decimal marker. The script verifi
 to extract clustering information and separates it from the data used for analysis, preserving a copy of the original
 dataset for visualization purposes.
 
-Next, an instance of RiemannianUMAPAnalysis is created to compute several key metrics including:
+Next, an instance of RiemannianAnalysis is created to compute several key metrics including:
 - UMAP graph similarities,
 - The rho matrix,
 - Riemannian vector differences,
