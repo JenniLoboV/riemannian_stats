@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from riemannian_stats import Utilities
+from riemannian_stats import utilities
 
 
 class TestPCAInertiaByComponents(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         Verifies that the explained inertia value for valid components
         lies between 0 and 1 (inclusive).
         """
-        explained_inertia = Utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 1)
+        explained_inertia = utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 1)
         self.assertTrue(0 <= explained_inertia <= 1,
                         "Explained inertia must be between 0 and 1.")
 
@@ -44,7 +44,7 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         Verifies that a ValueError is raised when the correlation matrix is not square.
         """
         with self.assertRaises(ValueError):
-            Utilities.pca_inertia_by_components(self.invalid_corr_matrix, 0, 1)
+            utilities.pca_inertia_by_components(self.invalid_corr_matrix, 0, 1)
 
     def test_invalid_component_indices(self):
         """
@@ -53,10 +53,10 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         This includes negative indices and indices outside the valid component range.
         """
         with self.assertRaises(ValueError):
-            Utilities.pca_inertia_by_components(self.valid_corr_matrix, -1, 1)
+            utilities.pca_inertia_by_components(self.valid_corr_matrix, -1, 1)
 
         with self.assertRaises(ValueError):
-            Utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 3)
+            utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 3)
 
     def test_total_inertia_equals_one(self):
         """

@@ -127,7 +127,7 @@ from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, 
 Alternatively, you can use lowercase aliases for convenience:
 
 ```python
-from riemannian_stats import riemannian_analysis, data_processing, visualization, utilities
+from riemannian_stats import riemannian_analysis, DataProcessing, visualization, utilities
 ```
 
 Both styles provide access to the same classes—choose the one that fits your workflow best.

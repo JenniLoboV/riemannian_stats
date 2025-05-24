@@ -7,12 +7,12 @@ Se utilizan los datasets:
 - iris.csv
 """
 
-from riemannian_stats import RiemannianAnalysis, DataProcessing, Utilities
+from riemannian_stats import riemannian_analysis, data_processing, utilities
 
 # ---------------------------
 # Paso 1: Cargar primer dataset (Data10D_250.csv)
 # ---------------------------
-data_10d_full = DataProcessing.load_data("./data/Data10D_250.csv", separator=",", decimal=".")
+data_10d_full = data_processing.load_data("./data/Data10D_250.csv", separator=",", decimal=".")
 if 'cluster' in data_10d_full.columns:
     data_10d = data_10d_full.drop(columns=['cluster'])
 else:
@@ -20,7 +20,7 @@ else:
 n_neighbors_10d = int(len(data_10d) / 5)
 
 print("\n🔍 Inicializando análisis con Data10D_250.csv")
-analysis = RiemannianAnalysis(data_10d, n_neighbors=n_neighbors_10d)
+analysis = riemannian_analysis(data_10d, n_neighbors=n_neighbors_10d)
 
 print("\n[ANTES de modificar data y n_neighbors]")
 print("calculate_umap_graph_similarities:")
@@ -43,7 +43,7 @@ components_10d = analysis.riemannian_components_from_data_and_correlation(rieman
 print("\nriemannian_components_from_data_and_correlation:")
 print(components_10d)
 
-inertia_10d = Utilities.pca_inertia_by_components(riemann_corr_10d, 0, 1) * 100
+inertia_10d = utilities.pca_inertia_by_components(riemann_corr_10d, 0, 1) * 100
 print("\npca_inertia_by_components:")
 print(inertia_10d)
 
@@ -88,7 +88,7 @@ components_iris = analysis.riemannian_components_from_data_and_correlation(riema
 print("\nriemannian_components_from_data_and_correlation:")
 print(components_iris)
 
-inertia_iris = Utilities.pca_inertia_by_components(riemann_corr_iris, 0, 1) * 100
+inertia_iris = utilities.pca_inertia_by_components(riemann_corr_iris, 0, 1) * 100
 print("\npca_inertia_by_components:")
 print(inertia_iris)
 
