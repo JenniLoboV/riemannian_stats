@@ -17,7 +17,7 @@ We strongly recommend installing the package inside a **virtual environment** to
 Install via PyPI
 ----------------
 
-To install the latest version of **RiemannianStats** directly from PyPI, simply run:
+To install the latest version of **Riemannian STATS** directly from PyPI, simply run:
 
 .. code-block:: bash
 
@@ -62,11 +62,18 @@ If you prefer to clone the repository and install the package from local files:
 Install from a Local tar.gz File
 --------------------------------
 
-If you have built the package using `python -m build`, you can install it from the generated `.tar.gz` file:
+If you have the package file ``riemannian_stats-0.1.0.tar.gz`` on your computer, follow these steps to install it locally:
 
-.. code-block:: bash
+1. Open the **Command Prompt** (CMD) or **Terminal**.
+2. Use the ``cd`` command to go to the folder where the file is located.
+3. Run the following command:
 
-   pip install dist/riemannian_stats-0.1.0.tar.gz
+   .. code-block:: bash
+
+      pip install riemannian_stats-0.1.0.tar.gz
+
+That's it! The package will be installed into your current Python environment.
+
 
 Requirements
 -------------
@@ -88,7 +95,7 @@ These dependencies are automatically installed with `pip install`, but you can a
 Python Version
 ---------------
 
-**RiemannStats** requires Python version **3.8 or higher**. You can check your current Python version with:
+**Riemannian STATS** requires Python version **3.8 or higher**. You can check your current Python version with:
 
 .. code-block:: bash
 

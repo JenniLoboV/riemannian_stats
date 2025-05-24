@@ -1,17 +1,17 @@
 
 ---
 
-# RiemannianStats
+# Riemannian STATS
 
 ---
 
-### 📊 **RiemannianStats: Statistical Analysis on Riemannian Manifolds**
+### 📊 **Riemannian STATS: Statistical Analysis on Riemannian Manifolds**
 
 **RiemannianStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
 
 Instead of assuming data resides in Euclidean space, RiemannianStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.
 
-With **RiemannianStats**, you can:
+With **Riemannian STATS**, you can:
 
 * Incorporate the local geometry of your data for meaningful dimensionality reduction.
 * Generate visual representations that better reflect the true structure of your data.
@@ -24,13 +24,13 @@ This package is ideal for researchers, data scientists, and developers seeking t
 
 ## 🛠️ Features and Usage
 
-**RiemannianStats** offers several key functionalities:
+**Riemannian STATS** offers several key functionalities:
 
 - **Data Preprocessing:**  
   Easily import and transform datasets using functions in `data_processing.py`.
 
-- **Riemannian Analysis with UMAP:**  
-  Perform advanced statistical methods with `riemannian_umap_analysis.py` for extracting principal components in Riemannian spaces.
+- **Riemannian Analysis:**  
+  Perform advanced statistical methods with `riemannian_analysis.py` for extracting principal components in Riemannian spaces.
 
 - **Visualization:**  
   Generate insightful 2D and 3D plots, along with other visualizations using `visualization.py`.
@@ -50,13 +50,13 @@ riemannian_stats/
 ├── riemannian_stats/
 │   ├── __init__.py                      # Makes package modules importable
 │   ├── data_processing.py               # Classes for data loading and manipulation
-│   ├── riemannian_umap_analysis.py      # Riemannian statistical methods using UMAP
+│   ├── riemannian_analysis.py           # Riemannian statistical
 │   ├── visualization.py                 # Functions and classes for result visualization
 │   └── utilities.py                     # General utility functions
 │
 ├── tests/                               # Unit tests for each module
 │   ├── __init__.py
-│   ├── test_riemannian_umap_analysis.py
+│   ├── test_riemannian_analysis.py
 │   ├── test_visualization.py
 │   └── test_utilities.py
 │
@@ -127,7 +127,7 @@ from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, 
 Alternatively, you can use lowercase aliases for convenience:
 
 ```python
-from riemannian_stats import riemannian_analysis, dataprocessing, visualization, utilities
+from riemannian_stats import riemannian_analysis, data_processing, visualization, utilities
 ```
 
 Both styles provide access to the same classes—choose the one that fits your workflow best.
@@ -137,7 +137,7 @@ Both styles provide access to the same classes—choose the one that fits your w
 
 
 ## 📚 Examples of use
-The `examples/` directory contains two comprehensive examples demonstrating how to leverage **RiemannStats** for Riemannian data analysis and visualization.
+The `examples/` directory contains two comprehensive examples demonstrating how to leverage **Riemannian STATS** for Riemannian data analysis and visualization.
 
 --- 
 ### Example 1: Iris Dataset
@@ -147,8 +147,8 @@ Using the classic Iris dataset (`iris.csv`), this example illustrates the packag
 - **Data Loading and Preprocessing:**  
   The Iris dataset is imported using `DataProcessing.load_data()`, with a semicolon as the separator and a dot as the decimal. It checks for a `tipo` column to extract clustering information, which is then separated from the analysis data.
 
-- **UMAP and Riemannian Analysis:**  
-  An instance of `RiemannianUMAPAnalysis` is initialized with the dataset and a neighbor count determined as the data length divided by 3. The analysis process includes:
+- **Riemannian Analysis:**  
+  An instance of `RiemannianAnalysis` is initialized with the dataset and a neighbor count determined as the data length divided by 3. The analysis process includes:
   - Calculation of UMAP graph similarities.
   - Derivation of the rho matrix.
   - Computation of Riemannian vector differences.
@@ -176,8 +176,8 @@ This example demonstrates the analysis of a high-dimensional dataset (`Data10D_2
 - **Data Loading and Preprocessing:**  
   The dataset is loaded with `DataProcessing.load_data()`, using a comma as the separator and a dot for decimals. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
 
-- **UMAP and Riemannian Analysis:**  
-  An instance of `RiemannianUMAPAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
+- **Riemannian Analysis:**  
+  An instance of `RiemannianAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
   - UMAP graph similarities.
   - Computation of the rho matrix.
   - Calculation of Riemannian vector differences.

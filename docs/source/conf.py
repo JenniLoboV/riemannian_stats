@@ -25,20 +25,25 @@ exclude_patterns = []
 
 html_theme = 'furo'
 
-html_title = "Riemannian Stats"
-# html_favicon = "_static/images/favicon.ico"     # opcional
+html_title = "Riemannian STATS"
 
 html_theme_options = {
-    "light_logo": "images/light_logo.jpg",
-    "dark_logo": "images/dark_logo.jpg",
+    "light_logo": "images/logo.jpg",
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
 }
 
 
 html_static_path = ['_static']
+
 html_css_files = [
-    'css/custom.css',  # tu archivo de estilos personalizados
+    'css/base.css',   # común
+    'css/light.css',  # modo claro
+    'css/dark.css'    # modo oscuro
+]
+
+html_js_files = [
+    'js/theme-switch.js'
 ]
 
 # -- Autodoc Settings --

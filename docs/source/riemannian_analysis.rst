@@ -1,4 +1,4 @@
-RiemannianUMAPAnalysis
+RiemannianAnalysis
 ======================
 
 The ``RiemannianAnalysis`` module offers a sophisticated approach for dimensionality reduction and data analysis by combining Uniform Manifold Approximation and Projection (UMAP) with Riemannian geometry. This module enables users to explore and analyze high-dimensional datasets through the lens of Riemannian geometry, providing advanced tools for extracting meaningful patterns and structures from data.

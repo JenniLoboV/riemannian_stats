@@ -17,6 +17,14 @@ RiemannianStats Modules
 
    RiemannStats Modules <modules>
 
+Source Code and Contributors
+============================
+
+.. toctree::
+   :maxdepth: 2
+
+   Source Code and Contributors <github_repository>
+
 Scientific Paper
 ================
 
