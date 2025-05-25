@@ -40,7 +40,7 @@ This example is ideal for those looking to understand the workflow and inspect m
 
 .. raw:: html
 
-   <a href="_static/examples/Example1_Iris.html" target="_blank">
+   <a href="_static/examples/Example1.html" target="_blank">
    View the full Iris Example
    </a>
 
@@ -58,12 +58,12 @@ This example applies Riemannian STATS to a synthetic, high-dimensional dataset w
 - Generating detailed visualizations that reveal cluster relationships in 2D and 3D spaces.
 - Showing how R-PCA preserves and enhances the interpretability of complex datasets compared to classical PCA.
 
-This example highlights the robustness of RiemannianStats when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.
+This example highlights the robustness of Riemannian STATS when dealing with real-world scenarios where dimensionality reduction and structure preservation are critical.
 
 .. raw:: html
 
-   <a href="_static/examples/Example2_Data10D_250.html" target="_blank">
-   View the full Iris Example
+   <a href="_static/examples/Example2.html" target="_blank">
+   View the full Data10D_250 Example
    </a>
 
 `Download Complete Data10D_250 Python Script <../../../examples/example2.py>`_

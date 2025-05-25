@@ -5,8 +5,8 @@ RiemannianStats
    :maxdepth: 2
 
    Index <index>
-   How to Use RiemannianStats        <examples>
-   Install RiemannianStats           <installation>
+   How to Use Riemannian STATS        <examples>
+   Install Riemannian STATS           <installation>
 
 
 RiemannianStats Modules
@@ -15,7 +15,7 @@ RiemannianStats Modules
 .. toctree::
    :maxdepth: 2
 
-   RiemannStats Modules <modules>
+   Riemannian STATS Modules <modules>
 
 Source Code and Contributors
 ============================

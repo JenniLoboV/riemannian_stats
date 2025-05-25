@@ -12,7 +12,7 @@
 <meta name="author" content="Jennifer Lobo Vásquez &amp; Oldemar Rodríguez Rojas" />
 
 
-<title>RiemannianStats Example: Iris Dataset</title>
+<title>Riemannian STATS Example1: Iris Dataset</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,8 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">RiemannianStats Example: Iris Dataset</h1>
+<h1 class="title toc-ignore">Riemannian STATS Example1: Iris
+Dataset</h1>
 <h4 class="author">Jennifer Lobo Vásquez &amp; Oldemar Rodríguez
 Rojas</h4>
 
@@ -371,12 +372,12 @@ data.</p>
 <hr />
 <div id="load-required-modules" class="section level2">
 <h2>📦 Load Required Modules</h2>
-<pre class="python"><code>from riemannian_stats import RiemannianUMAPAnalysis, Visualization, DataProcessing, Utilities</code></pre>
+<pre class="python"><code>from riemannian_stats import riemannian_analysis, visualization, data_processing, utilities</code></pre>
 <hr />
 </div>
 <div id="load-and-prepare-data" class="section level2">
 <h2>📄 Load and Prepare Data</h2>
-<pre class="python"><code>data = DataProcessing.load_data(&quot;./data/iris.csv&quot;, separator=&quot;;&quot;, decimal=&quot;.&quot;)
+<pre class="python"><code>data = data_processing.load_data(&quot;./data/iris.csv&quot;, separator=&quot;;&quot;, decimal=&quot;.&quot;)
 n_neighbors = int(len(data) / 3)
 
 if &#39;tipo&#39; in data.columns:
@@ -393,8 +394,8 @@ removed for analysis purposes.</p>
 </div>
 <div id="create-analysis-instance" class="section level2">
 <h2>🔍 Create Analysis Instance</h2>
-<pre class="python"><code>analysis = RiemannianUMAPAnalysis(data, n_neighbors=n_neighbors)</code></pre>
-<pre><code>## C:\Users\JENNIF~1\DOCUME~1\VIRTUA~1\R-RETI~1\Lib\site-packages\sklearn\utils\deprecation.py:151: FutureWarning: &#39;force_all_finite&#39; was renamed to &#39;ensure_all_finite&#39; in 1.6 and will be removed in 1.8.
+<pre class="python"><code>analysis = riemannian_analysis(data, n_neighbors=n_neighbors)</code></pre>
+<pre><code>## C:\Anaconda\envs\RIEMAN~1\Lib\site-packages\sklearn\utils\deprecation.py:151: FutureWarning: &#39;force_all_finite&#39; was renamed to &#39;ensure_all_finite&#39; in 1.6 and will be removed in 1.8.
 ##   warnings.warn(</code></pre>
 <p>We initialize the Riemannian analysis intance, specifying the number
 of neighbors based on the dataset size.</p>
@@ -664,7 +665,7 @@ matrix, capturing variance in the intrinsic geometry of the data.</p>
 <div id="explained-inertia" class="section level2">
 <h2>🧮 Explained Inertia</h2>
 <pre class="python"><code>comp1, comp2 = 0, 1
-inertia = Utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
+inertia = utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
 print(f&quot;Explained Inertia (PC1 &amp; PC2): {inertia:.2f}%&quot;)</code></pre>
 <pre><code>## Explained Inertia (PC1 &amp; PC2): 95.38%</code></pre>
 <p>The explained inertia quantifies the proportion of Riemannian
@@ -688,7 +689,7 @@ Riemannian principal components.</p>
 <div id="visualizations" class="section level2">
 <h2>📊 Visualizations</h2>
 <pre class="python"><code>if clusters is not None:
-    viz = Visualization(data=data_with_clusters,
+    viz = visualization(data=data_with_clusters,
                         components=riemann_components,
                         explained_inertia=inertia,
                         clusters=clusters)
@@ -697,7 +698,7 @@ Riemannian principal components.</p>
     viz.plot_3d_scatter_with_clusters(x_col=&quot;s.largo&quot;, y_col=&quot;s.ancho&quot;, z_col=&quot;p.largo&quot;, cluster_col=&quot;tipo&quot;,
                                       title=&quot;iris.csv&quot;, figsize=(12, 8))
 else:
-    viz = Visualization(data=data,
+    viz = visualization(data=data,
                         components=riemann_components,
                         explained_inertia=inertia)
     viz.plot_principal_plane(title=&quot;iris.csv&quot;)</code></pre>
@@ -718,7 +719,7 @@ else:
 </div>
 <div id="summary" class="section level2">
 <h2>✅ Summary</h2>
-<p>This analysis demonstrates how the <strong>RiemannianStats</strong>
+<p>This analysis demonstrates how the <strong>Riemannian STATS</strong>
 package enables geometric analysis of tabular datasets by transforming
 Euclidean features into a <strong>Riemannian manifold</strong> via UMAP.
 The result is a more faithful low-dimensional representation that
