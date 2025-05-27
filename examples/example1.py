@@ -33,6 +33,11 @@ from riemannian_stats import riemannian_analysis, visualization, data_processing
 # Load the Data10D_250.csv dataset using data_processing.load_data, specifying the separator and decimal format.
 data = data_processing.load_data("./data/Data10D_250.csv", separator=",", decimal=".")
 
+# TODO: CAMBIAR data_processing POR pandas
+# Para importar el archivo tanbien puedes usar la libreria de pandas de la siguiente forma:
+# import pandas as pd
+# df = pd.read_csv("./data/Data10D_250.csv", sep=",", decimal="." )
+
 # Define the number of neighbors as the length of the data divided by the number of clusters (in this example, 5).
 n_neighbors = int(len(data) / 5)
 

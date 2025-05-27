@@ -25,7 +25,7 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.pytest_cache/*
+.pytest_cache/
 
 # Virtual environments
 venv/
@@ -35,7 +35,8 @@ env/
 
 # VSCode settings
 .vscode/
-.idea/*
+.idea/
+.github/
 
 # Mac / Windows system files
 .DS_Store
